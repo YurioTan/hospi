@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="purchase_order_report_hn_purchase" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//table/thead/tr/th[@name='th_description']" position="before">
+            <th name="th_number">
+                <strong>No</strong>
+            </th>
+        </xpath>
+
+        <xpath expr="//table/tbody/t[@t-as='line']" position="before">
+            <t t-set="i" t-value="1"/>
+        </xpath>
+
+        <xpath expr="//table/tbody//td[@id='product']" position="before">
+            <td id="number">
+                <span t-esc="i"/>
+                <t t-set="i" t-value="i+1"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>
