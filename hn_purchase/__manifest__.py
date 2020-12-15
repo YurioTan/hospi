@@ -7,9 +7,9 @@
     'description': """
     """,
     'data': [
-
+        'report/purchase_order.xml'
     ],
-    'depends': ['purchase_order'],
+    'depends': ['purchase'],
     'auto_install': False,
     'installable': True,
     'application': False,
