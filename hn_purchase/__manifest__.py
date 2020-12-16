@@ -7,7 +7,8 @@
     'description': """
     """,
     'data': [
-        'report/purchase_order.xml'
+        'report/purchase_order.xml',
+        'views/product_product_view.xml'
     ],
     'depends': ['purchase'],
     'auto_install': False,
