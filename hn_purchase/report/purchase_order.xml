@@ -5,6 +5,9 @@
             <th name="th_number">
                 <strong>No</strong>
             </th>
+            <th name="th_product_ref">
+                <strong>Reference</strong>
+            </th>
         </xpath>
 
         <xpath expr="//table/tbody/t[@t-as='line']" position="before">
@@ -17,5 +20,18 @@
                 <t t-set="i" t-value="i+1"/>
             </td>
         </xpath>
+
+        <xpath expr="//table/tbody//td[@id='product']" position="replace">
+            <td id="product">
+                <span t-field="line.product_id.external_ref"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//table/tbody//td[@id='product']" position="after">
+            <td id="product">
+                <span t-field="line.product_id.name"/>
+            </td>
+        </xpath>
+
     </template>
 </odoo>
