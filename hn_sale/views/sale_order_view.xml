@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_form_hn_hospi" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="before">
+                <field name="co_sale"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_co_sale" model="ir.actions.act_window">
+        <field name="name">CO</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('co_sale','=', True)]</field>
+        <field name="context">{'default_co_sale': True}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
+    <record id="action_so_sale" model="ir.actions.act_window">
+        <field name="name">SO</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('co_sale','=', False)]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_co_sale" name="CO" parent="sale.sale_order_menu"
+              action="action_co_sale" sequence="5"/>
+    <menuitem id="menu_so_sale" name="SO" parent="sale.sale_order_menu"
+              action="action_so_sale" sequence="6"/>
+</odoo>
