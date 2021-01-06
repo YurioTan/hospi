@@ -7,6 +7,7 @@
     'description': """
     """,
     'data': [
+        'data/sequences.xml',
         'report/purchase_order.xml',
         'views/product_product_view.xml'
     ],
