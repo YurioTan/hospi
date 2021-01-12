@@ -9,8 +9,9 @@
     'data': [
         'views/sale_order_view.xml',
         'data/sequences.xml',
+        'report/sale_order.xml',
     ],
-    'depends': ['sale'],
+    'depends': ['sale', 'account'],
     'auto_install': False,
     'installable': True,
     'application': False,
