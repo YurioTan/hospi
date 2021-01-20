@@ -5,6 +5,8 @@
     'summary': 'Custom Base',
     'website': '',
     'description': """
+        custom:
+        1. change state code to state name on address format
     """,
     'data': [
         'data/res_country_data.xml'
