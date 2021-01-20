@@ -2,7 +2,7 @@
 <odoo>
     <template id="purchase_order_report_hn_purchase" inherit_id="purchase.report_purchaseorder_document">
         <xpath expr="//table/thead/tr/th[@name='th_description']" position="before">
-            <th name="th_number">
+            <th name="th_number" style="width:15px">
                 <strong>No</strong>
             </th>
             <th name="th_product_ref">
@@ -15,7 +15,7 @@
         </xpath>
 
         <xpath expr="//table/tbody//td[@id='product']" position="before">
-            <td id="number">
+            <td id="number" style="width:15px">
                 <span t-esc="i"/>
                 <t t-set="i" t-value="i+1"/>
             </td>
