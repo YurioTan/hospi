@@ -5,6 +5,11 @@
     'summary': 'Custom SO',
     'website': '',
     'description': """
+        custom:
+        1. change SO sequence
+        2. add CO sequence, menu, field
+        3. change report sale
+        4. change report invoice
     """,
     'data': [
         'views/sale_order_view.xml',
