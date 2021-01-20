@@ -23,7 +23,7 @@ class PurchaseOrder(models.Model):
 
     @api.model
     def create(self, vals):
-        odoo_seq = self.env['ir.sequence'].next_by_code('po.hospi.sequence')
+        odoo_seq = self.env['ir.sequence'].next_by_code('purchase.order')
         new_seq = odoo_seq.split('/')
         new_seq[-2] = self.convert_month_to_roman(int(new_seq[-2]))
         new_seq = '/'.join(new_seq)
