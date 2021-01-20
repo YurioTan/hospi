@@ -11,7 +11,7 @@ class SaleOder(models.Model):
         if vals.get('co_sale'):
             vals['name'] = self.env['ir.sequence'].next_by_code('co.sale.sequence')
         else:
-            vals['name'] = self.env['ir.sequence'].next_by_code('so.sale.sequence')
+            vals['name'] = self.env['ir.sequence'].next_by_code('sale.order')
 
         res = super(SaleOder, self).create(vals)
         return res

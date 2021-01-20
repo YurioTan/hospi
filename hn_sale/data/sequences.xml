@@ -8,11 +8,8 @@
             <field name="padding">5</field>
         </record>
 
-        <record id="seq_so_sale" model="ir.sequence">
-            <field name="name">SO Sale Sequence</field>
-            <field name="code">so.sale.sequence</field>
+        <record id="sale.seq_sale_order" model="ir.sequence">
             <field name="prefix">SO/%(year)s/</field>
-            <field name="padding">5</field>
         </record>
     </data>
 </odoo>
