@@ -1,0 +1,18 @@
+<!-- <?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        
+        <template id="stock_delivery_slip_report_inherit" inherit_id="stock.report_deliveryslip" >
+            <xpath expr="//div[@name='div_sched_date']" position="after">
+                <div class="col-auto" >
+                    
+                    <strong>Total Koli:</strong>
+                    
+                    
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
+ -->
+
