@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Odoo",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "python": "/home/faris/Envs/odoo14/bin/python",
+            "console": "integratedTerminal",
+            "program": "/opt/odoo/odoo14/odoo-bin",
+            "args": [
+                "--config=/opt/odoo/config/odoo14_hospi.conf",
+                // "--update=hn_purchase",
+                //"--db-filter=102dke",
+            ],
+        }
+    ]
+}
