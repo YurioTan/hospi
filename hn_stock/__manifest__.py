@@ -5,13 +5,13 @@
     'summary': 'Custom Stock, Product',
     'website': '',
     'description': """
-        custom:
-        1. only show cost product to user accounting and purchase
+        Custom:\n
+        1. Only show cost product to user accounting and purchase
     """,
     'data': [
         'views/product_product_view.xml'
     ],
-    'depends': ['stock', 'product'],
+    'depends': ['base', 'stock', 'product'],
     'auto_install': False,
     'installable': True,
     'application': False,
