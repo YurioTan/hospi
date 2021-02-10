@@ -5,19 +5,17 @@
     'summary': 'Custom SO',
     'website': '',
     'description': """
-        custom:
-        1. change SO sequence
-        2. add CO sequence, menu, field
-        3. change report sale
-        4. change report invoice
+        Custom:\n
+        1. Change SO sequence\n
+        2. Add CO sequence, menu, field\n
+        3. Change report sale
     """,
     'data': [
         'views/sale_order_view.xml',
         'data/sequences.xml',
         'report/report_sale.xml',
-        'report/report_invoice.xml',
     ],
-    'depends': ['sale', 'account'],
+    'depends': ['base', 'sale', 'account'],
     'auto_install': False,
     'installable': True,
     'application': False,
