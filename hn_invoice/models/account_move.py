@@ -1,6 +1,14 @@
 from odoo import api, fields, models
 
 
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+    signature = fields.Image('Signature', copy=False, attachment=True,
+                             max_width=1024, max_height=1024)
+    signed_by = fields.Char('Signed By', copy=False)
+    signed_on = fields.Datetime('Signed On', copy=False)
+
+
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
 
