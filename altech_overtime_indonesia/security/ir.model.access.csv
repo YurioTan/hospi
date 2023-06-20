@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lembur_overtime_periode,hr.lembur.periode,model_lembur_overtime_periode,hr_payroll.group_hr_payroll_manager,1,1,1,1
+access_overtime_lembur_koefisien,hr.overtime.lembur.koefisien,model_overtime_lembur_koefisien,hr_payroll.group_hr_payroll_manager,1,1,1,1
+access_lembur_overtime_calculation,hr.lembur.overtime.calculation,model_lembur_overtime_calculation,hr_payroll.group_hr_payroll_user,1,1,1,1
+access_lembur_overtime_calculation_line,hr.lembur.overtime.calculation.line,model_lembur_overtime_calculation_line,hr_payroll.group_hr_payroll_user,1,1,1,1
+access_lembur_overtime_employee,hr.lembur.overtime.employee,model_employee_lembur_overtime,hr_payroll.group_hr_payroll_user,1,1,1,1

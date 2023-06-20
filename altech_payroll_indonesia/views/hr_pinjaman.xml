@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- FORM -->
+        <record id="hr_pinjaman_view_form" model="ir.ui.view">
+            <field name="name">Pinjaman</field>
+            <field name="model">hr.pinjaman</field>
+            <field name="arch" type="xml">
+                <form string="Pinjaman">
+                    <header>
+                        <button name="button_confirm" type="object" string="Confirm" class="btn-info" icon="fa-check" states="draft"/>
+                        <button name="button_validate" icon="fa-flag" type="object" string="Close" class="btn-info" states="progress"/>
+                        <button name="button_set_draft" type="object" string="Set Draft" class="btn btn-sm btn-primary js_unreconcile_payment float-left" states="progress"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,progress,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name"/>
+                            <h2>
+                                <field name="name" placeholder="Description of Detail Pinjaman" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_id" options="{'no_create': True}" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <!-- <field name="nik"/> -->
+                                <field name="department_id" readonly="1" force_save="1"/>
+                            </group>
+                            <group>
+                                <field name="total_pinjaman"/>
+                                <field name="sisa_pinjaman"/>
+                                <field name="tenor_pinjaman"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="List Tenor Pinjaman" name="pinjaman_line">
+                                <field name="pinjaman_ids" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <tree editable="bottom">
+                                        <field name="cutoff_periode_id" required="1" options="{'no_open': True, 'no_create': True}"/>
+                                        <field name="total"/>
+                                        <field name="state" widget="badge" decoration-warning="state=='open'" decoration-success="state=='done'" readonly="1"/>
+                                        <field name="note"/>
+                                    </tree>
+                                    <form string="Detail Tenor Pinjaman">
+                                        <group>
+                                            <group>
+                                                <field name="cutoff_periode_id" required="1"/>
+                                                <field name="total"/>
+                                            </group>
+                                            <group>
+                                                <field name="note"/>
+                                                <field name="state" widget="badge" decoration-warning="state=='open'" decoration-success="state=='done'" readonly="1"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <!-- LIST -->
+        <record id="hr_pinjaman_view_list" model="ir.ui.view">
+            <field name="name">Pinjaman</field>
+            <field name="model">hr.pinjaman</field>
+            <field name="arch" type="xml">
+                <tree string="Pinjaman">
+                    <field name="employee_id"/>
+                    <!-- <field name="nik"/> -->
+                    <field name="department_id"/>
+                    <field name="total_pinjaman" sum="Total Pinjaman"/>
+                    <field name="sisa_pinjaman" sum="sisa Pinjaman"/>
+                    <field name="state" widget="badge" decoration-warning="state=='progress'" decoration-success="state=='done'"/>
+                </tree>
+            </field>
+        </record>
+        <!-- SEARCH -->
+        <record id="hr_pinjaman_view_search" model="ir.ui.view">
+            <field name="name">hr.pinjaman.view.search</field>
+            <field name="model">hr.pinjaman</field>
+            <field name="arch" type="xml">
+                <search string="Search Pinjaman">
+                    <field name="employee_id"/>
+                    <separator/>
+                    <filter string="Progress" name="progress" domain="[('state', '=', 'progress')]"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <separator/>
+                </search>
+            </field>
+        </record>
+        <!-- ACTION -->
+        <record id="action_hr_pinjaman_form" model="ir.actions.act_window">
+            <field name="name">Pinjaman</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="res_model">hr.pinjaman</field>
+            <field name="context">{'search_default_current':1, 'search_default_progress': 1}</field>
+            <field name="search_view_id" ref="hr_pinjaman_view_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Pinjaman
+                </p><p>
+                Manage Pinjaman to better classify them for tracking and analysis purposes.
+            </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,276 @@
+<section class="oe_container">
+    <section class="oe_container">
+       <div style="text-align: center; font-weight: bold; font-size: 20px; margin-top: 10px; color: #d3d3d3; background-color: #b7377d;border-radius: 10px;padding: 10px;">
+            Payroll Indonesia Enterprise Edition
+       </div>
+    </section>
+    <section class="oe_container mt8">
+        <div class="row">
+            <div class="col-12">
+                <div style="font-weight: bold;font-size: 15px;"><i class="fa fa-bookmark"></i> Overview</div>
+                <div>
+                    Payroll Indonesia merupakan addons khusus yang dibuat untuk Odoo Enterprise Edition, addons ini mencakup konfigurasi-konfigurasi
+                    yang diperlukan dalam perhitungan General payroll Indonesia. Selain itu Addons ini juga dilengkapi dengan rules-rules dan formula
+                    yang disesuaikan dengan standard perhitungan pemerintah. Terdapat Report-report yang dapat di Download seperti Report BPJS, Report Pajak 
+                    dan Report-report pendukung lainnya.
+                </div>
+            </div>
+        </div>
+        <div class="row mt16">
+            <div class="col-12">
+                <div style="font-weight: bold;font-size: 20px;"><i class="fa fa-star"></i> Features</div>
+            </div>
+            <div class="col-12">
+                <div style="text-align: center; font-weight: bold; font-size: 15px; margin-top: 4px; color: #383838; background-color: #d97daf;border-radius: 4px; padding: 3px;">General Configuration</div>
+            </div>
+        </div>
+        <div class="row mt4">
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Master cutoff Periode</div>
+                    <div style="text-align: justify;">
+                        Mengelompokkan komponen-komponen payroll berdasarkan cut-off periode penggajian, cutoff peride juga digunakan untuk mendefinisikan Tahun Pajak dan Massa Pajak sebagai acuan dalam perhitungan dan pelaporan pajak.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Limit Tunjangan BPJS Kesejatan</div>
+                    <div style="text-align: justify;">
+                        Master data rujukan Batas Maksmum Potongan BPJS Keshatan, yang digunakan sebagai data rujukan perhitungan rules BPJS Kesehatan.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Tingkat Resiko Lokasi Kerja</div>
+                    <div style="text-align: justify;">
+                        Master data ini digunakan sebagai rujukan perhitungan premi Jaminan Keselamatan Kerja BPJS Ketenagakerjaan.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Limit Biaya Jabatan</div>
+                    <div style="text-align: justify;">
+                        Master limit biaya jabatan digunanakan sebagai pendukung perhitungan pajak penghasilan pasal 21 (PPh21). Limit biaya jabatan ini terdiri dari besaran presentase dari bruto dan maksimum batas pengurang biayajabatan.
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Master PTKP</div>
+                    <div style="text-align: justify;">
+                        Master Penghasilan Tidak Kena Pajak (PTKP) beserta nilai besaran tax reduction untuk masing-masing jenis Kode PTKP, Kode PTKP ini di link-kan dengan data masing-masing employee.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Limit Tunjangan Pensiun</div>
+                    <div style="text-align: justify;">
+                        Master data rujukan Tunjangan Pensiun terdiri dari batas maksimum pemotongan JP serta batas usia pemotongan JP sesuai peraturan yang berlaku. 
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Lapis Progresif PPH21</div>
+                    <div style="text-align: justify;">
+                        Lapis progresif digunakan sebagai data master rujukan perhitungan besaran persentase potongan pph21 pada maisng-masing lapisan. 
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Master Upah Minimum Provinsi</div>
+                    <div style="text-align: justify;">
+                        Master UMP ini degunakan sebagai data rujukan batas bawah dalam perhitungan komponen BPJS Kes dan BPJS Ketenagakerjaan. Upah minimum Provinsi ini dapat di set pada masing-masing employee kontrak.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt8">
+            <div class="col-12">
+                <div style="text-align: center; font-weight: bold; font-size: 15px; margin-top: 4px; color: #383838; background-color: #d97daf;border-radius: 4px; padding: 3px;">Employee Attribut</div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Employee Data</div>
+                    <div style="text-align: justify;">
+                        Melengkapi beberapa attribute data pada employee seperti Nomor NPWP, Nomr BPJS Kesehatan, Nomor BPJS Ketenagakerjaan,
+                        Pensiun Number, Opsi Full THR, PTKP Code, Tingkat Resiko Lokasi Kerja dan beberapa ID dan 
+                        konfigurasi lainnya yang melekat pada employee.
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Configuration Cheklist</div>
+                    <div style="text-align: justify;">
+                        Terdapat konfigurasi dalam bentuk cheklist apakah memiliki NPWP atau tidak yang akan 
+                        berpengaruh pada perhitungan PPh21, Cheklist dipotong atau tidak untuk BPJS Kesehatan dan 
+                        BPJS Ketenagakerjaan.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt8">
+            <div class="col-12">
+                <div style="text-align: center; font-weight: bold; font-size: 15px; margin-top: 4px; color: #383838; background-color: #d97daf;border-radius: 4px; padding: 3px;">Contract Component</div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Numerasi Kontrak Dinamis</div>
+                    <div style="text-align: justify;">
+                        Menyediakan attribut numerasi komponen kontrak yang dinamis sehingga tidak terbatas pada komponen gaji yang disediakan default.
+                        sehingga numerasi-numerasi kontrak seperti tunjangan-tunjangan lain dapat dimasukkan kedalam numerasi kontrak salary.
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Informasi Provinsi</div>
+                    <div style="text-align: justify;">
+                        Informasi provisi ditambahan dalam kontrak dokumen, sehingga pengenaan dasar UMP untuk batas bawah pemotongan BPJS Kesehatan dan BPJS 
+                        Ketenagakerjaan dapat di set untuk masing-masing kontrak. 
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Contract Expired Monitoring</div>
+                    <div style="text-align: justify;">
+                        Dilengkapi control untuk monitoring Data Kontrak yang dapat di sesuaikan peride to be exipred nya. contoh: data kontrak yang akan habis dalam periode 14 hari kedepan. 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt8">
+            <div class="col-12">
+                <div style="text-align: center; font-weight: bold; font-size: 15px; margin-top: 4px; color: #383838; background-color: #d97daf;border-radius: 4px; padding: 3px;">Input Extras</div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Input Adjustment Income</div>
+                    <div style="text-align: justify;">
+                        Menyediakan form inputan adjustment Income yang dapat dibuat berdasarkan kategori yang dinamis misalnya, (income adjustment, Insentif, Meeting Attendance, dll)
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Input Adjustment Deduction</div>
+                    <div style="text-align: justify;">
+                        Menyediakan form inputan adjustment deduction yang dapat dibuat berdasarkan kategori dinamis, misalnya: Potongan Rutin, Pinalti, dll
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Loan</div>
+                    <div style="text-align: justify;">
+                        Menyedikan form loan employee, form dilengkapi dengan pembebanan pembayaran loan pada masing-masing periode penggajian.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt8">
+            <div class="col-12">
+                <div style="text-align: center; font-weight: bold; font-size: 15px; margin-top: 4px; color: #383838; background-color: #d97daf;border-radius: 4px; padding: 3px;">Payroll Calculation</div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Perhitungan Prorate</div>
+                    <div style="text-align: justify;">
+                        Mendukung perhitungan Prorate untuk employee yang new join maupun resign pada masa periode penggajian. Perhitungan Prorate secara default pengguankan masa periode kalender penggajian.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Mendukung Perhitungan PPh21</div>
+                    <div style="text-align: justify;">
+                        Mendukung perhitungan PPH 21 dengan perhitungan Nett, Gross dan GrossUP. Menghitung PPh21 Reguler dan Pph21 Irreguler.
+                        Perhitungan PPh21 Perbulan maupun metode Carry forward untuk Jenis payroll dengan fluktuasi yang cukup tinggi.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Perhitungan PPh21 Final</div>
+                    <div style="text-align: justify;">
+                        Mendukung perhitungan PPH 21 Final (Annualy) dengan resume lebih / kurang Bayar pada akhir periode Pajak.
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Pengelompokan Gross, Deduction dan Company Contribution</div>
+                    <div style="text-align: justify;">
+                        Mengelompokkan rules-rules dengan jenis-jenis tertentu dengan warna yang berbeda sehingga memudahkan dalam mengidentifikasi rules pada salary Calculation. Informasi THP, Gross, Deduction dan company 
+                        contribution di masukkan kedalam field khusus sehingga memungkinkan untuk dibuat report melalui view Report atau melalui melalui view Pivot.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Perhitungan PPh21 Freelance</div>
+                    <div style="text-align: justify;">
+                        Mengelompokkan rules-rules dengan jenis-jenis tertentu dengan warna yang berbeda sehingga memudahkan dalam mengidentifikasi rules pada salary Calculation. Informasi THP, Gross, Deduction dan company 
+                        contribution di masukkan kedalam field khusus sehingga memungkinkan untuk dibuat report melalui view Report atau melalui melalui view Pivot.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt8">
+            <div class="col-12">
+                <div style="text-align: center; font-weight: bold; font-size: 15px; margin-top: 4px; color: #383838; background-color: #d97daf;border-radius: 4px; padding: 3px;">Payroll Report</div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Payroll Calculation</div>
+                    <div style="text-align: justify;">
+                        Laporan kalkulasi Payroll pada tiap-tiap batch, Laporan ini dalam bentuk excel yang diapat diguinakan sebagai tools Rekonsiliasi perhitungan payroll.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Laporan BPJS Kesehatan</div>
+                    <div style="text-align: justify;">
+                        Report Potongan BPJS Kesehatan baik yang dipotongkan ke karyawan maupun yang ditanggung oleh perusahaan.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-clock-o"></i> Laporan PPh21 Masa</div>
+                    <div style="text-align: justify;">
+                        Report PPh21 Masa (1721-I) yang adapat ditarik dalam format excel.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-clock-o"></i> Laporan 1721-A1</div>
+                    <div style="text-align: justify;">
+                        -
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Enhanced Payslip</div>
+                    <div style="text-align: justify;">
+                        Report Payslip yang disesuaikan dengan Pengelompokan kategori komponen penggajian.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-check"></i> Laporan BPJS Tenagakerjaan</div>
+                    <div style="text-align: justify;">
+                        Report Potongan BPJS Ketenagakerjaan baik yang dipotongkan ke karyawan maupun yang ditanggung oleh perusahaan.
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-clock-o"></i> Resume 1721-A1 20 Lajur</div>
+                    <div style="text-align: justify;">
+                        -
+                    </div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold;"><i class="fa fa-clock-o"></i> Laporan List Salary Bank</div>
+                    <div style="text-align: justify;">
+                        -
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt8">
+            <div class="col-12">
+                <div style="text-align: center; font-weight: bold; font-size: 15px; margin-top: 4px; color: #383838; background-color: #d97daf;border-radius: 4px; padding: 3px;">Contact Information</div>
+            </div>
+            <div class="col-6">
+                <div style="margin-top:10px;">
+                    <div style="font-weight: bold; font-size: 22px"><i class="fa fa-phone"></i> WhatsApp</div>
+                    <div style="text-align: justify; font-size: 22px;">
+                        <img src="WA1.png" style="float: left; width:40px;"> 0822 9847 4256
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+ </section>
+ 

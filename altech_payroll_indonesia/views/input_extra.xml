@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="hr_payroll_extras_insentif_category_tree">
+            <field name="name">hr.payroll.extras.insentif.category.tree</field>
+            <field name="model">hr.payroll.extras.insentif.category</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="hr_payroll_extras_insentif_category_action">
+            <field name="name">Income Adj. Category</field>
+            <field name="res_model">hr.payroll.extras.insentif.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- List View -->
+        <record model="ir.ui.view" id="hr_payroll_extras_insentif_tree">
+            <field name="name">hr.payroll.extras.insentif.tree</field>
+            <field name="model">hr.payroll.extras.insentif</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cutoff_periode_id"/>
+                    <field name="category_id"/>
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Form View -->
+        <record model="ir.ui.view" id="hr_payroll_extras_insentif_form">
+            <field name="name">hr.payroll.extras.insentif.form</field>
+            <field name="model">hr.payroll.extras.insentif</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button attrs="{'invisible':[('state','in',['confirm','done'])]}" class="btn-primary" string="Confirm Dokumen" type="object" name="confirm_insentif"/>
+                        <button attrs="{'invisible':[('state','in',['draft','done'])]}" class="btn-primary" string="Close Dokumen" type="object" name="done_insentif"/>
+                        <button attrs="{'invisible':[('state','=','draft')]}" class="btn-default" string="Set to Draft" type="object" name="draft_insentif"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field attrs="{'readonly': [('state', '!=', 'draft')]}" name="category_id" required="1" options="{'no_open': True, 'no_create': True}"/>
+                            </group>
+                            <group>
+                                <field attrs="{'readonly': [('state', '!=', 'draft')]}" name="cutoff_periode_id" domain="[('is_visible', '=', True)]" options="{'no_open': True, 'no_create': True}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Adjustment List">
+                                <field name="insentif_line" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <tree editable="bottom">
+                                        <field name="name" options="{'no_open': True, 'no_create': True}"/>
+                                        <field name="insentif" string="Amount"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hr_payroll_extras_insentif_action">
+            <field name="name">Input Income Adjustment</field>
+            <field name="res_model">hr.payroll.extras.insentif</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- potongangrutin -->
+        <record model="ir.ui.view" id="hr_payroll_extras_potongangrutin_tree">
+            <field name="name">hr.payroll.extras.potongangrutin.tree</field>
+            <field name="model">hr.payroll.extras.potongangrutin</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="hr_payroll_extras_potongangrutin_form">
+            <field name="name">hr.payroll.extras.potongangrutin.form</field>
+            <field name="model">hr.payroll.extras.potongangrutin</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button attrs="{'invisible':[('state','in',['confirm','done'])]}" class="btn-primary" string="Confirm Dokumen" type="object" name="confirm_insentif"/>
+                        <button attrs="{'invisible':[('state','in',['draft','done'])]}" class="btn-primary" string="Close Dokumen" type="object" name="done_insentif"/>
+                        <button attrs="{'invisible':[('state','=','draft')]}" class="btn-default" string="Set to Draft" type="object" name="draft_insentif"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Employee List">
+                                <field name="line_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="nilai"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- List View -->
+        <record model="ir.ui.view" id="hr_payroll_extras_deduction_adjustment_category_tree">
+            <field name="name">hr.payroll.extras.deduction.adjustment.category.tree</field>
+            <field name="model">hr.payroll.extras.deduction.adjustment.category</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="hr_payroll_extras_deduction_adjustment_category_action">
+            <field name="name">Deduction Adj. Category</field>
+            <field name="res_model">hr.payroll.extras.deduction.adjustment.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- deduction adj -->
+        <record model="ir.ui.view" id="hr_payroll_deduction_adjustment_tree">
+            <field name="name">hr.payroll.extras.deduction.adjustment.tree</field>
+            <field name="model">hr.payroll.extras.deduction.adjustment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cutoff_periode_id"/>
+                    <field name="category_id"/>
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="hr_payroll_extras_deduction_adjustment_form">
+            <field name="name">hr.payroll.extras.deduction.adjustment.form</field>
+            <field name="model">hr.payroll.extras.deduction.adjustment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button attrs="{'invisible':[('state','in',['confirm','done'])]}" class="btn-primary" string="Confirm Dokumen" type="object" name="confirm_insentif"/>
+                        <button attrs="{'invisible':[('state','in',['draft','done'])]}" class="btn-primary" string="Close Dokumen" type="object" name="done_insentif"/>
+                        <button attrs="{'invisible':[('state','=','draft')]}" class="btn-default" string="Set to Draft" type="object" name="draft_insentif"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="category_id" required="1" options="{'no_open': True, 'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="cutoff_periode_id" domain="[('is_visible', '=', True)]" options="{'no_open': True, 'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Employee List">
+                                <field name="line_ids" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <tree editable="bottom">
+                                        <field name="name" options="{'no_open': True, 'no_create': True}"/>
+                                        <field name="nilai" string="Amount"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hr_payroll_extras_potongangrutin_action">
+            <field name="name">Input Deduction Potongan Rutin</field>
+            <field name="res_model">hr.payroll.extras.potongangrutin</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="hr_payroll_extras_deduction_adjustment_action">
+            <field name="name">Input Deduction Adjustment</field>
+            <field name="res_model">hr.payroll.extras.deduction.adjustment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_hr_payroll_extras_grup" name="Input Extras" parent="hr_work_entry_contract.menu_hr_payroll_root"
+        sequence="55"/>
+        
+
+        <menuitem 
+            id="input_extras_incentive_category_menu"
+            name="Adjustment Category"
+            sequence = "16"
+            parent="menu_hr_payroll_extras_grup"
+            action="hr_payroll_extras_insentif_category_action"
+        />
+
+        <menuitem 
+            id="input_extras_incentive_menu"
+            name="Input Income Adjustment"
+            sequence = "17"
+            parent="menu_hr_payroll_extras_grup"
+            action="hr_payroll_extras_insentif_action"
+        />
+        <!-- <menuitem 
+            id="input_extras_deduction_rutin_menu"
+            name="Input Deduction Potongan Rutin"
+            sequence = "26"
+            parent="menu_hr_payroll_extras_grup"
+            action="hr_payroll_extras_potongangrutin_action"
+        /> -->
+        
+        <menuitem 
+            id="input_extras_deduction_adjustment_category_menu"
+            name="Deduction Category"
+            sequence = "26"
+            parent="menu_hr_payroll_extras_grup"
+            action="hr_payroll_extras_deduction_adjustment_category_action"
+        />
+        <menuitem 
+            id="input_extras_deduction_adjustment_menu"
+            name="Input Deduction Adjustment"
+            sequence = "27"
+            parent="menu_hr_payroll_extras_grup"
+            action="hr_payroll_extras_deduction_adjustment_action"
+        />
+        <menuitem 
+            id="input_extras_loan_menu"
+            name="Input Loan"
+            sequence = "31"
+            parent="menu_hr_payroll_extras_grup"
+            action="action_hr_pinjaman_form"
+        />
+        
+    </data>
+</odoo>

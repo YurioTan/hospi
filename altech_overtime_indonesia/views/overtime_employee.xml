@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="employee_lembur_overtime_tree">
+            <field name="name">employee.lembur.overtime.tree</field>
+            <field name="model">employee.lembur.overtime</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="date_ot"/>
+                    <field name="ot1_in"/>
+                    <field name="ot1_out"/>
+                    <field name="ot2_in"/>
+                    <field name="ot2_out"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="lembur_employee_data_action">
+            <field name="name">Employee Overtime Data</field>
+            <field name="res_model">employee.lembur.overtime</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
