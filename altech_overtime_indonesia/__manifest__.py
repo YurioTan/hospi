@@ -1,6 +1,6 @@
 {
     'name': 'Indonesia Overtime (Lembur)',
-    'version': '15.0.1.0.1',
+    'version': '14.0.1.0.1',
     'summary': 'Form Pengisian Lembur beserta kalkulasi lembur berdasarkan peraturan pemerintah yang di integrasikan dengan modul payroll',
     'author': 'altech.id',
     'description': 'Form Pengisian lembur dengan konfigurasi beserta besaran kalkulasi lembur sesuai dengan peraturan pemerintah.',
