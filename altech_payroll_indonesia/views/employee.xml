@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="altech_employee_payroll_form">
+            <field name="name">altech.employee.payroll.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='hr_settings']" position="after">
+                    <page name="hr_payroll_tax" string="Payroll &amp; Tax Info" groups="hr.group_hr_user">
+                        <group>
+                            <group string="Others ID" name="other_id_group_x">
+                                <label for="have_npwp" string="No. NPWP" />
+                                <div class="address_format">
+                                    <field name="have_npwp" style="width: 25%"/>
+                                    <field name="no_npwp" attrs="{'invisible':[('have_npwp', '=', False)], 'required':[('have_npwp', '=', True)]}" placeholder="Nomor NPWP" style="width: 72%"/>
+                                </div>
+                                <label for="have_bpjsks" string="BPJS Kesehatan" />
+                                <div class="address_format">
+                                    <field name="have_bpjsks" style="width: 25%"/>
+                                    <field name="no_bpjsks" attrs="{'invisible':[('have_bpjsks', '=', False)], 'required':[('have_bpjsks', '=', True)]}" placeholder="Nomor BPJS Kesehatan" style="width: 72%"/>
+                                </div>
+                                <label for="have_bpjstk" string="BPJS Tenaker" />
+                                <div class="address_format">
+                                    <field name="have_bpjstk" style="width: 25%"/>
+                                    <field name="no_bpkstk" attrs="{'invisible':[('have_bpjstk', '=', False)], 'required':[('have_bpjstk', '=', True)]}" placeholder="Nomor BPJS Tenaker" style="width: 72%"/>
+                                </div>
+                                <label for="have_pension" string="Pension Number" />
+                                <div class="address_format">
+                                    <field name="have_pension" style="width: 25%"/>
+                                    <field name="no_pension" attrs="{'invisible':[('have_pension', '=', False)], 'required':[('have_pension', '=', True)]}" placeholder="Nomor BPJS Pensiun" style="width: 72%"/>
+                                </div>
+                            </group>
+                            <group string="Tax Attribute">
+                                <field name="resiko_kerja"/>
+                                <field name="ptkp_id"/>
+                                <field name="full_thr"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

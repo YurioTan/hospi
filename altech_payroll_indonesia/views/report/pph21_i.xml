@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="wizard_pph21_i_form" model="ir.ui.view">
+            <field name="name">wizard.pph21.i.form</field>
+            <field name="model">wizard.pph21.i</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="tahun_pajak" required="1"/>
+                        </group>
+                        <group>
+                            <field name="masa_pajak" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="download_excel_1721"
+                            string="Download"
+                            type="object"
+                            class="oe_highlight"
+                            />
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="wizard_pph21_i_wizard_form" model="ir.ui.view">
+            <field name="name">wizard.pph21.i.wizard.form</field>
+            <field name="model">wizard.pph21.i.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="tahun_pajak" required="1"/>
+                        </group>
+                        <group>
+                            <field name="masa_pajak" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="download_excel_pph21"
+                            string="Download"
+                            type="object"
+                            class="oe_highlight"
+                            />
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_altech_payroll_indonesia_report_pph21_i">
+            <field name="name">Report PPh21-I</field>
+            <field name="res_model">wizard.pph21.i.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_altech_payroll_indonesia_report_pph21_1721">
+            <field name="name">Report PPh21-1721</field>
+            <field name="res_model">wizard.pph21.i</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem 
+            id="menu_altech_payroll_indonesia_report_pph21_i" 
+            name="PPh21-I" 
+            parent="hr_payroll.menu_hr_payroll_report" 
+            action="action_altech_payroll_indonesia_report_pph21_i" 
+            sequence="10"
+        />
+        <menuitem 
+            id="menu_altech_payroll_indonesia_report_pph21_1721" 
+            name="PPh21-1721 Summary" 
+            parent="hr_payroll.menu_hr_payroll_report" 
+            action="action_altech_payroll_indonesia_report_pph21_1721" 
+            sequence="11"
+        />
+    </data>
+</odoo>

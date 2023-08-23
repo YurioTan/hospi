@@ -1,0 +1,325 @@
+"id","name","code","category_id","amount_python_compute","report_mode","sequence","struct_id"
+"__export__.hr_salary_rule_9_6dd969fd","Gaji Pokok","INCOME","Income","############PARAMETER###########
+kode = ""001""
+prorate = True
+################################
+hasil = 0
+attrs = contract.attribut_lines
+for att in attrs:
+     if att.name.code == kode:
+          hasil = att.nilai
+
+if prorate:
+     payslip_object = payslip.env['hr.payslip'].browse(payslip.id)
+     get_prorate = payslip_object.get_days_prorate()
+     hasil  = get_prorate['aktif'] / get_prorate['kalender'] * hasil
+
+result = hasil","Income","1","General (Tax Nett)"
+"__export__.hr_salary_rule_10_6ff65958","Tunjangan Jabatan","TUNJANGAN_JABATAN","Allowance","############PARAMETER###########
+kode = ""002""
+prorate = True
+################################
+hasil = 0
+attrs = contract.attribut_lines
+for att in attrs:
+     if att.name.code == kode:
+          hasil = att.nilai
+
+if prorate:
+     payslip_object = payslip.env['hr.payslip'].browse(payslip.id)
+     get_prorate = payslip_object.get_days_prorate()
+     hasil  = get_prorate['aktif'] / get_prorate['kalender'] * hasil
+
+result = hasil","Income","2","General (Tax Nett)"
+"__export__.hr_salary_rule_11_15124186","Tunjangan Operasional","TUNJANGAN_OPERASIONAL","Allowance","############PARAMETER###########
+kode = ""003""
+prorate = True
+################################
+hasil = 0
+attrs = contract.attribut_lines
+for att in attrs:
+     if att.name.code == kode:
+          hasil = att.nilai
+
+if prorate:
+     payslip_object = payslip.env['hr.payslip'].browse(payslip.id)
+     get_prorate = payslip_object.get_days_prorate()
+     hasil  = get_prorate['aktif'] / get_prorate['kalender'] * hasil
+
+result = hasil","Income","3","General (Tax Nett)"
+"__export__.hr_salary_rule_15_18686246","Tunjangan Transport","TUNJANGAN_TRANSPORT","Allowance","############PARAMETER###########
+kode = ""004""
+prorate = True
+################################
+hasil = 0
+attrs = contract.attribut_lines
+for att in attrs:
+     if att.name.code == kode:
+          hasil = att.nilai
+
+if prorate:
+     payslip_object = payslip.env['hr.payslip'].browse(payslip.id)
+     get_prorate = payslip_object.get_days_prorate()
+     hasil  = get_prorate['aktif'] / get_prorate['kalender'] * hasil
+
+result = hasil","Income","4","General (Tax Nett)"
+"__export__.hr_salary_rule_12_f0602761","Tunjangan Fungsional","TUNJANGAN_FUNGSIONAL","Allowance (Other)","############PARAMETER###########
+kode = ""005""
+prorate = True
+################################
+hasil = 0
+attrs = contract.attribut_lines
+for att in attrs:
+     if att.name.code == kode:
+          hasil = att.nilai
+
+if prorate:
+     payslip_object = payslip.env['hr.payslip'].browse(payslip.id)
+     get_prorate = payslip_object.get_days_prorate()
+     hasil  = get_prorate['aktif'] / get_prorate['kalender'] * hasil
+
+result = hasil","Income","5","General (Tax Nett)"
+"__export__.hr_salary_rule_13_f1c8fd26","Tunjangan Makan","TUNJANGAN_MAKAN","Allowance (Other)","############PARAMETER###########
+kode = ""006""
+prorate = True
+################################
+hasil = 0
+attrs = contract.attribut_lines
+for att in attrs:
+     if att.name.code == kode:
+          hasil = att.nilai
+
+if prorate:
+     payslip_object = payslip.env['hr.payslip'].browse(payslip.id)
+     get_prorate = payslip_object.get_days_prorate()
+     hasil  = get_prorate['aktif'] / get_prorate['kalender'] * hasil
+
+result = hasil","Income","6","General (Tax Nett)"
+"__export__.hr_salary_rule_16_abfd5f79","Tunjangan Lain-lain","TUNJANGAN_LAINLAIN","Allowance (Other)","############PARAMETER###########
+kode = ""007""
+prorate = True
+################################
+hasil = 0
+attrs = contract.attribut_lines
+for att in attrs:
+     if att.name.code == kode:
+          hasil = att.nilai
+
+if prorate:
+     payslip_object = payslip.env['hr.payslip'].browse(payslip.id)
+     get_prorate = payslip_object.get_days_prorate()
+     hasil  = get_prorate['aktif'] / get_prorate['kalender'] * hasil
+
+result = hasil","Income","7","General (Tax Nett)"
+"__export__.hr_salary_rule_21_8cdf4b6b","Insentif","INSENTIF","Income (Other)","########################
+code_adj = '001'
+########################
+hasil = 0
+getLine = payslip.env['hr.payroll.extras.insentif.line'].search([('insentif_id.state','=','confirm'),('name','=',employee.id),('insentif_id.cutoff_periode_id','=',payslip.cutoff_periode_id.id),('insentif_id.category_id.code','=',code_adj)])
+for baris in getLine:
+     hasil = hasil + baris.insentif
+result =hasil ","Income","11","General (Tax Nett)"
+"__export__.hr_salary_rule_17_a371bbcc","Bruto Penghasilan","BRUTO","Bruto Income","result = categories.ALT_INCOME + categories.ALT_INCOME_OTHER + categories.ALT_ALLOWANCE + categories.ALT_ALLOWANCE_OTHER + categories.ALT_INCOME_IRREGULER","","21","General (Tax Nett)"
+"__export__.hr_salary_rule_18_9a4f71c3","Bruto BPJS","BRUTO_BPJS","Bruto BPJS","result = categories.ALT_INCOME + categories.ALT_INCOME_OTHER + categories.ALT_ALLOWANCE + categories.ALT_ALLOWANCE_OTHER","","22","General (Tax Nett)"
+"__export__.hr_salary_rule_19_3bed3b1e","Bruto Tax","BRUTO_TAX","Bruto TAX","result = categories.ALT_INCOME + categories.ALT_INCOME_OTHER + categories.ALT_ALLOWANCE + categories.ALT_ALLOWANCE_OTHER + categories.ALT_INCOME_IRREGULER","","22","General (Tax Nett)"
+"__export__.hr_salary_rule_20_ec5bd447","Potongan JHT (2%)","POTONGAN_JHT","Deduction (Tax)","################################
+persentase = 2
+################################
+hasil = 0
+if employee.have_bpjstk == True:
+     get_ump = payslip.env['hr.master.ump'].search([('province_id','=',contract.province_id.id),('name','=',payslip.tahun_pajak)])
+     if len(get_ump) > 0:
+          batas_ump = get_ump[0].ump_nilai
+          batas_bawah = BRUTO_BPJS
+     if BRUTO_BPJS < batas_ump:
+          batas_bawah = batas_ump
+     hasil = batas_bawah * persentase / 100
+result = hasil","Deduction","60","General (Tax Nett)"
+"__export__.hr_salary_rule_22_65f55119","Potongan JP (1%)","POTONGAN_JP","Deduction (Tax)","################################
+persentase = 1
+################################
+emp_data = payslip.env['hr.employee'].browse(employee.id)
+get_usia = emp_data.get_usia()
+batas_jp = 0
+batas_usia = 0
+get_batas_jp = payslip.env['hr.limit.jp'].search([('aktif','=',True)])
+if len(get_batas_jp) > 0:
+     batas_jp = get_batas_jp[0].batas
+     batas_usia = get_batas_jp[0].usia
+################################
+if employee.have_pension == True and batas_usia >= get_usia:
+     upah_tetap = BRUTO_BPJS
+     batas_ump = 0
+     get_ump = payslip.env['hr.master.ump'].search([('province_id','=',contract.province_id.id),('name','=',payslip.tahun_pajak)])
+     if len(get_ump) > 0:
+          batas_ump = get_ump[0].ump_nilai
+     acuan_nilai = upah_tetap
+     if acuan_nilai <= batas_ump:
+          acuan_nilai = batas_ump
+     if acuan_nilai >= batas_jp:
+          acuan_nilai = batas_jp
+     hasil = acuan_nilai * persentase / 100
+else:
+     hasil = 0
+result = hasil","Deduction","61","General (Tax Nett)"
+"__export__.hr_salary_rule_23_b8fcd777","Potongan BPJS Kesehatan (1%)","POTONGAN_BPJS_KESEHATAN","Deduction","################################
+persentase = 1
+################################
+if employee.have_bpjsks== True:
+     upah_tetap = BRUTO_BPJS
+     batas_ump = 0
+     get_ump = payslip.env['hr.master.ump'].search([('province_id','=',contract.province_id.id),('name','=',payslip.tahun_pajak)])
+     if len(get_ump) > 0:
+          batas_ump = get_ump[0].ump_nilai
+     batas_bpjs_kes = 0
+     get_batas_bpjs_kes = payslip.env['hr.limit.bpjs.ks'].search([('aktif','=',True)])
+     if len(get_batas_bpjs_kes) > 0:
+          batas_bpjs_kes = get_batas_bpjs_kes[0].batas
+     acuan_nilai = upah_tetap
+     if acuan_nilai <= batas_ump:
+          acuan_nilai = batas_ump
+     if acuan_nilai >= batas_bpjs_kes:
+          acuan_nilai = batas_bpjs_kes
+     hasil = acuan_nilai * persentase / 100
+else:
+     hasil = 0
+result = hasil","Deduction","62","General (Tax Nett)"
+"__export__.hr_salary_rule_24_40ee343b","Potongan Lain-lain","POTONGAN_LAIN_LAIN","Deduction","##################
+code_adj = '201'
+##################
+hasil = 0
+getLine = payslip.env['hr.payroll.extras.deduction.adjustment.line'].search([('deduction_adj_id.state','=','confirm'),('name','=',employee.id),('deduction_adj_id.cutoff_periode_id','=',payslip.cutoff_periode_id.id),('deduction_adj_id.category_id.code','=',code_adj)])
+for baris in getLine:
+     hasil = hasil + baris.nilai
+result =hasil ","Deduction","63","General (Tax Nett)"
+"__export__.hr_salary_rule_25_19d09b74","Loan","POTONGAN_LOAN","Deduction","hasil = 0
+emp_id = employee.id
+getPinjamanLine = payslip.env['hr.pinjaman.line'].search(['&','&','&',('cutoff_periode_id','=',payslip.cutoff_periode_id.id),('state','=','open'),('pinjaman_id.employee_id','=',emp_id),('pinjaman_id.state','=','progress')])
+for baris in getPinjamanLine:
+     hasil = hasil + baris.total
+result = hasil","Deduction","70","General (Tax Nett)"
+"__export__.hr_salary_rule_33_7c73ae9b","Total Deduction","TOTAL_DEDUCTION","Deduction Total","result = categories.ALT_DEDUCTION + categories.ALT_DEDUCTION_TAX","Deduction","75","General (Tax Nett)"
+"__export__.hr_salary_rule_26_41a50e00","Tunjangan JHT (3.7%)","COMPANY_JHT","Company Contribution","################################
+persentase = 3.7
+################################
+hasil = 0
+if employee.have_bpjstk == True:
+     get_ump = payslip.env['hr.master.ump'].search([('province_id','=',contract.province_id.id),('name','=',payslip.tahun_pajak)])
+     if len(get_ump) > 0:
+          batas_ump = get_ump[0].ump_nilai
+          batas_bawah = BRUTO_BPJS
+     if BRUTO_BPJS < batas_ump:
+          batas_bawah = batas_ump
+     hasil = batas_bawah * persentase / 100
+result = hasil","Company Contribution","90","General (Tax Nett)"
+"__export__.hr_salary_rule_27_0de75ded","Tunjangan JKK(0.24%)","COMPANY_JKK","Company Contribution (Tax)","################################
+persentase = 0.24
+if employee.resiko_kerja != False:
+     persentase = employee.resiko_kerja.persentase
+################################
+if employee.have_bpjstk == True:
+     upah_tetap = BRUTO_BPJS
+     batas_ump = 0
+     get_ump = payslip.env['hr.master.ump'].search([('province_id','=',contract.province_id.id),('name','=',payslip.tahun_pajak)])
+     if len(get_ump) > 0:
+          batas_ump = get_ump[0].ump_nilai
+     batas_bawah = upah_tetap
+     if upah_tetap < batas_ump:
+          batas_bawah = batas_ump
+     hasil = batas_bawah * persentase / 100
+else:
+     hasil = 0
+
+result = hasil","Company Contribution","91","General (Tax Nett)"
+"__export__.hr_salary_rule_28_c8fb2700","Tunjangan JKM (0.3%)","COMPANY_JKM","Company Contribution (Tax)","################################
+persentase = 0.3
+################################
+hasil = 0
+if employee.have_bpjstk == True:
+     get_ump = payslip.env['hr.master.ump'].search([('province_id','=',contract.province_id.id),('name','=',payslip.tahun_pajak)])
+     if len(get_ump) > 0:
+          batas_ump = get_ump[0].ump_nilai
+          batas_bawah = BRUTO_BPJS
+     if BRUTO_BPJS < batas_ump:
+          batas_bawah = batas_ump
+     hasil = batas_bawah * persentase / 100
+result = hasil","Company Contribution","94","General (Tax Nett)"
+"__export__.hr_salary_rule_29_ec2b98b9","Tunjangan JP (2%)","COMPANY_JP","Company Contribution","################################
+persentase = 2
+################################
+emp_data = payslip.env['hr.employee'].browse(employee.id)
+get_usia = emp_data.get_usia()
+batas_jp = 0
+batas_usia = 0
+get_batas_jp = payslip.env['hr.limit.jp'].search([('aktif','=',True)])
+if len(get_batas_jp) > 0:
+     batas_jp = get_batas_jp[0].batas
+     batas_usia = get_batas_jp[0].usia
+################################
+if employee.have_pension == True and batas_usia >= get_usia:
+     upah_tetap = BRUTO_BPJS
+     batas_ump = 0
+     get_ump = payslip.env['hr.master.ump'].search([('province_id','=',contract.province_id.id),('name','=',payslip.tahun_pajak)])
+     if len(get_ump) > 0:
+          batas_ump = get_ump[0].ump_nilai
+     acuan_nilai = upah_tetap
+     if acuan_nilai <= batas_ump:
+          acuan_nilai = batas_ump
+     if acuan_nilai >= batas_jp:
+          acuan_nilai = batas_jp
+     hasil = acuan_nilai * persentase / 100
+else:
+     hasil = 0
+result = hasil","Company Contribution","95","General (Tax Nett)"
+"__export__.hr_salary_rule_30_9b6c2f28","Tunjangan BPJS Kesehatan (4%)","COMPANY_BPJS_KES","Company Contribution (Tax)","################################
+persentase = 4
+################################
+if employee.have_bpjsks== True:
+     upah_tetap = BRUTO_BPJS
+     batas_ump = 0
+     get_ump = payslip.env['hr.master.ump'].search([('province_id','=',contract.province_id.id),('name','=',payslip.tahun_pajak)])
+     if len(get_ump) > 0:
+          batas_ump = get_ump[0].ump_nilai
+     batas_bpjs_kes = 0
+     get_batas_bpjs_kes = payslip.env['hr.limit.bpjs.ks'].search([('aktif','=',True)])
+     if len(get_batas_bpjs_kes) > 0:
+          batas_bpjs_kes = get_batas_bpjs_kes[0].batas
+     acuan_nilai = upah_tetap
+     if acuan_nilai <= batas_ump:
+          acuan_nilai = batas_ump
+     if acuan_nilai >= batas_bpjs_kes:
+          acuan_nilai = batas_bpjs_kes
+     hasil = acuan_nilai * persentase / 100
+else:
+     hasil = 0
+result = hasil","Company Contribution","96","General (Tax Nett)"
+"__export__.hr_salary_rule_31_2ca9f219","Biaya Jabatan","BIAYA_JABATAN_MASA","Biaya Jabatan","hasil = 0
+getbatas = payslip.env['hr.limit.bijab'].search([('aktif','=',True)])
+if getbatas.id == False:
+     hasil = 0
+else:
+     batas = getbatas.batas
+     persen = getbatas.persen
+     biaya = (BRUTO_TAX + categories.ALT_COMP_CONTRIB_TAX) * persen / 100
+     if biaya > batas:
+          biaya = batas
+     hasil = biaya
+result = hasil","","120","General (Tax Nett)"
+"__export__.hr_salary_rule_32_bad42bf0","PPh21","PPH21","PPH21","############
+setahun = 12
+############
+bruto_setahun = (BRUTO_TAX + categories.ALT_COMP_CONTRIB_TAX) * setahun
+pengurang_setahun = (categories.ALT_DEDUCTION_TAX + BIAYA_JABATAN_MASA) * setahun 
+
+netto_pph = bruto_setahun - pengurang_setahun
+ptkp = employee.ptkp_id.tax_reduction
+pkp = netto_pph - ptkp
+if pkp <= 0:
+     pph21 = 0
+else:
+     ###ambil tabel lapisan####
+     lapisan = payslip.env['hr.lapis.pph'].search([])
+     for lp in lapisan:
+          if pkp > lp.amount_batas_bawah and pkp <= lp.amount_batas_atas:
+               pph21 = ((pkp - lp.amount_batas_bawah ) *  lp.percentage / 100) + lp.akumulasi
+result = pph21 / ","","300","General (Tax Nett)"
