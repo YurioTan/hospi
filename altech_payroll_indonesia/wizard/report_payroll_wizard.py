@@ -161,7 +161,7 @@ class ReportPayrollWizard(models.TransientModel):
             for calc_ids in row.line_ids.filtered(lambda x:x.salary_rule_id.bpjs_report_type != False):
                 if calc_ids.salary_rule_id.bpjs_report_type == "basis":
                     worksheet.write(baris, 4, calc_ids.total, style5)
-                    sub_total = sub_total + calc_ids.total
+                    # sub_total = sub_total + calc_ids.total
                 if calc_ids.salary_rule_id.bpjs_report_type == "company":
                     worksheet.write(baris, 5, calc_ids.total, style5)
                     sub_total = sub_total + calc_ids.total
