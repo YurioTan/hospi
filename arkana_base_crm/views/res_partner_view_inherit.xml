@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_inherit_partner_info" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='type']" position="before">
+                <field name="alias_name" string="Alias" attrs="{'invisible' : [('is_company', '=', False)]}"/>
+            </xpath>
+
+            <xpath expr="//group[1]" position="after">
+                <group attrs="{'invisible':[('is_company', '=', False)]}">
+                    <group string="Partner Additional Info">
+                        <field name="ownership_id" string="Pemilik" options="{'no_create' : True, 'no_open' : True}"/>
+                        <field name="partner_location_id" string="Pulau" options="{'no_create' : True, 'no_open' : True}"/>
+                        <field name="partner_category_id" string="Category" options="{'no_create' : True, 'no_open' : True}"/>
+                        <field name="partner_class_id" string="Kelas" options="{'no_create' : True, 'no_open' : True}"/>
+                    </group>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

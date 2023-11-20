@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="product_brand_view_tree" model="ir.ui.view">
+        <field name="name">product.brand.view.tree</field>
+        <field name="model">product.brand</field>
+        <field name="arch" type="xml">
+
+            <tree editable="top" create="1" delete="1" multi_edit="1">
+                <field name="name" required="1" />
+                <field name="active" invisible="1" />
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="product_brand_configuration_action" model="ir.actions.act_window">
+        <field name="name">Product Brand</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.brand</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="product_brand_view_tree" />
+        <field name="help" type="html">
+            <p />
+        </field>
+    </record>
+
+    <record id="budget_source_view_tree" model="ir.ui.view">
+        <field name="name">budget.source.view.tree</field>
+        <field name="model">budget.source</field>
+        <field name="arch" type="xml">
+
+            <tree editable="top" create="1" delete="1" multi_edit="1">
+                <field name="name" required="1" />
+                <field name="active" invisible="1" />
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="budget_source_configuration_action" model="ir.actions.act_window">
+        <field name="name">Budget Source</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">budget.source</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="budget_source_view_tree" />
+        <field name="help" type="html">
+            <p />
+        </field>
+    </record>
+
+    <record id="distributor_view_tree" model="ir.ui.view">
+        <field name="name">distributor.distributor.view.tree</field>
+        <field name="model">distributor.distributor</field>
+        <field name="arch" type="xml">
+
+            <tree editable="top" create="1" delete="1" multi_edit="1">
+                <field name="name" required="1" />
+                <field name="active" invisible="1" />
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="distributor_configuration_action" model="ir.actions.act_window">
+        <field name="name">Distributor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">distributor.distributor</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="distributor_view_tree" />
+        <field name="help" type="html">
+            <p />
+        </field>
+    </record>
+
+</odoo>
