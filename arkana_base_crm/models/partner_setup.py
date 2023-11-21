@@ -46,10 +46,11 @@ class Partner(models.Model):
     def name_get(self):
         result = []
         for record in self:
-            name = (
-                record.alias_name
-                if self.env.context.get("partner_search") and record.alias_name
-                else record.name
-            )
-            result.append((record.id, name))
+            if self.env.context.get('partner_search', False):
+                if record.alias_name:
+                    result.append((record.id, record.alias_name))
+                else:
+                    result.append((record.id, record.name))
+            else:
+                result.append((record.id, record.name))
         return result
