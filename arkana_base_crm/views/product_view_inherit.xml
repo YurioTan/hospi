@@ -28,4 +28,17 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="product_product_tree">
+        <field name="name">product.product.tree</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="alias_name" string="Alias" optional="hide" />
+                <field name="brand_id" options="{'no_create' : True, 'no_open' : True}"
+                    optional="hide" />
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
