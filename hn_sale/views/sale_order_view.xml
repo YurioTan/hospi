@@ -12,7 +12,7 @@
     </record>
 
     <record id="action_co_sale" model="ir.actions.act_window">
-        <field name="name">CO</field>
+        <field name="name">Service</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">sale.order</field>
         <field name="view_mode">tree,form</field>
