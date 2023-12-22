@@ -69,11 +69,6 @@
 
     <menuitem id="menu_co_sale" name="OEM Sales" parent="sale.sale_order_menu"
               action="action_co_sale" sequence="5"/>
-<<<<<<< HEAD
-    <menuitem id="menu_so_sale" name="SO" parent="sale.sale_order_menu"
-              action="action_so_sale" sequence="6"/>
-</odoo>
-=======
     <menuitem id="menu_service_sale" name="Service Sales" parent="sale.sale_order_menu"
               action="action_service_sale" sequence="6"/>
     <menuitem id="menu_distributor_sale" name="Distributor Sales" parent="sale.sale_order_menu"
@@ -81,4 +76,3 @@
     <menuitem id="menu_so_sale" name="Reguler Sales" parent="sale.sale_order_menu"
               action="action_so_sale" sequence="8"/>
 </odoo>
->>>>>>> feature/202312-updates
