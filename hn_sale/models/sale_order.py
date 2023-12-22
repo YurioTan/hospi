@@ -7,12 +7,12 @@ class SaleOder(models.Model):
     # deprecated as end of 202312, replaced by order_type
     co_sale = fields.Boolean('CO', default=False)
 
-    order_type = fields.Selection((
+    order_type = fields.Selection([
         ('oem', 'OEM'),
         ('service', 'Service'),
         ('distributor', 'Distributor'),
         ('reguler', 'Reguler'),
-    ), 'Order Type', required=True, default="reguler")
+    ], string='Order Type', required=True, default="reguler")
 
     @api.model
     def create(self, vals):
