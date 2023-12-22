@@ -5,11 +5,23 @@
             <field name="name">CO Sale Sequence</field>
             <field name="code">co.sale.sequence</field>
             <field name="prefix">CO/%(year)s/</field>
-            <field name="padding">5</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_service_sale" model="ir.sequence">
+            <field name="name">Service Sale Sequence</field>
+            <field name="code">service.sale.sequence</field>
+            <field name="prefix">SRV/%(year)s/</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_distributor_sale" model="ir.sequence">
+            <field name="name">Distributor Sale Sequence</field>
+            <field name="code">distributor.sale.sequence</field>
+            <field name="prefix">DIS/%(year)s/</field>
+            <field name="padding">4</field>
         </record>
 
         <record id="sale.seq_sale_order" model="ir.sequence">
-            <field name="prefix">SO/%(year)s/</field>
+            <field name="prefix">REG/%(year)s/</field>
         </record>
     </data>
 </odoo>
