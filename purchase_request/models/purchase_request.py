@@ -308,7 +308,7 @@ class PurchaseRequest(models.Model):
 
     def button_done(self):
         if self.state == 'approved' and self.assign_to2:
-            raise UserError(_('This request has level-2 approver who has not approved it yet. Please wait until he/she does.'))
+            raise UserError(_('This request has level-2 approver who has not approved it yet. Please wait until it is approved.'))
         return self.write({"state": "done"})
 
     def check_auto_reject(self):

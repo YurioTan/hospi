@@ -11,7 +11,7 @@ class Orderpoint(models.Model):
         res = super(Orderpoint, self)._quantity_in_progress()
         for prline in self.env["purchase.request.line"].search(
             [
-                ("request_id.state", "in", ("draft", "approved", "to_approve")),
+                ("request_id.state", "in", ("draft", "approved2", "to_approve")),
                 ("orderpoint_id", "in", self.ids),
                 ("purchase_state", "=", False),
             ]
