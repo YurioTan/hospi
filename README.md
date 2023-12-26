@@ -29,3 +29,7 @@ Need to add users to Purchase Request Level-2 Approver group.
 
 Requests that's currently on Approve 1 ("approved" in database) state should be changed to Approve 2 ("approved2" in database). Since they are assumed to not have Approver 2, performing this to all Approve 1 ones should be safe. Mass export+import is recommended.
 
+The purchase request module's creators calls for empty record rule so admins can adjust them according to needs. We just follow this convention when adding new ones, but here's what I did regarding rule on staging:
+- Purchase Request Line Level-2 Approver: Rule Definition is [('assigned_to2','=',user.id)]
+- Purchase Request Level-2 Approver: Rule Definition is the same
+This means that level-2 approvers can only see his/her assigned requests. After approving a request it is automatically gone from the user's list. Feel free to set these on live.
