@@ -7,6 +7,6 @@ class IrActionsReport(models.Model):
   document_no = fields.Char('Document Number')
 
   def _get_rendering_context(self, docids, data):
-    result = super(IrActionsReport, self)._get_rendering_context(docids, data)
-    result['document_no'] = self.document_no
-    return result
+    data = data and dict(data) or {}
+    data.update({'document_no': 'TEST-1234'})
+    return super()._get_rendering_context(docids=docids, data=data)
