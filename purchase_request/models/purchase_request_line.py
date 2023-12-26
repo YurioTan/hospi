@@ -273,7 +273,7 @@ class PurchaseRequestLine(models.Model):
     )
     def _compute_is_editable(self):
         for rec in self:
-            if rec.request_id.state in ("to_approve", "approved", "rejected", "done"):
+            if rec.request_id.state in ("to_approve", "approved", "approved2", "rejected", "done"):
                 rec.is_editable = False
             else:
                 rec.is_editable = True
