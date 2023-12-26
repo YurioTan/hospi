@@ -45,6 +45,7 @@ As an example, let's edit report's footer and print document_no if one exists fo
       ...
       <span t-if="document_no">Form No: <t t-esc="document_no" /></span>
     </div>
+```
 
 (the code above can be edited in via Settings | General Settings | (Business Documents section) | Edit Layout button)
 
