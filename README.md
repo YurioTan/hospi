@@ -33,3 +33,23 @@ The purchase request module's creators calls for empty record rule so admins can
 - Purchase Request Line Level-2 Approver: Rule Definition is [('assigned_to2','=',user.id)]
 - Purchase Request Level-2 Approver: Rule Definition is the same
 This means that level-2 approvers can only see his/her assigned requests. After approving a request it is automatically gone from the user's list. Feel free to set these on live.
+
+### Document Number
+
+We now have Document Number field under every report on Settings | Technical | Reporting | Reports. First of all fill the field in for the appropriate reports, preferably those which are printed as form (like invoice, purchase request, etc). This field is then available in all report xml as document_no variable.
+
+As an example, let's edit report's footer and print document_no if one exists for the form:
+
+```html
+    <div t-attf-class="footer o_clean_footer o_company_#{company.id}_layout">
+      ...
+      <span t-if="document_no">Form No: <t t-esc="document_no" /></span>
+    </div>
+
+(the code above can be edited in via Settings | General Settings | (Business Documents section) | Edit Layout button)
+
+Special note: as per late December 2023, purchase requests need below action to be able to be printed:
+
+Go to Settings | Technical | Reports | (click Purchase Request)
+
+Then click "Add in the 'Print' menu" button. Please be aware that this will show the print button for all users.
