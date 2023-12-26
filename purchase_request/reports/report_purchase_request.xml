@@ -39,9 +39,14 @@
                                 <span t-field="o.requested_by" />
                             </div>
                             <div class="col-xs-3">
-                                <strong>Assigned to:</strong>
+                                <strong>Approver 1:</strong>
                                 <br />
                                 <span t-field="o.assigned_to" />
+                            </div>
+                            <div class="col-xs-3">
+                                <strong>Approver 2:</strong>
+                                <br />
+                                <span t-field="o.assigned_to2" />
                             </div>
                             <div class="col-xs-3">
                                 <strong>Picking Type:</strong>

@@ -22,6 +22,7 @@
                 />
                 <field name="requested_by" widget="many2one_avatar_user" />
                 <field name="assigned_to" widget="many2one_avatar_user" />
+                <field name="assigned_to2" widget="many2one_avatar_user" />
                 <field name="date_required" />
                 <field name="estimated_cost" widget="monetary" />
                 <field name="currency_id" invisible="1" />
@@ -85,6 +86,10 @@
                             />
                             <field
                                 name="assigned_to"
+                                attrs="{'readonly': [('is_editable','=', False)]}"
+                            />
+                            <field
+                                name="assigned_to2"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                             <field
@@ -215,6 +220,7 @@
                 <field name="product_id" />
                 <field name="requested_by" />
                 <field name="assigned_to" />
+                <field name="assigned_to2" />
                 <field name="date_start" />
                 <field name="date_required" />
                 <filter
@@ -269,7 +275,7 @@
                 />
                 <filter
                     name="assigned_to_me"
-                    domain="[( 'assigned_to','=', uid)]"
+                    domain="['|',( 'assigned_to','=', uid),( 'assigned_to2','=', uid)]"
                     help="Assigned to me"
                 />
                 <filter
@@ -317,9 +323,15 @@
                     />
                     <filter
                         name="assigned_to"
-                        string="Assigned to"
+                        string="Approver 1"
                         domain="[]"
                         context="{'group_by':'assigned_to'}"
+                    />
+                    <filter
+                        name="assigned_to"
+                        string="Approver 2"
+                        domain="[]"
+                        context="{'group_by':'assigned_to2'}"
                     />
                     <filter
                         name="request_status"

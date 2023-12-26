@@ -10,7 +10,7 @@
                 <header>
                     <button
                         name="button_draft"
-                        states="to_approve,approved,rejected,done"
+                        states="to_approve,approved2,rejected,done"
                         string="Reset"
                         type="object"
                         groups="purchase_request.group_purchase_request_manager"
@@ -25,20 +25,28 @@
                     <button
                         name="button_approved"
                         states="to_approve"
-                        string="Approve"
+                        string="Approve 1"
                         type="object"
                         class="oe_highlight"
                         groups="purchase_request.group_purchase_request_manager"
                     />
                     <button
-                        name="%(action_purchase_request_line_make_purchase_order)d"
+                        name="button_approved2"
                         states="approved"
+                        string="Approve 2"
+                        type="object"
+                        class="oe_highlight"
+                        groups="purchase_request.group_purchase_request_approver2"
+                    />
+                    <button
+                        name="%(action_purchase_request_line_make_purchase_order)d"
+                        states="approved2"
                         string="Create RFQ"
                         type="action"
                     />
                     <button
                         name="button_done"
-                        states="approved"
+                        states="approved2"
                         string="Done"
                         type="object"
                         class="oe_highlight"
@@ -46,16 +54,16 @@
                     />
                     <button
                         name="button_rejected"
-                        states="to_approve,approved"
+                        states="to_approve,approved,approved2"
                         string="Reject"
                         type="object"
-                        groups="purchase_request.group_purchase_request_manager"
+                        groups="purchase_request.group_purchase_request_manager,purchase_request.group_purchase_request_approver2"
                     />
                     <field
                         name="state"
                         widget="statusbar"
-                        statusbar_visible="draft,to_approve,approved,done,rejected"
-                        statusbar_colors='{"approved":"blue"}'
+                        statusbar_visible="draft,to_approve,approved,approved2,done,rejected"
+                        statusbar_colors='{"approved":"blue","approved2":"green"}'
                     />
                 </header>
                 <sheet>
@@ -117,6 +125,10 @@
                             />
                             <field
                                 name="assigned_to"
+                                attrs="{'readonly': [('is_editable','=', False)]}"
+                            />
+                            <field
+                                name="assigned_to2"
                                 attrs="{'readonly': [('is_editable','=', False)]}"
                             />
                         </group>
@@ -344,7 +356,7 @@
                 <field
                     name="state"
                     widget="badge"
-                    decoration-success="state in ('done', 'approved')"
+                    decoration-success="state in ('done', 'approved2')"
                     decoration-muted="state == 'draft'"
                     decoration-warning="state == 'to_approve'"
                     decoration-danger="state == 'rejected'"
@@ -382,9 +394,15 @@
                 />
                 <filter
                     name="state_approved"
-                    string="Approved"
+                    string="Approved 1"
                     domain="[('state','=','approved')]"
-                    help="Request is approved"
+                    help="Request is on level-1 approval"
+                />
+                <filter
+                    name="state_approved2"
+                    string="Approved 2"
+                    domain="[('state','=','approved2')]"
+                    help="Request is on level-2 approval"
                 />
                 <filter
                     name="state_rejected"
@@ -406,7 +424,7 @@
                 />
                 <filter
                     name="assigned_to_me"
-                    domain="[('assigned_to','=', uid)]"
+                    domain="['|',('assigned_to','=', uid),('assigned_to2','=', uid)]"
                     help="Assigned to me"
                 />
                 <filter
@@ -416,6 +434,7 @@
                 />
                 <field name="requested_by" />
                 <field name="assigned_to" />
+                <field name="assigned_to2" />
                 <field name="picking_type_id" />
                 <group expand="0" string="Group By...">
                     <filter
@@ -427,10 +446,17 @@
                     />
                     <filter
                         name="assigned_to"
-                        string="Assigned to"
+                        string="Approver 1"
                         icon="fa-user"
                         domain="[]"
                         context="{'group_by':'assigned_to'}"
+                    />
+                    <filter
+                        name="assigned_to2"
+                        string="Approver 2"
+                        icon="fa-user"
+                        domain="[]"
+                        context="{'group_by':'assigned_to2'}"
                     />
                     <filter
                         name="source"

@@ -6,8 +6,9 @@ from odoo.exceptions import UserError
 
 _STATES = [
     ("draft", "Draft"),
-    ("to_approve", "To be approved"),
-    ("approved", "Approved"),
+    ("to_approve", "To Approve"),
+    ("approved", "Approve 1"),
+    ("approved2", "Approve 2"),
     ("rejected", "Rejected"),
     ("done", "Done"),
 ]
@@ -48,7 +49,7 @@ class PurchaseRequest(models.Model):
     @api.depends("state")
     def _compute_is_editable(self):
         for rec in self:
-            if rec.state in ("to_approve", "approved", "rejected", "done"):
+            if rec.state in ("to_approve", "approved", "approved2", "rejected", "done"):
                 rec.is_editable = False
             else:
                 rec.is_editable = True
@@ -80,13 +81,26 @@ class PurchaseRequest(models.Model):
     )
     assigned_to = fields.Many2one(
         comodel_name="res.users",
-        string="Approver",
+        string="Approver 1",
         tracking=True,
         domain=lambda self: [
             (
                 "groups_id",
                 "in",
                 self.env.ref("purchase_request.group_purchase_request_manager").id,
+            )
+        ],
+        index=True,
+    )
+    assigned_to2 = fields.Many2one(
+        comodel_name="res.users",
+        string="Approver 2",
+        tracking=True,
+        domain=lambda self: [
+            (
+                "groups_id",
+                "in",
+                self.env.ref("purchase_request.group_purchase_request_approver2").id,
             )
         ],
         index=True,
@@ -243,6 +257,9 @@ class PurchaseRequest(models.Model):
         if vals.get("assigned_to"):
             partner_id = self._get_partner_id(request)
             request.message_subscribe(partner_ids=[partner_id])
+        if vals.get("assigned_to2"):
+            partner_id = request.assigned_to2.partner_id.id
+            request.message_subscribe(partner_ids=[partner_id])
         return request
 
     def write(self, vals):
@@ -250,6 +267,9 @@ class PurchaseRequest(models.Model):
         for request in self:
             if vals.get("assigned_to"):
                 partner_id = self._get_partner_id(request)
+                request.message_subscribe(partner_ids=[partner_id])
+            if vals.get("assigned_to2"):
+                partner_id = request.assigned_to2.partner_id.id
                 request.message_subscribe(partner_ids=[partner_id])
         return res
 
@@ -274,13 +294,21 @@ class PurchaseRequest(models.Model):
         return self.write({"state": "to_approve"})
 
     def button_approved(self):
-        return self.write({"state": "approved"})
+        if self.assigned_to2:
+            return self.write({"state": "approved"})
+        else:
+            return self.write({"state": "approved2"})
+
+    def button_approved2(self):
+        return self.write({"state": "approved2"})
 
     def button_rejected(self):
         self.mapped("line_ids").do_cancel()
         return self.write({"state": "rejected"})
 
     def button_done(self):
+        if self.state == 'approved' and self.assign_to2:
+            raise UserError(_('This request has level-2 approver who has not approved it yet. Please wait until he/she does.'))
         return self.write({"state": "done"})
 
     def check_auto_reject(self):
