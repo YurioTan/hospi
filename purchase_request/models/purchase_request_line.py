@@ -60,7 +60,13 @@ class PurchaseRequestLine(models.Model):
     assigned_to = fields.Many2one(
         comodel_name="res.users",
         related="request_id.assigned_to",
-        string="Assigned to",
+        string="Approver 1",
+        store=True,
+    )
+    assigned_to2 = fields.Many2one(
+        comodel_name="res.users",
+        related="request_id.assigned_to2",
+        string="Approver 2",
         store=True,
     )
     date_start = fields.Date(related="request_id.date_start", store=True)
