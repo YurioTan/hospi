@@ -6,7 +6,7 @@ class IrActionsReport(models.Model):
 
   document_no = fields.Char('Document Number')
 
-  def _get_rendering_context(self, report, docids, data):
-    result = super(IrActionsReport, self)._get_rendering_context(report, docids, data)
-    result['document_no'] = report.document_id
+  def _get_rendering_context(self, docids, data):
+    result = super(IrActionsReport, self)._get_rendering_context(docids, data)
+    result['document_no'] = self.document_no
     return result
