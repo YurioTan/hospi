@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <!-- ir.actions.report inherit form view -->
-  <!-- <record id="act_report_xml_view" model="ir.ui.view">
+  <record id="act_report_xml_view" model="ir.ui.view">
     <field name="name">ir.actions.report.inherit.view.form</field>
     <field name="model">ir.actions.report</field>
     <field name="inherit_id" ref="base.act_report_xml_view"/>
@@ -10,5 +10,5 @@
         <field name="document_no"/>
       </field>
     </field>
-  </record> -->
+  </record>
 </odoo>
