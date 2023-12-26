@@ -10,7 +10,7 @@
                         <h2>
                             <span t-field="o.name" />
                         </h2>
-                        <div class="row" style="margin-top:32px;margin-bottom:32px">
+                        <div class="row mt-4 mb-4">
                             <div class="col-6" style="padding-right: 24px">
                                 <strong>Requested At:</strong>&amp;nbsp;<span t-field="o.date_start" /><br/>
                                 <strong>Source:</strong>&amp;nbsp;<span t-field="o.origin" /><br/>
