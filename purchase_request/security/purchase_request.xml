@@ -76,7 +76,7 @@
     <record id="purchase_request_approver2_rule" model="ir.rule">
         <field name="name">Purchase Request Level-2 Approver</field>
         <field name="model_id" ref="model_purchase_request" />
-        <field name="groups" eval="[(6,0, [ref('group_purchase_request_manager')])]" />
+        <field name="groups" eval="[(6,0, [ref('group_purchase_request_approver2')])]" />
         <field name="perm_read" eval="True" />
         <field name="perm_write" eval="True" />
         <field name="perm_create" eval="True" />
@@ -118,7 +118,7 @@
     <record id="purchase_request_line_approver2_rule" model="ir.rule">
         <field name="name">Purchase Request Line Level-2 Approver</field>
         <field name="model_id" ref="model_purchase_request_line" />
-        <field name="groups" eval="[(6,0, [ref('group_purchase_request_manager')])]" />
+        <field name="groups" eval="[(6,0, [ref('group_purchase_request_approver2')])]" />
         <field name="perm_read" eval="True" />
         <field name="perm_write" eval="True" />
         <field name="perm_create" eval="True" />
