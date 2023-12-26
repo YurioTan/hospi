@@ -8,5 +8,5 @@ class IrActionsReport(models.Model):
 
   def _get_rendering_context(self, docids, data):
     data = data and dict(data) or {}
-    data.update({'document_no': 'TEST-1234'})
+    data.update({'document_no': self.document_no})
     return super()._get_rendering_context(docids=docids, data=data)
