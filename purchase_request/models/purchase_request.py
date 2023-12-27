@@ -7,12 +7,11 @@ from odoo.exceptions import UserError
 _STATES = [
     ("draft", "Draft"),
     ("to_approve", "To Approve"),
-    ("approved", "Approve 1"),
-    ("approved2", "Approve 2"),
+    ("acc1", "ACC 1"),
+    ("approved", "Approved"),
     ("rejected", "Rejected"),
     ("done", "Done"),
 ]
-
 
 class PurchaseRequest(models.Model):
 
@@ -49,7 +48,7 @@ class PurchaseRequest(models.Model):
     @api.depends("state")
     def _compute_is_editable(self):
         for rec in self:
-            if rec.state in ("to_approve", "approved", "approved2", "rejected", "done"):
+            if rec.state in ("to_approve", "approved", "acc1", "rejected", "done"):
                 rec.is_editable = False
             else:
                 rec.is_editable = True
@@ -87,7 +86,7 @@ class PurchaseRequest(models.Model):
             (
                 "groups_id",
                 "in",
-                self.env.ref("purchase_request.group_purchase_request_manager").id,
+                self.env.ref("purchase_request.group_purchase_request_approver2").id,
             )
         ],
         index=True,
@@ -293,22 +292,22 @@ class PurchaseRequest(models.Model):
         self.to_approve_allowed_check()
         return self.write({"state": "to_approve"})
 
-    def button_approved(self):
+    def button_acc1(self):
         if self.assigned_to2:
-            return self.write({"state": "approved"})
+            return self.write({"state": "acc1"})
         else:
-            return self.write({"state": "approved2"})
+            return self.write({"state": "approved"})
 
-    def button_approved2(self):
-        return self.write({"state": "approved2"})
+    def button_approve(self):
+        return self.write({"state": "approved"})
 
     def button_rejected(self):
         self.mapped("line_ids").do_cancel()
         return self.write({"state": "rejected"})
 
     def button_done(self):
-        if self.state == 'approved' and self.assign_to2:
-            raise UserError(_('This request has level-2 approver who has not approved it yet. Please wait until it is approved.'))
+        if self.state == 'acc1' and self.assign_to2:
+            raise UserError(_('This request has another approver who has not approved it yet. Please wait until it is approved.'))
         return self.write({"state": "done"})
 
     def check_auto_reject(self):
