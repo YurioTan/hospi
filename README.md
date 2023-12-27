@@ -15,24 +15,20 @@ It's recommended to use mass export+import to perform this update.
 
 ### purchase_request module
 
-We introduce another approver (level-2 approver) to the standard purchase request module. The user can be assigned to a request by filling in Approver 2 field on creation or before request approval phase. FYI we relabel the original Approver to Approver 1.
+Approver is now Approver 1 and Approver 2. Both are users assigned to Purchase Request Approver group. <span style="color:#FF0000">We assume that approvers are just that: approvers; they do not create RFQ or "done" a request, etc., also cannot access other modules/features. They can still reject a purchase request though.</span>
 
-<span style="color:#FF0000">We assume that level-2 approvers are just approvers; they do not create RFQ or "done" a request, etc. They can still reject it though.</span>
+We also introduce ACC 1 state in addition to (and "before" in sequence to) Approved. Requests that have no Approver 2 will go straight to Approved from To Approve state. Clicking Done while on ACC 1 will result in error if Approver 2 was filled in. In other words, ACC 1 is an intermediary state reached only if the request has two approvers.
 
-We also introduce Approve 2 state in addition to Approved (which now is relabeled to Approve 1). Requests that have no level-2 approvers will go straight to Approve 2 from To Approve state. Clicking Done while on Approve 1 will result in error if Approver 2 was filled in. In other words, Approve 2 is the new Approve state while Approve 1 is just an intermediary one.
-
-We keep Purchase Request Manager as level-1 approver, and imply Purchase Request User group. We add a new group, Purchase Request Level-2 Approver. Please note that this group does not imply Purchase Request User, since it is assumed the user can be from another division, director, or even owner. Set a user to both Purchase Request Manager and Purchase Request Level-2 Approver if you'd like them to have purchase-manager-level access too.
+We keep Purchase Request Manager group as is, including implied from Purchase Request User. We add a new group, Purchase Request Approver. Please note that this group does not imply Purchase Request User, since it is assumed the user can be from another division, director, or even owner. Set a user to both Purchase Request Manager and Purchase Request Approver if you'd like them to act as purchase request manager too.
 
 **Action Items**
 
-Need to add users to Purchase Request Level-2 Approver group.
-
-Requests that's currently on Approve 1 ("approved" in database) state should be changed to Approve 2 ("approved2" in database). Since they are assumed to not have Approver 2, performing this to all Approve 1 ones should be safe. Mass export+import is recommended.
+Need to add users to Purchase Request Approver group.
 
 The purchase request module's creators calls for empty record rule so admins can adjust them according to needs. We just follow this convention when adding new ones, but here's what I did regarding rule on staging:
-- Purchase Request Line Level-2 Approver: Rule Definition is [('assigned_to2','=',user.id)]
-- Purchase Request Level-2 Approver: Rule Definition is the same
-This means that level-2 approvers can only see his/her assigned requests. After approving a request it is automatically gone from the user's list. Feel free to set these on live.
+- Purchase Request Line Approver: Rule Definition is [('assigned_to2','=',user.id)]
+- Purchase Request Approver: Rule Definition is the same
+This means that approvers can only see his/her assigned requests. After approving a request it is automatically gone from the user's list. Feel free to set these on live.
 
 ### Document Number
 
