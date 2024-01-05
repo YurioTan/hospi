@@ -12,6 +12,7 @@
     'data': [
         'data/res_country_data.xml',
         'views/ir_actions_report_views.xml',
+        'reports/report_global_signs.xml',
     ],
     'depends': ['base'],
     'auto_install': False,

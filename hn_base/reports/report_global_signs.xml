@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template id="report_global_signs">
+    <div>
+      <div class="row mt-4 mb-4">
+        <div class="col-3" style="text-align: center"><t t-out="labels[0]" /></div>
+        <div class="col-3" style="text-align: center"><t t-out="labels[1]" /></div>
+        <div class="col-3" style="text-align: center"><t t-out="labels[2]" /></div>
+        <div class="col-3" style="text-align: center"><t t-out="labels[3]" /></div>
+      </div>
+      <div class="row">
+        <div class="col-3" style="text-align: center"><br/><br/><br/><br/></div>
+        <div class="col-3" style="text-align: center"><br/><br/><br/><br/></div>
+        <div class="col-3" style="text-align: center"><br/><br/><br/><br/></div>
+        <div class="col-3" style="text-align: center"><br/><br/><br/><br/></div>
+      </div>
+      <div class="row">
+        <div class="col-3" style="text-align: center">NAMA:</div>
+        <div class="col-3" style="text-align: center">NAMA:</div>
+        <div class="col-3" style="text-align: center">NAMA:</div>
+        <div class="col-3" style="text-align: center">NAMA:</div>
+      </div>
+      <div class="row">
+        <div class="col-3" style="text-align: center">TANGGAL:</div>
+        <div class="col-3" style="text-align: center">TANGGAL:</div>
+        <div class="col-3" style="text-align: center">TANGGAL:</div>
+        <div class="col-3" style="text-align: center">TANGGAL:</div>
+      </div>
+    </div>
+  </template>
+</odoo>

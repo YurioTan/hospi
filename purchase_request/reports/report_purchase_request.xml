@@ -7,6 +7,9 @@
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
                     <div class="page">
+                        <t t-set="diajukan" t-value="create_uid.name" />
+                        <t t-set="mengetahui" t-value="assigned_to.name" />
+                        <t t-set="menyetujui" t-value="o.assigned_to2 and o.assigned_to2.name or assigned_to.name" />
                         <h2>
                             <span t-field="o.name" />
                         </h2>
@@ -89,6 +92,35 @@
                                 </tbody>
                             </table>
                         </t>
+                        <div class="row mt-4 mb-4">
+                            <div class="col-4" style="text-align:center">
+                                Diajukan Oleh,
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                (<t t-out="diajukan" />)
+                            </div>
+                            <div class="col-4" style="text-align:center">
+                                Diketahui Oleh,
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                (<t t-out="diketahui" />)
+                            </div>
+                            <div class="col-4" style="text-align:center">
+                                Disetujui Oleh,
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                (<t t-out="disetujui" />)
+                            </div>
+                        </div>
                     </div>
                 </t>
             </t>

@@ -89,7 +89,7 @@ class PurchaseRequestLine(models.Model):
     is_editable = fields.Boolean(
         string="Is editable", compute="_compute_is_editable", readonly=True
     )
-    specifications = fields.Text(string="Specifications")
+    specifications = fields.Text(string="Notes")
     request_state = fields.Selection(
         string="Request state",
         related="request_id.state",

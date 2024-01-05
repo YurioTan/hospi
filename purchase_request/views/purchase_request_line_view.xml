@@ -155,7 +155,7 @@
                         </group>
                     </group>
                     <group name="specifications">
-                        <separator string="Specifications" />
+                        <separator string="Notes" />
                         <newline />
                         <field
                             name="specifications"
