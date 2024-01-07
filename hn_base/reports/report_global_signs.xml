@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
   <template id="report_global_signs">
-    <div>
-      <div class="row mt-4 mb-4">
-        <div class="col-3" style="text-align: center"><t t-out="labels[0]" /></div>
-        <div class="col-3" style="text-align: center"><t t-out="labels[1]" /></div>
-        <div class="col-3" style="text-align: center"><t t-out="labels[2]" /></div>
-        <div class="col-3" style="text-align: center"><t t-out="labels[3]" /></div>
+    <div style="border: 1px solid #165DA9" class="mb-4 mt-4">
+      <div class="row" style="padding:0 15px">
+        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><t t-esc="labels[0]"/></div></div>
+        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><t t-esc="labels[1]"/></div></div>
+        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><t t-esc="labels[2]"/></div></div>
+        <div class="col-3" style="text-align: center"><div><t t-esc="labels[3]"/></div></div>
       </div>
-      <div class="row">
-        <div class="col-3" style="text-align: center"><br/><br/><br/><br/></div>
-        <div class="col-3" style="text-align: center"><br/><br/><br/><br/></div>
-        <div class="col-3" style="text-align: center"><br/><br/><br/><br/></div>
-        <div class="col-3" style="text-align: center"><br/><br/><br/><br/></div>
+      <div class="row" style="padding:0 15px">
+        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><br/><br/><br/><br/></div></div>
+        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><br/><br/><br/><br/></div></div>
+        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><br/><br/><br/><br/></div></div>
+        <div class="col-3" style="text-align: center"><div><br/><br/><br/><br/></div></div>
       </div>
-      <div class="row">
-        <div class="col-3" style="text-align: center">NAMA:</div>
-        <div class="col-3" style="text-align: center">NAMA:</div>
-        <div class="col-3" style="text-align: center">NAMA:</div>
-        <div class="col-3" style="text-align: center">NAMA:</div>
+      <div class="row" style="padding:0 15px">
+        <div class="col-3" style="border-right: 1px solid #165DA9"><div>NAMA:</div></div>
+        <div class="col-3" style="border-right: 1px solid #165DA9"><div>NAMA:</div></div>
+        <div class="col-3" style="border-right: 1px solid #165DA9"><div>NAMA:</div></div>
+        <div class="col-3"><div>NAMA:</div></div>
       </div>
-      <div class="row">
-        <div class="col-3" style="text-align: center">TANGGAL:</div>
-        <div class="col-3" style="text-align: center">TANGGAL:</div>
-        <div class="col-3" style="text-align: center">TANGGAL:</div>
-        <div class="col-3" style="text-align: center">TANGGAL:</div>
+      <div class="row" style="padding:0 15px">
+        <div class="col-3" style="border-right: 1px solid #165DA9"><div>TANGGAL:</div></div>
+        <div class="col-3" style="border-right: 1px solid #165DA9"><div>TANGGAL:</div></div>
+        <div class="col-3" style="border-right: 1px solid #165DA9"><div>TANGGAL:</div></div>
+        <div class="col-3"><div>TANGGAL:</div></div>
       </div>
     </div>
   </template>
