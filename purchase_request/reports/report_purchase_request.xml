@@ -18,14 +18,11 @@
                                 <strong>Requested At:</strong>&amp;nbsp;<span t-field="o.date_start" /><br/>
                                 <strong>Source:</strong>&amp;nbsp;<span t-field="o.origin" /><br/>
                                 <strong>Picking Type:</strong>&amp;nbsp;<span t-field="o.picking_type_id" /><br/>
-                                <strong>Description:</strong>
-                                <br />
-                                <span t-field="o.description" />
                             </div>
                             <div class="col-6">
-                                <strong>Requested by:</strong>&amp;nbsp;<span t-field="o.requested_by" /><br/>
-                                <strong>Approver 1:</strong>&amp;nbsp;<span t-field="o.assigned_to" /><br/>
-                                <strong>Approver 2:</strong>&amp;nbsp;<span t-if="o.assigned_to2" t-field="o.assigned_to2" /><span t-if="not o.assigned_to2">-</span>
+                                <strong>Description:</strong>
+                                <br/>
+                                <span t-field="o.description"/>
                             </div>
                         </div>
                         <t t-if="o.line_ids">
@@ -33,8 +30,11 @@
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th style="width:35%">
                                             <strong>Description</strong>
+                                        </th>
+                                        <th style="width:25%">
+                                            <strong>Product</strong>
                                         </th>
                                         <th groups="analytic.group_analytic_accounting">
                                             <strong>Account</strong>
@@ -46,7 +46,7 @@
                                             <strong>UoM</strong>
                                         </th>
                                         <th>
-                                            <strong>Est. Cost</strong>
+                                            <strong>Est.&amp;nbsp;Cost</strong>
                                         </th>
                                         <!-- <th class="text-right">
                                             <strong>Requested Date</strong>
@@ -62,22 +62,18 @@
                                                 <span t-field="line_ids.specifications" />
                                             </t>
                                         </td>
+                                        <td>
+                                            <span t-field="line_ids.product_id"/>
+                                        </td>
                                         <td groups="analytic.group_analytic_accounting">
-                                            <span
-                                                t-field="line_ids.analytic_account_id"
-                                            />
+                                            <span t-field="line_ids.analytic_account_id"/>
                                         </td>
                                         <td class="text-right">
                                             <span t-field="line_ids.product_qty" />
                                         </td>
                                         <t>
-                                            <td
-                                                class="text-center"
-                                                groups="uom.group_uom"
-                                            >
-                                                <span
-                                                    t-field="line_ids.product_uom_id.category_id.name"
-                                                />
+                                            <td class="text-center" groups="uom.group_uom">
+                                                <span t-field="line_ids.product_uom_id.category_id.name" />
                                             </td>
                                         </t>
                                         <td>
