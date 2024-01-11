@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- Partner Class -->
+
+    <record id="partner_class_1" model="partner.class">
+        <field name="name">A</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_class_2" model="partner.class">
+        <field name="name">B</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_class_3" model="partner.class">
+        <field name="name">C</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_class_4" model="partner.class">
+        <field name="name">D</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_class_5" model="partner.class">
+        <field name="name">D PRATAMA</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_class_6" model="partner.class">
+        <field name="name">Belum ditetapkan</field>
+        <field name="active">True</field>
+    </record>
+
+    <!-- Partner Category -->
+
+    <record id="partner_category_1" model="partner.category">
+        <field name="name">Privt.</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_category_2" model="partner.category">
+        <field name="name">Govt.</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_category_3" model="partner.category">
+        <field name="name">Police</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_category_4" model="partner.category">
+        <field name="name">Military</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_category_5" model="partner.category">
+        <field name="name">BUMN</field>
+        <field name="active">True</field>
+    </record>
+
+    <!-- Partner Islan -->
+
+    <record id="partner_island_1" model="partner.location">
+        <field name="name">Sumatera</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_island_2" model="partner.location">
+        <field name="name">Jawa</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_island_3" model="partner.location">
+        <field name="name">Bali</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_island_4" model="partner.location">
+        <field name="name">Nusa Tenggara</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_island_5" model="partner.location">
+        <field name="name">Kalimantan</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_island_6" model="partner.location">
+        <field name="name">Sulawesi</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_island_7" model="partner.location">
+        <field name="name">Kepulauan Maluku</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_island_8" model="partner.location">
+        <field name="name">Papua</field>
+        <field name="active">True</field>
+    </record>
+
+    <!--  -->
+
+    <record id="partner_ownership_1" model="partner.ownership">
+        <field name="name">SWASTA/LAINNYA</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_2" model="partner.ownership">
+        <field name="name">Perorangan</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_3" model="partner.ownership">
+        <field name="name">Perusahaan</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_4" model="partner.ownership">
+        <field name="name">Pemkab</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_5" model="partner.ownership">
+        <field name="name">Pemkot</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_6" model="partner.ownership">
+        <field name="name">POLRI</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_7" model="partner.ownership">
+        <field name="name">TNI AD</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_8" model="partner.ownership">
+        <field name="name">TNI AL</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_9" model="partner.ownership">
+        <field name="name">TNI AU</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_10" model="partner.ownership">
+        <field name="name">Organisasi Sosial</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_11" model="partner.ownership">
+        <field name="name">BUMN</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_12" model="partner.ownership">
+        <field name="name">Kementerian Lain</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_13" model="partner.ownership">
+        <field name="name">Pemprop</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_14" model="partner.ownership">
+        <field name="name">Kemkes</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_15" model="partner.ownership">
+        <field name="name">Organisasi Protestan</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_16" model="partner.ownership">
+        <field name="name">Organisasi Katholik</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_17" model="partner.ownership">
+        <field name="name">Organisasi Islam</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_18" model="partner.ownership">
+        <field name="name">Organisasi Budha</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="partner_ownership_19" model="partner.ownership">
+        <field name="name">Organisasi Hindu</field>
+        <field name="active">True</field>
+    </record>
+
+</odoo>
