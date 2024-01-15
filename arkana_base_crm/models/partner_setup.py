@@ -50,7 +50,7 @@ class Partner(models.Model):
                 if record.alias_name:
                     result.append((record.id, record.alias_name))
                 else:
-                    result.append((record.id, record.display_name))
+                    result.append((record.id, record.name))
             else:
-                result.append((record.id, record.display_name))
+                result.append((record.id, record.name))
         return result
