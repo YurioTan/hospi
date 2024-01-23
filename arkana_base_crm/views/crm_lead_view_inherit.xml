@@ -25,7 +25,7 @@
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="attrs">{'required': [('action', '=', 'exist')], 'invisible':[('action','!=','exist')], 'readonly' : [('is_from_leads_menu', '=', True)]}</attribute>
                 <attribute name="options">{'no_create' : True, 'no_open' : True, 'always_reload': True}</attribute>
-                <attribute name="context">{'res_partner_search_mode': 'customer', 'show_vat': True, 'partner_search': True}</attribute>
+                <attribute name="context">{'partner_search': True, 'show_address': True, 'res_partner_search_mode': 'customer', 'show_vat': True}</attribute>
             </xpath>
         </field>
     </record>

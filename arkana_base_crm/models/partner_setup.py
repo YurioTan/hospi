@@ -50,7 +50,9 @@ class Partner(models.Model):
                 if record.alias_name:
                     result.append((record.id, record.alias_name))
                 else:
-                    result.append((record.id, record.name))
+                    result = super(Partner, self).name_get()
+                    return result
             else:
-                result.append((record.id, record.name))
+                result = super(Partner, self).name_get()
+                return result
         return result
