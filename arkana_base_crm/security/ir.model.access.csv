@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_partner_class_base_group_user,access.partner.class.base.group.user,arkana_base_crm.model_partner_class,base.group_user,1,1,1,1
+access_partner_category_base_group_user,access.partner.category.base.group.user,arkana_base_crm.model_partner_category,base.group_user,1,1,1,1
+access_partner_location_base_group_user,access.partner.location.base.group.user,arkana_base_crm.model_partner_location,base.group_user,1,1,1,1
+access_partner_ownership_base_group_user,access.partner.ownership.base.group.user,arkana_base_crm.model_partner_ownership,base.group_user,1,1,1,1
+
+access_product_brand_base_group_user,access.product.brand.base.group.user,arkana_base_crm.model_product_brand,base.group_user,1,1,1,1
+access_budget_source_base_group_user,access.budget.source.base.group.user,arkana_base_crm.model_budget_source,base.group_user,1,1,1,1
+access_distributor_distributor_base_group_user,access.distributor.distributor.base.group.user,arkana_base_crm.model_distributor_distributor,base.group_user,1,1,1,1
