@@ -4,7 +4,6 @@ from odoo.exceptions import ValidationError,UserError
 class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
 
-    @api.multi
     def _prepare_stock_moves(self, picking):
         res = super(PurchaseOrderLine, self)._prepare_stock_moves(picking)
         debug = ""
