@@ -8,7 +8,7 @@
     """,
     'data': [
     ],
-    'depends': ['purchase'],
+    'depends': ['purchase','purchase_stock'],
     'auto_install': False,
     'installable': True,
     'application': False,
