@@ -24,7 +24,7 @@
                             <span t-field="o.name"/>
                         </h2>
                         <div class="row row-with-borders mt-4 mb-4">
-                            <div class="col-12">
+                            <div class="col-12" style="text-align:center">
                               <strong>CUSTOMER INFORMATION</strong>
                             </div>
                             <div class="col-6">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                         <div class="row row-with-borders mt-4 mb-4">
-                            <div class="col-12">
+                            <div class="col-12" style="text-align:center">
                               <strong>COMPLAINT INFORMATION</strong>
                             </div>
                             <div class="col-12">
@@ -80,6 +80,14 @@
                                 <strong>Preventive Action:</strong><br/>
                                 <span t-field="o.x_studio_preventive_action"/>
                             </div>
+                        </div>
+                        <div class="row row-with-borders mt-4 mb-4">
+                          <div class="col-4" style="text-align:center"><strong>PIC</strong></div>
+                          <div class="col-4" style="text-align:center"><strong>Completion Date</strong></div>
+                          <div class="col-4" style="text-align:center"><strong>Remarks</strong></div>
+                          <div class="col-4"><br/><br/><br/><br/></div>
+                          <div class="col-4"><br/><br/><br/><br/></div>
+                          <div class="col-4"><br/><br/><br/><br/></div>
                         </div>
                         <t t-call="hn_base.report_global_signs">
                           <t t-set="labels" t-value="['VERIFIED BY','CREATED BY']"/>
