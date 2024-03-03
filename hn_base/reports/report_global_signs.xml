@@ -7,28 +7,28 @@
       <t t-set="col_class" t-value="len(labels) == 2 and 'col-6' or (len(labels) == 3 and 'col-4' or 'col-3')" />
       <div class="row" style="padding:0 15px">
         <t t-foreach="labels" t-as="current_label">
-          <t t-set="col_style" t-value="current_count < last_count and 'text-align: center;border-right: 1px solid #165DA9' or 'text-align: center'" />
+          <t t-set="col_style" t-value="current_count != last_count and 'text-align: center;border-right: 1px solid #165DA9' or 'text-align: center'" />
           <div t-att-class="col_class" t-att-style="col_style"><div><t t-esc="current_label"/></div></div>
           <t t-set="current_count" t-value="current_count+1" />
         </t>
       </div>
       <div class="row" style="padding:0 15px">
         <t t-foreach="labels" t-as="current_label">
-          <t t-set="col_style" t-value="current_count < last_count and 'text-align: center;border-right: 1px solid #165DA9' or 'text-align: center'" />
+          <t t-set="col_style" t-value="current_count != last_count and 'text-align: center;border-right: 1px solid #165DA9' or 'text-align: center'" />
           <div t-att-class="col_class" t-att-style="col_style"><div><br/><br/><br/><br/></div></div>
           <t t-set="current_count" t-value="current_count+1" />
         </t>
       </div>
       <div class="row" style="padding:0 15px">
         <t t-foreach="labels" t-as="current_label">
-          <t t-set="col_style" t-value="current_count < last_count and 'border-right: 1px solid #165DA9' or ''" />
+          <t t-set="col_style" t-value="current_count != last_count and 'border-right: 1px solid #165DA9' or ''" />
           <div t-att-class="col_class" t-att-style="col_style"><div>NAMA:</div></div>
           <t t-set="current_count" t-value="current_count+1" />
         </t>
       </div>
       <div class="row" style="padding:0 15px">
         <t t-foreach="labels" t-as="current_label">
-          <t t-set="col_style" t-value="current_count < last_count and 'border-right: 1px solid #165DA9' or ''" />
+          <t t-set="col_style" t-value="current_count != last_count and 'border-right: 1px solid #165DA9' or ''" />
           <div t-att-class="col_class" t-att-style="col_style"><div>TANGGAL:</div></div>
           <t t-set="current_count" t-value="current_count+1" />
         </t>
