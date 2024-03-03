@@ -20,10 +20,19 @@
         </t>
       </div>
       <div class="row" style="padding:0 15px">
-        <t t-foreach="labels" t-as="current_label">
-          <t t-set="col_style" t-value="current_count != last_count and 'border-right: 1px solid #165DA9' or ''" />
-          <div t-att-class="col_class" t-att-style="col_style"><div>NAMA:</div></div>
-          <t t-set="current_count" t-value="current_count+1" />
+        <t t-if="names">
+          <t t-foreach="names" t-as="current_name">
+            <t t-set="col_style" t-value="current_count != last_count and 'border-right: 1px solid #165DA9' or ''" />
+            <div t-att-class="col_class" t-att-style="col_style"><div>NAMA: <t t-esc="current_name or ''"/></div></div>
+            <t t-set="current_count" t-value="current_count+1" />
+          </t>
+        </t>
+        <t t-if="not names">
+          <t t-foreach="labels" t-as="current_label">
+            <t t-set="col_style" t-value="current_count != last_count and 'border-right: 1px solid #165DA9' or ''" />
+            <div t-att-class="col_class" t-att-style="col_style"><div>NAMA:</div></div>
+            <t t-set="current_count" t-value="current_count+1" />
+          </t>
         </t>
       </div>
       <div class="row" style="padding:0 15px">
