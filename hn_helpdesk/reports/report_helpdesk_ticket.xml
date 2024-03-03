@@ -107,7 +107,7 @@
     <record id="action_report_helpdesk_ticket" model="ir.actions.report">
         <field name="name">Ticket</field>
         <field name="model">helpdesk.ticket</field>
-        <field name="report_type">html</field>
+        <field name="report_type">qweb-html</field>
         <field name="report_name">hn_helpdesk.report_helpdesk_ticket</field>
         <field name="report_file">hn_helpdesk.report_helpdesk_ticket</field>
     </record>
