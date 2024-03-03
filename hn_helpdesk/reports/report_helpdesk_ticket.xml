@@ -11,45 +11,80 @@
                           .row-with-borders {
                             border-top: 1px solid <t t-esc="secondary"/>;
                             border-left: 1px solid <t t-esc="secondary"/>;
+                            margin: 0;
                             &gt; * {
                               border-right: 1px solid <t t-esc="secondary"/>;
                               border-bottom: 1px solid <t t-esc="secondary"/>;
+                              padding-top: 5px;
+                              padding-bottom: 5px;
                             }
                           }
                         </style>
                         <h2>
-                            <span t-field="o.name" />
+                            <span t-field="o.name"/>
                         </h2>
                         <div class="row row-with-borders mt-4 mb-4">
+                            <div class="col-12">
+                              <strong>CUSTOMER INFORMATION</strong>
+                            </div>
                             <div class="col-6">
-                                <strong>Customer:</strong>&amp;nbsp;<span t-field="o.partner_id" />
+                                <strong>Customer:</strong>&amp;nbsp;<span t-field="o.partner_id"/>
                             </div>
                             <div class="col-6">
                                 <strong>Customer Contact:</strong>&amp;nbsp;
-                                <span t-if="o.partner_id.phone" t-field="o.partner_id.phone" />
-                                <br t-if="o.partner_id.phone" />
-                                <span t-if="o.partner_id.mobile" t-field="o.partner_id.mobile" />
+                                <span t-if="o.partner_id.phone" t-field="o.partner_id.phone"/>
+                                <br t-if="o.partner_id.phone"/>
+                                <span t-if="o.partner_id.mobile" t-field="o.partner_id.mobile"/>
                             </div>
                             <div class="col-12">
-                                <strong>Address:</strong>&amp;nbsp;<span t-field="o.partner_id.contact_address" />
+                                <strong>Address:</strong>&amp;nbsp;
+                                <span t-field="o.partner_id.street"/>
+                                <br t-if="o.partner_id.street2"/><span t-if="o.partner_id.street2" t-field="o.partner_id.street2"/>,&amp;nbsp;
+                                <span t-field="o.partner_id.city"/>
+                                <span t-if="o.partner_id.state_id">,&amp;nbsp;</span><span t-if="o.partner_id.state_id" t-field="o.partner_id.state_id"/>
+                                <span t-if="o.partner_id.zip">&amp;nbsp;</span><span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
                             </div>
                             <div class="col-6">
-                                <strong>Informant:</strong>&amp;nbsp;<span t-field="o.x_studio_many2one_field_GyFF3" />
+                                <strong>Informant:</strong>&amp;nbsp;<span t-field="o.x_studio_many2one_field_GyFF3"/>
                             </div>
                             <div class="col-6">
-                                <strong>Informant Position:</strong>&amp;nbsp;<span t-field="o.x_studio_many2one_field_GyFF3.department_id" />
+                                <strong>Informant Position:</strong>&amp;nbsp;<span t-field="o.x_studio_many2one_field_GyFF3.department_id"/>
                             </div>
                             <div class="col-6">
-                                <strong>Product:</strong>&amp;nbsp;<span t-field="o.x_studio_many2one_field_YmGm3" />
+                                <strong>Product:</strong>&amp;nbsp;<span t-field="o.x_studio_many2one_field_YmGm3.name"/>
                             </div>
                             <div class="col-6">
-                                <strong>S/N:</strong>&amp;nbsp;<span t-field="o.x_studio_serial_number" />
+                                <strong>S/N:</strong>&amp;nbsp;<span t-field="o.x_studio_serial_number"/>
+                            </div>
+                        </div>
+                        <div class="row row-with-borders mt-4 mb-4">
+                            <div class="col-12">
+                              <strong>COMPLAINT INFORMATION</strong>
+                            </div>
+                            <div class="col-12">
+                                <strong>Complaint Date:</strong>&amp;nbsp;<span t-field="o.x_studio_tanggal_klaim"/>
+                            </div>
+                            <div class="col-12">
+                                <strong>Complaint Description:</strong><br/>
+                                <span t-field="o.description"/>
+                            </div>
+                            <div class="col-12">
+                                <strong>Root Cause Analysis:</strong><br/>
+                                <span t-field="o.x_studio_root_cause_analysis"/>
+                            </div>
+                            <div class="col-12">
+                                <strong>Corrective Action:</strong><br/>
+                                <span t-field="o.x_studio_corrective_action"/>
+                            </div>
+                            <div class="col-12">
+                                <strong>Preventive Action:</strong><br/>
+                                <span t-field="o.x_studio_preventive_action"/>
                             </div>
                         </div>
                         <t t-call="hn_base.report_global_signs">
-                          <t t-set="labels" t-value="['VERIFIED BY','CREATED BY']" />
-                          <t t-set="names" t-value="[o.x_studio_verified_by.name,o.x_studio_created_by.name]" />
-                          <t t-set="dates" t-value="[o.x_studio_tanggal_close,o.create_date]" />
+                          <t t-set="labels" t-value="['VERIFIED BY','CREATED BY']"/>
+                          <t t-set="names" t-value="[o.x_studio_verified_by.name,o.x_studio_created_by.name]"/>
+                          <t t-set="dates" t-value="[o.x_studio_tanggal_close,o.create_date]"/>
                         </t>
                     </div>
                 </t>
