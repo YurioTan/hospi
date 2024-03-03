@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2018-2019 ForgeFlow, S.L.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <template id="report_helpdesk_ticket">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <t t-set="diajukan" t-value="o.create_uid.name" />
+                        <t t-set="diketahui" t-value="o.assigned_to.name" />
+                        <t t-set="disetujui" t-value="o.assigned_to2 and o.assigned_to2.name or o.assigned_to.name" />
+                        <h2>
+                            <span t-field="o.name" />
+                        </h2>
+                        <div class="row mt-4 mb-4">
+                            <div class="col-6" style="padding-right: 24px">
+                                <strong>Requested At:</strong>&amp;nbsp;<span t-field="o.date_start" /><br/>
+                                <strong>Source:</strong>&amp;nbsp;<span t-field="o.origin" /><br/>
+                                <strong>Picking Type:</strong>&amp;nbsp;<span t-field="o.picking_type_id" /><br/>
+                                <strong>Description:</strong>
+                                <br />
+                                <span t-field="o.description" />
+                            </div>
+                            <div class="col-6">
+                                <strong>Requested by:</strong>&amp;nbsp;<span t-field="o.requested_by" /><br/>
+                                <strong>Approver 1:</strong>&amp;nbsp;<span t-field="o.assigned_to" /><br/>
+                                <strong>Approver 2:</strong>&amp;nbsp;<span t-if="o.assigned_to2" t-field="o.assigned_to2" /><span t-if="not o.assigned_to2">-</span>
+                            </div>
+                        </div>
+                        <t t-if="o.line_ids">
+                            <h3>Products</h3>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <strong>Description</strong>
+                                        </th>
+                                        <th groups="analytic.group_analytic_accounting">
+                                            <strong>Account</strong>
+                                        </th>
+                                        <th class="text-right">
+                                            <strong>Qty</strong>
+                                        </th>
+                                        <th class="text-center" groups="uom.group_uom">
+                                            <strong>UoM</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Est. Cost</strong>
+                                        </th>
+                                        <!-- <th class="text-right">
+                                            <strong>Requested Date</strong>
+                                        </th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.line_ids" t-as="line_ids">
+                                        <td>
+                                            <span t-field="line_ids.name" />
+                                            <t t-if="line_ids.specifications">
+                                                <br/>
+                                                <span t-field="line_ids.specifications" />
+                                            </t>
+                                        </td>
+                                        <td groups="analytic.group_analytic_accounting">
+                                            <span
+                                                t-field="line_ids.analytic_account_id"
+                                            />
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line_ids.product_qty" />
+                                        </td>
+                                        <t>
+                                            <td
+                                                class="text-center"
+                                                groups="uom.group_uom"
+                                            >
+                                                <span
+                                                    t-field="line_ids.product_uom_id.category_id.name"
+                                                />
+                                            </td>
+                                        </t>
+                                        <td>
+                                            <span t-field="line_ids.estimated_cost" />
+                                        </td>
+                                        <!--
+                                        <td class="text-right">
+                                            <span t-field="line_ids.date_required" />
+                                        </td>
+                                        -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </t>
+                        <div class="row mt-4 mb-4">
+                            <div class="col-4" style="text-align:center">
+                                Diajukan Oleh,
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                (<t t-esc="diajukan" />)
+                            </div>
+                            <div class="col-4" style="text-align:center">
+                                Diketahui Oleh,
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                (<t t-esc="diketahui" />)
+                            </div>
+                            <div class="col-4" style="text-align:center">
+                                Disetujui Oleh,
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                (<t t-esc="disetujui" />)
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_helpdesk_ticket" model="ir.actions.report">
+        <field name="name">Ticket</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hn_helpdesk.report_helpdesk_ticket</field>
+        <field name="report_file">hn_helpdesk.report_helpdesk_ticket</field>
+    </record>
+
+</odoo>
