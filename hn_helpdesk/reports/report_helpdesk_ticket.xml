@@ -13,6 +13,7 @@
                         <t t-call="hn_base.report_global_signs">
                           <t t-set="labels" t-value="['VERIFIED BY','CREATED BY']" />
                           <t t-set="names" t-value="[o.x_studio_verified_by.name,o.x_studio_created_by.name]" />
+                          <t t-set="dates" t-value="[o.x_studio_tanggal_close,o.create_date]" />
                         </t>
                     </div>
                 </t>
