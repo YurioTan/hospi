@@ -10,17 +10,19 @@
                         <t t-set="primary" t-value="user.company_id.primary_color or 'black'"/>
                         <t t-set="secondary" t-value="user.company_id.secondary_color or 'black'"/>
                         <style>
-                          .row-with-borders {
-                            border-top: 1px solid <t t-esc="secondary"/>;
-                            border-left: 1px solid <t t-esc="secondary"/>;
-                            margin: 0;
-                            &gt; * {
-                              border-right: 1px solid <t t-esc="secondary"/>;
-                              border-bottom: 1px solid <t t-esc="secondary"/>;
-                              padding-top: 5px;
-                              padding-bottom: 5px;
+                            .row-with-borders {
+                                border-left: 1px solid <t t-esc="secondary"/>;
+                                margin: 0;
                             }
-                          }
+                            .row-with-borders:first-child {
+                                border-top: 1px solid <t t-esc="secondary"/>;
+                            }
+                            .row-with-borders &gt; * {
+                                border-right: 1px solid <t t-esc="secondary"/>;
+                                border-bottom: 1px solid <t t-esc="secondary"/>;
+                                padding-top: 5px;
+                                padding-bottom: 5px;
+                            }
                         </style>
                         <h2>
                             <span t-field="o.name"/>
@@ -90,19 +92,23 @@
                                 <span t-if="not o.x_studio_preventive_action"><br/><br/><br/></span>
                             </div>
                         </div>
-                        <div class="row row-with-borders mt-4 mb-4">
-                            <div class="col-4" style="text-align:center"><strong>PIC</strong></div>
-                            <div class="col-4" style="text-align:center"><strong>Completion Date</strong></div>
-                            <div class="col-4" style="text-align:center"><strong>Remarks</strong></div>
-                            <div class="col-4">
-                                <span t-field="o.x_studio_pic_cmo"/>
-                                <span t-if="not o.x_studio_pic_cmo"><br/><br/><br/><br/></span>
+                        <div>
+                            <div class="row row-with-borders mt-4 mb-4">
+                                <div class="col-4" style="text-align:center"><strong>PIC</strong></div>
+                                <div class="col-4" style="text-align:center"><strong>Completion Date</strong></div>
+                                <div class="col-4" style="text-align:center"><strong>Remarks</strong></div>
                             </div>
-                            <div class="col-4">
-                                <span t-field="o.x_studio_tanggal_close"/>
-                                <span t-if="not o.x_studio_tanggal_close"><br/><br/><br/><br/></span>
+                            <div class="row row-with-borders mt-4 mb-4">
+                                <div class="col-4">
+                                    <span t-field="o.x_studio_pic_cmo"/>
+                                    <span t-if="not o.x_studio_pic_cmo"><br/><br/><br/><br/></span>
+                                </div>
+                                <div class="col-4">
+                                    <span t-field="o.x_studio_tanggal_close"/>
+                                    <span t-if="not o.x_studio_tanggal_close"><br/><br/><br/><br/></span>
+                                </div>
+                                <div class="col-4"><br/><br/><br/><br/></div>
                             </div>
-                            <div class="col-4"><br/><br/><br/><br/></div>
                         </div>
                         <t t-call="hn_base.report_global_signs">
                             <t t-set="labels" t-value="['VERIFIED BY','CREATED BY']"/>
