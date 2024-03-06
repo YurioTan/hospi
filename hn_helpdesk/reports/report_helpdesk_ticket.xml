@@ -89,28 +89,28 @@
                                 <div class="col-12">
                                     <strong>Complaint Description:</strong><br/>
                                     <span t-field="o.description"/>
-                                    <span t-if="not o.description"><br/><br/><br/></span>
+                                    <span t-if="not o.description"><br/><br/></span>
                                 </div>
                             </div>
                             <div class="row row-with-borders">
                                 <div class="col-12">
                                     <strong>Root Cause Analysis:</strong><br/>
                                     <span t-field="o.x_studio_root_cause_analysis"/>
-                                    <span t-if="not o.x_studio_root_cause_analysis"><br/><br/><br/></span>
+                                    <span t-if="not o.x_studio_root_cause_analysis"><br/><br/></span>
                                 </div>
                             </div>
                             <div class="row row-with-borders">
                                 <div class="col-12">
                                     <strong>Correction:</strong><br/>
                                     <span t-field="o.x_studio_corrective_action"/>
-                                    <span t-if="not o.x_studio_corrective_action"><br/><br/><br/></span>
+                                    <span t-if="not o.x_studio_corrective_action"><br/><br/></span>
                                 </div>
                             </div>
                             <div class="row row-with-borders">
                                 <div class="col-12">
                                     <strong>Corrective Action:</strong><br/>
                                     <span t-field="o.x_studio_preventive_action"/>
-                                    <span t-if="not o.x_studio_preventive_action"><br/><br/><br/></span>
+                                    <span t-if="not o.x_studio_preventive_action"><br/><br/></span>
                                 </div>
                             </div>
                         </div>
@@ -123,13 +123,13 @@
                             <div class="row row-with-borders">
                                 <div class="col-4">
                                     <span t-field="o.x_studio_pic_cmo"/>
-                                    <span t-if="not o.x_studio_pic_cmo"><br/><br/><br/><br/></span>
+                                    <span t-if="not o.x_studio_pic_cmo"><br/><br/></span>
                                 </div>
                                 <div class="col-4">
                                     <span t-field="o.x_studio_tanggal_close"/>
-                                    <span t-if="not o.x_studio_tanggal_close"><br/><br/><br/><br/></span>
+                                    <span t-if="not o.x_studio_tanggal_close"><br/><br/></span>
                                 </div>
-                                <div class="col-4"><br/><br/><br/><br/></div>
+                                <div class="col-4"><br/><br/></div>
                             </div>
                         </div>
                         <t t-call="hn_base.report_global_signs">
