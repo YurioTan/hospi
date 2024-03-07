@@ -40,7 +40,7 @@
                                 <div class="col-6">
                                     <strong>Customer Contact:</strong>&amp;nbsp;
                                     <span t-if="o.partner_id.phone" t-field="o.partner_id.phone"/>
-                                    <span t-if="o.partner_id.mobile">&amp;nbsp;/&amp;nbsp;</span>
+                                    <span t-if="o.partner_id.mobile and o.partner_id.phone">&amp;nbsp;/&amp;nbsp;</span>
                                     <span t-if="o.partner_id.mobile" t-field="o.partner_id.mobile"/>
                                 </div>
                             </div>
