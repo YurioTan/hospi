@@ -16,7 +16,7 @@
         <t t-set="current_count" t-value="0" />
         <t t-foreach="labels" t-as="current_label">
           <t t-set="col_style" t-value="current_count != last_count and 'text-align: center;border-right: 1px solid #165DA9' or 'text-align: center'" />
-          <div t-att-class="col_class" t-att-style="col_style"><div><br/><br/><br/><br/></div></div>
+          <div t-att-class="col_class" t-att-style="col_style"><div><br/><br/><br/></div></div>
           <t t-set="current_count" t-value="current_count+1" />
         </t>
       </div>
