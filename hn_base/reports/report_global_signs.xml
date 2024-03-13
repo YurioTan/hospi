@@ -2,29 +2,59 @@
 <odoo>
   <template id="report_global_signs">
     <div style="border: 1px solid #165DA9" class="mb-4 mt-4">
+      <t t-set="last_count" t-value="len(labels)-1" />
+      <t t-set="col_class" t-value="len(labels) == 2 and 'col-6' or (len(labels) == 3 and 'col-4' or 'col-3')" />
       <div class="row" style="padding:0 15px">
-        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><t t-esc="labels[0]"/></div></div>
-        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><t t-esc="labels[1]"/></div></div>
-        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><t t-esc="labels[2]"/></div></div>
-        <div class="col-3" style="text-align: center"><div><t t-esc="labels[3]"/></div></div>
+        <t t-set="current_count" t-value="0" />
+        <t t-foreach="labels" t-as="current_label">
+          <t t-set="col_style" t-value="current_count != last_count and 'text-align: center;border-right: 1px solid #165DA9' or 'text-align: center'" />
+          <div t-att-class="col_class" t-att-style="col_style"><strong><t t-esc="current_label"/></strong></div>
+          <t t-set="current_count" t-value="current_count+1" />
+        </t>
       </div>
       <div class="row" style="padding:0 15px">
-        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><br/><br/><br/><br/></div></div>
-        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><br/><br/><br/><br/></div></div>
-        <div class="col-3" style="text-align: center;border-right: 1px solid #165DA9"><div><br/><br/><br/><br/></div></div>
-        <div class="col-3" style="text-align: center"><div><br/><br/><br/><br/></div></div>
+        <t t-set="current_count" t-value="0" />
+        <t t-foreach="labels" t-as="current_label">
+          <t t-set="col_style" t-value="current_count != last_count and 'text-align: center;border-right: 1px solid #165DA9' or 'text-align: center'" />
+          <div t-att-class="col_class" t-att-style="col_style"><div><br/><br/><br/></div></div>
+          <t t-set="current_count" t-value="current_count+1" />
+        </t>
       </div>
       <div class="row" style="padding:0 15px">
-        <div class="col-3" style="border-right: 1px solid #165DA9"><div>NAMA:</div></div>
-        <div class="col-3" style="border-right: 1px solid #165DA9"><div>NAMA:</div></div>
-        <div class="col-3" style="border-right: 1px solid #165DA9"><div>NAMA:</div></div>
-        <div class="col-3"><div>NAMA:</div></div>
+        <t t-if="names">
+          <t t-set="current_count" t-value="0" />
+          <t t-foreach="names" t-as="current_name">
+            <t t-set="col_style" t-value="current_count != last_count and 'border-right: 1px solid #165DA9' or ''" />
+            <div t-att-class="col_class" t-att-style="col_style"><div>NAMA: <t t-esc="current_name or ''"/></div></div>
+            <t t-set="current_count" t-value="current_count+1" />
+          </t>
+        </t>
+        <t t-if="not names">
+          <t t-set="current_count" t-value="0" />
+          <t t-foreach="labels" t-as="current_label">
+            <t t-set="col_style" t-value="current_count != last_count and 'border-right: 1px solid #165DA9' or ''" />
+            <div t-att-class="col_class" t-att-style="col_style"><div>NAMA:</div></div>
+            <t t-set="current_count" t-value="current_count+1" />
+          </t>
+        </t>
       </div>
       <div class="row" style="padding:0 15px">
-        <div class="col-3" style="border-right: 1px solid #165DA9"><div>TANGGAL:</div></div>
-        <div class="col-3" style="border-right: 1px solid #165DA9"><div>TANGGAL:</div></div>
-        <div class="col-3" style="border-right: 1px solid #165DA9"><div>TANGGAL:</div></div>
-        <div class="col-3"><div>TANGGAL:</div></div>
+        <t t-if="dates">
+          <t t-set="current_count" t-value="0" />
+          <t t-foreach="dates" t-as="current_date">
+            <t t-set="col_style" t-value="current_count != last_count and 'border-right: 1px solid #165DA9' or ''" />
+            <div t-att-class="col_class" t-att-style="col_style"><div>TANGGAL: <t t-esc="current_date and current_date.strftime('%d/%m/%Y') or ''" /></div></div>
+            <t t-set="current_count" t-value="current_count+1" />
+          </t>
+        </t>
+        <t t-if="not dates">
+          <t t-set="current_count" t-value="0" />
+          <t t-foreach="labels" t-as="current_label">
+            <t t-set="col_style" t-value="current_count != last_count and 'border-right: 1px solid #165DA9' or ''" />
+            <div t-att-class="col_class" t-att-style="col_style"><div>TANGGAL:</div></div>
+            <t t-set="current_count" t-value="current_count+1" />
+          </t>
+        </t>
       </div>
     </div>
   </template>
