@@ -57,17 +57,17 @@
                             <div class="row row-with-borders">
                                 <div class="col-6">
                                     <strong>Informant:</strong>&amp;nbsp;
-                                    <span t-if="o.x_studio_many2one_field_GyFF3" t-field="o.x_studio_many2one_field_GyFF3"/>
-                                    <br t-if="o.x_studio_many2one_field_GyFF3 and o.x_studio_ext_informant" />
+                                    <span t-if="o.x_studio_informant" t-field="o.x_studio_informant"/>
+                                    <br t-if="o.x_studio_informant and o.x_studio_ext_informant" />
                                     <span t-if="o.x_studio_ext_informant" t-field="o.x_studio_ext_informant"/>
                                 </div>
                                 <div class="col-6">
-                                    <strong>Informant Position:</strong>&amp;nbsp;<span t-field="o.x_studio_many2one_field_GyFF3.department_id"/>
+                                    <strong>Informant Position:</strong>&amp;nbsp;<span t-field="o.x_studio_informant.department_id"/>
                                 </div>
                             </div>
                             <div class="row row-with-borders">
                                 <div class="col-6">
-                                    <strong>Product:</strong>&amp;nbsp;<span t-field="o.x_studio_many2one_field_YmGm3.name"/>
+                                    <strong>Product:</strong>&amp;nbsp;<span t-field="o.x_studio_many2one_field_KWIhc.name"/>
                                 </div>
                                 <div class="col-6">
                                     <strong>S/N:</strong>&amp;nbsp;<span t-field="o.x_studio_serial_number"/>
@@ -102,15 +102,15 @@
                             <div class="row row-with-borders">
                                 <div class="col-12">
                                     <strong>Correction:</strong><br/>
-                                    <span t-field="o.x_studio_corrective_action"/>
-                                    <span t-if="not o.x_studio_corrective_action"><br/></span>
+                                    <span t-field="o.x_studio_corrective_action_1"/>
+                                    <span t-if="not o.x_studio_corrective_action_1"><br/></span>
                                 </div>
                             </div>
                             <div class="row row-with-borders">
                                 <div class="col-12">
                                     <strong>Corrective Action:</strong><br/>
-                                    <span t-field="o.x_studio_preventive_action"/>
-                                    <span t-if="not o.x_studio_preventive_action"><br/></span>
+                                    <span t-field="o.x_studio_preventive_action_2"/>
+                                    <span t-if="not o.x_studio_preventive_action_2"><br/></span>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                         </div>
                         <t t-call="hn_base.report_global_signs">
                             <t t-set="labels" t-value="['VERIFIED BY','CREATED BY']"/>
-                            <t t-set="names" t-value="[o.x_studio_verified_by.name,o.x_studio_created_by.name]"/>
+                            <t t-set="names" t-value="[o.x_studio_verified_by_1.name,o.x_studio_created_by.name]"/>
                         </t>
                     </div>
                 </t>
