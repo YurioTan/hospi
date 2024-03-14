@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
   <template id="report_global_signs">
-    <div style="border: 1px solid #165DA9" class="mb-4 mt-4">
+    <div style="border: 1px solid #165DA9; page-break-inside:avoid" class="mb-4 mt-4">
       <t t-set="last_count" t-value="len(labels)-1" />
       <t t-set="col_class" t-value="len(labels) == 2 and 'col-6' or (len(labels) == 3 and 'col-4' or 'col-3')" />
       <div class="row" style="padding:0 15px">

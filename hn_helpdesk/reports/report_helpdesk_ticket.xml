@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-4 mb-4">
+                        <div class="mt-4 mb-4" style="page-break-inside: avoid">
                             <div class="row row-with-borders">
                                 <div class="col-4" style="text-align:center"><strong>PIC</strong></div>
                                 <div class="col-4" style="text-align:center"><strong>Completion Date</strong></div>
