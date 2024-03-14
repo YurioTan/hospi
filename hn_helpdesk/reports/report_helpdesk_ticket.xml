@@ -58,11 +58,12 @@
                                 <div class="col-6">
                                     <strong>Informant:</strong>&amp;nbsp;
                                     <span t-if="o.x_studio_informant" t-field="o.x_studio_informant"/>
-                                    <br t-if="o.x_studio_informant and o.x_studio_ext_informant" />
-                                    <span t-if="o.x_studio_ext_informant" t-field="o.x_studio_ext_informant"/>
+                                    <t t-if="o.x_studio_informant.department_id">
+                                        (<span t-field="o.x_studio_informant.department_id"/>)
+                                    </t>
                                 </div>
                                 <div class="col-6">
-                                    <strong>Informant Position:</strong>&amp;nbsp;<span t-field="o.x_studio_informant.department_id"/>
+                                    <strong>Ext. Informant:</strong>&amp;nbsp;<span t-if="o.x_studio_ext_informant" t-field="o.x_studio_ext_informant"/>
                                 </div>
                             </div>
                             <div class="row row-with-borders">
