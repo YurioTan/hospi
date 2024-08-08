@@ -11,6 +11,8 @@ class SaleOder(models.Model):
         ('oem', 'OEM'),
         ('service', 'Service'),
         ('distributor', 'Distributor'),
+        ('swasta', 'Swasta'),
+        ('institusi', 'Institusi'),
         ('reguler', 'Reguler'),
     ], string='Order Type', required=True, default="reguler")
 
@@ -23,6 +25,10 @@ class SaleOder(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('service.sale.sequence')
         elif order_type == 'distributor':
             vals['name'] = self.env['ir.sequence'].next_by_code('distributor.sale.sequence')
+        elif order_type == 'swasta':
+            vals['name'] = self.env['ir.sequence'].next_by_code('swasta.sale.sequence')
+        elif order_type == 'institusi':
+            vals['name'] = self.env['ir.sequence'].next_by_code('institusi.sale.sequence')
         elif order_type == 'reguler':
             vals['name'] = self.env['ir.sequence'].next_by_code('sale.order')
         else:
