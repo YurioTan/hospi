@@ -53,6 +53,34 @@
         </field>
     </record>
 
+    <record id="action_swasta_sale" model="ir.actions.act_window">
+        <field name="name">Swasta Sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('order_type','=', 'swasta')]</field>
+        <field name="context">{'default_order_type': 'swasta'}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
+    <record id="action_institusi_sale" model="ir.actions.act_window">
+        <field name="name">Institusi Sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('order_type','=', 'institusi')]</field>
+        <field name="context">{'default_order_type': 'institusi'}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
     <record id="action_so_sale" model="ir.actions.act_window">
         <field name="name">Reguler Sales</field>
         <field name="type">ir.actions.act_window</field>
@@ -73,6 +101,10 @@
               action="action_service_sale" sequence="6"/>
     <menuitem id="menu_distributor_sale" name="Distributor Sales" parent="sale.sale_order_menu"
               action="action_distributor_sale" sequence="7"/>
+    <menuitem id="menu_swasta_sale" name="Swasta Sales" parent="sale.sale_order_menu"
+              action="action_swasta_sale" sequence="8"/>
+    <menuitem id="menu_institusi_sale" name="Institusi Sales" parent="sale.sale_order_menu"
+              action="action_institusi_sale" sequence="9"/>
     <menuitem id="menu_so_sale" name="Reguler Sales" parent="sale.sale_order_menu"
-              action="action_so_sale" sequence="8"/>
+              action="action_so_sale" sequence="10"/>
 </odoo>
