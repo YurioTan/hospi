@@ -28,6 +28,20 @@ class PartnerLocation(models.Model):
     active = fields.Boolean(default=True)
     name = fields.Char("Name", index=True)
     
+class PartnerAreaMap(models.Model):
+    _name = "partner.area.map"
+    _description = "Partner Area Map"
+
+    active = fields.Boolean(default=True)
+    name = fields.Char("Name", index=True)
+    
+class PartnerLevel(models.Model):
+    _name = "partner.level"
+    _description = "Partner Level"
+
+    active = fields.Boolean(default=True)
+    name = fields.Char("Name", index=True)
+    
 class Partner(models.Model):
     _inherit = 'res.partner'
     _description = 'Partner'
@@ -39,6 +53,10 @@ class Partner(models.Model):
     partner_category_id = fields.Many2one('partner.category', string='Wilayah',
                     index = True, copy = False, tracking = True)
     partner_class_id = fields.Many2one('partner.class', string='Kelas RS',
+                    index = True, copy = False, tracking = True)
+    partner_area_map_id = fields.Many2one('partner.area.map', string='Peta Area',
+                    index = True, copy = False, tracking = True)
+    partner_level_id = fields.Many2one('partner.level', string='Level',
                     index = True, copy = False, tracking = True)
     alias_name = fields.Char('Alias Name', tracking = True, 
                             copy = False, index = True)
