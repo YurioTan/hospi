@@ -15,7 +15,7 @@
     </record>
 
     <record id="partner_class_configuration_action" model="ir.actions.act_window">
-        <field name="name">Partner Class</field>
+        <field name="name">Kelas RS</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">partner.class</field>
         <field name="view_mode">tree</field>
@@ -41,7 +41,7 @@
     </record>
 
     <record id="partner_category_configuration_action" model="ir.actions.act_window">
-        <field name="name">Partner Category</field>
+        <field name="name">Wilayah</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">partner.category</field>
         <field name="view_mode">tree</field>
@@ -133,7 +133,7 @@
 
             <menuitem
         id="menu_partner_setup_custom_category"
-        name="Category"
+        name="Wilayah"
         parent="menu_partner_setup_custom"
         action="partner_category_configuration_action"
         groups="base.group_system"
@@ -142,7 +142,7 @@
 
             <menuitem
         id="menu_partner_setup_custom_class"
-        name="Kelas"
+        name="Kelas RS"
         parent="menu_partner_setup_custom"
         action="partner_class_configuration_action"
         groups="base.group_system"

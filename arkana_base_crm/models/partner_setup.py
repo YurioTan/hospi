@@ -9,14 +9,14 @@ class Ownership(models.Model):
 
 class PartnerCategory(models.Model):
     _name = "partner.category"
-    _description = "Partner Category"
+    _description = "Wilayah"
 
     active = fields.Boolean(default=True)
     name = fields.Char("Name", index=True)
     
 class PartnerClass(models.Model):
     _name = "partner.class"
-    _description = "Partner Class"
+    _description = "Kelas RS"
 
     active = fields.Boolean(default=True)
     name = fields.Char("Name", index=True)
@@ -36,9 +36,9 @@ class Partner(models.Model):
                     index = True, copy = False, tracking = True)
     partner_location_id = fields.Many2one('partner.location', string='Pulau',
                     index = True, copy = False, tracking = True)
-    partner_category_id = fields.Many2one('partner.category', string='Category',
+    partner_category_id = fields.Many2one('partner.category', string='Wilayah',
                     index = True, copy = False, tracking = True)
-    partner_class_id = fields.Many2one('partner.class', string='Kelas',
+    partner_class_id = fields.Many2one('partner.class', string='Kelas RS',
                     index = True, copy = False, tracking = True)
     alias_name = fields.Char('Alias Name', tracking = True, 
                             copy = False, index = True)
