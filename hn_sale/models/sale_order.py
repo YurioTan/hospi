@@ -15,6 +15,7 @@ class SaleOder(models.Model):
         ('institusi', 'Institusi'),
         ('reguler', 'Reguler'),
     ], string='Order Type', required=True, default="reguler")
+    distributor_id = fields.Many2one('res.partner', 'Distributor', domain=[('customer_type','=','distributor')])
 
     @api.model
     def create(self, vals):
