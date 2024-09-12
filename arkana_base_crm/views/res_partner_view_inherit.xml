@@ -9,6 +9,7 @@
 
             <xpath expr="//field[@name='type']" position="before">
                 <field name="alias_name" string="Alias" attrs="{'invisible' : [('is_company', '=', False)]}"/>
+                <field name="customer_type"/>
             </xpath>
 
             <xpath expr="//group[1]" position="after">

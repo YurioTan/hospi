@@ -60,6 +60,11 @@ class Partner(models.Model):
                     index = True, copy = False, tracking = True)
     alias_name = fields.Char('Alias Name', tracking = True, 
                             copy = False, index = True)
+    customer_type = fields.Selection([
+        ('rumah_sakit', 'Rumah Sakit'),
+        ('dinas', 'Dinas'),
+        ('distributor', 'Distributor',)
+    ], 'Customer Type', default='rumah_sakit')
     
     def name_get(self):
         result = []
