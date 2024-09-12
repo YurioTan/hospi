@@ -12,6 +12,8 @@
         4. change report invoice
     """,
     'data': [
+        'security/hn_sale_security.xml',
+        'security/ir.model.access.csv',
         'views/sale_order_view.xml',
         'data/sequences.xml',
         'report/report_sale.xml',
