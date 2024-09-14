@@ -32,8 +32,24 @@ class CustomerDB(models.Model):
       if row.input_date:
         components.append("%s" % row.input_date)
       if row.partner_id:
-        components.append("(%s)" % row.partner_id.alias_name and row.partner_id.alias_name or row.partner_id.name)
+        if row.input_date:
+          components.append("(%s)" % row.partner_id.alias_name and row.partner_id.alias_name or row.partner_id.name)
+        else:
+          components.append("%s" % row.partner_id.alias_name and row.partner_id.alias_name or row.partner_id.name)
       result.append((row.id," ".join(components)))
     return result
+  
+  @api.onchange('sale_order_id')
+  def onchange_sale_order_id(self):
+    if self.sale_order_id:
+      self.input_date = self.sale_order_id.date_order
+      self.partner_id = self.sale_order_id.partner_id.id
+      self.distributor_id = self.sale_order_id.distributor_id.id
+  
+  @api.constrain('partner_id')
+  def check_partner_id(self):
+    if self.sale_order_id:
+      if self.sale_order_id.partner_id.id != self.partner_id.id:
+        raise ValidationError('Contact must match one on Sale Order.')
 
 
