@@ -54,7 +54,7 @@ class SaleOder(models.Model):
       product_category_name = line.product_id.categ_id.name.lower()
       if not product_category_name.startswith('finished good'): continue
       new_customer_db = self.env['sale.customer.db'].create({
-        'input_date': fields.Date.context_today(),
+        'input_date': self.date_order,
         'sale_order_id': self.id,
         'partner_id': self.partner_id.id,
         'distributor_id': self.distributor_id.id,
