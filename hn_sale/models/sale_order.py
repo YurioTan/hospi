@@ -38,12 +38,10 @@ class SaleOder(models.Model):
     res = super(SaleOder, self).create(vals)
     return res
 
-  @api.multi
   def action_create_customer_db(self):
     for row in self:
       return True
 
-  @api.multi
   def action_view_customer_db(self):
     xmlid = "hn_sale.action_sale_customer_db"
     action = self.env["ir.actions.act_window"]._for_xml_id(xmlid)
