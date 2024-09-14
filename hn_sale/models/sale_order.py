@@ -39,8 +39,37 @@ class SaleOder(models.Model):
     return res
 
   def action_create_customer_db(self):
-    for row in self:
-      return True
+    self.ensure_one()
+    from_cron = self.context.get('from_cron', False)
+    # cek sudah ada belum, kecuali dilewat
+    customer_dbs = self.env['sale.customer.db'].search([('sale_order_id','=',self.id)])
+    if not from_cron:
+      if len(customer_dbs) > 0:
+        raise ValidationError('Customer database already exists for this SO. Please delete first if you want to recreate it.')  
+    else:
+      if len(customer_dbs) > 0:
+        return True
+    create_count = 0
+    for line in self.order_line:
+      product_category_name = line.product_id.categ_id.name.lower()
+      if not product_category_name.startswith('finished good'): continue
+      new_customer_db = self.env['sale.customer.db'].create({
+        'input_date': fields.Date.context_today(),
+        'sale_order_id': self.id,
+        'partner_id': self.partner_id.id,
+        'distributor_id': self.distributor_id.id,
+        'brand_id': line.product_id.brand_id.id,
+        'product_id': line.product_id.id,
+        # 'serial_number': None,
+        # 'install_date': None,
+        # 'tracking_number': None,
+      })
+      if new_customer_db: create_count += 1
+    if not from_cron:
+      if create_count > 0:
+        return self.action_view_customer_db()
+      else:
+        raise ValidationError('No customer database created, all items in this SO is non-finished good.')
 
   def action_view_customer_db(self):
     xmlid = "hn_sale.action_sale_customer_db"
@@ -48,7 +77,14 @@ class SaleOder(models.Model):
     customer_dbs = self.env['sale.customer.db'].search([('sale_order_id','=',self.id)])
     if len(customer_dbs) > 1:
       action['domain'] = [('sale_order_id','=',self.id)]
-    else:
+    elif len(customer_dbs) == 1:
       action["views"] = [(self.env.ref("hn_sale.sale_customer_db_view_form").id, "form")]
       action['res_id'] = customer_dbs.id
+    else:
+      raise ValidationError('No customer database created for this SO yet.')
     return action
+  
+  def cron_generate_customer_db(self):
+    sale_orders = self.env['sale.order'].search(['state','=','sale'])
+    for order in sale_orders:
+      order.with_context({'from_cron': True}).action_create_customer_db()
