@@ -7,7 +7,7 @@ class CustomerDB(models.Model):
   _description = 'Customer Database'
 
   input_date = fields.Date('Input Date')
-  sales_order_id = fields.Many2one('sale.order', 'SO')
+  sale_order_id = fields.Many2one('sale.order', 'SO')
   partner_id = fields.Many2one('res.partner', 'Contact', required=True)
   distributor_id = fields.Many2one('res.partner', 'Distributor', domain=[('customer_type','=','distributor')])
   partner_phone = fields.Char('Phone', related="partner_id.phone")
