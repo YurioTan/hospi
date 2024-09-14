@@ -11,6 +11,14 @@
             <field name="partner_id" position="after">
                 <field name="distributor_id" />
             </field>
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="action_create_customer_db" type="object" string="Create Customer DB" states="sale,done" groups="hn_sale.group_customer_db_editor" />
+            </xpath>
+            <xpath expr="//button[@name='preview_sale_order']" position="after">
+                <button name="action_view_customer_db" type="object" class="oe_stat_button" icon="fa-user-circle icon" groups="hn_sale.group_customer_db_user">
+                    View Customer DB
+                </button>
+            </xpath>
         </field>
     </record>
 

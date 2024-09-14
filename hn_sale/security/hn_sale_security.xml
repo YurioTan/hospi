@@ -10,6 +10,8 @@
     <record id="group_customer_db_editor" model="res.groups">
       <field name="name">Customer DB Editor</field>
       <field name="category_id" ref="base.module_category_sales"/>
+      <field name="implied_ids" eval="[(4, ref('hn_sale.group_customer_db_user'))]"/>
+
     </record>
 
   </data>
