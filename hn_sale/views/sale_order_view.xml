@@ -111,27 +111,4 @@
     <menuitem id="menu_so_sale" name="Reguler Sales" parent="sale.sale_order_menu"
               action="action_so_sale" sequence="10"/>
 
-
-    <record id="action_sale_customer_db" model="ir.actions.act_window">
-        <field name="name">Customer DB</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">sale.customer.db</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-                <!-- Add Text Here -->
-            </p>
-        </field>
-    </record>
-
-    <menuitem
-        id="menu_customer_db_root"
-        name="Customer DB"
-        web_icon="hn_sale,static/description/customer_db_icon.png"
-        sequence="523"
-    />
-
-    <menuitem id="menu_sale_customer_db" name="Customer DB" parent="menu_customer_db_root"
-        action="action_sale_customer_db" sequence="1"/>
-
 </odoo>
