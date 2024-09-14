@@ -20,7 +20,7 @@
         'report/report_sale.xml',
         'report/report_invoice.xml',
     ],
-    'depends': ['sale', 'account'],
+    'depends': ['sale', 'account', 'arkana_base_crm'],
     'auto_install': False,
     'installable': True,
     'application': False,
