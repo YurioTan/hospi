@@ -16,7 +16,8 @@
             </xpath>
             <xpath expr="//button[@name='preview_sale_order']" position="after">
                 <button name="action_view_customer_db" type="object" class="oe_stat_button" icon="fa-user-circle icon" groups="hn_sale.group_customer_db_user">
-                    View Customer DB
+                    <span class="o_stat_text">View</span>
+                    <span class="o_stat_text">Customer DB</span>
                 </button>
             </xpath>
         </field>
