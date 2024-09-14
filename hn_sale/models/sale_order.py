@@ -85,6 +85,6 @@ class SaleOder(models.Model):
     return action
   
   def cron_generate_customer_db(self):
-    sale_orders = self.env['sale.order'].search(['state','=','sale'])
+    sale_orders = self.env['sale.order'].search([('state','=','sale')])
     for order in sale_orders:
       order.with_context({'from_cron': True}).action_create_customer_db()
