@@ -46,7 +46,7 @@ class CustomerDB(models.Model):
       self.partner_id = self.sale_order_id.partner_id.id
       self.distributor_id = self.sale_order_id.distributor_id.id
   
-  @api.constrain('partner_id')
+  @api.constrains('partner_id')
   def check_partner_id(self):
     if self.sale_order_id:
       if self.sale_order_id.partner_id.id != self.partner_id.id:
