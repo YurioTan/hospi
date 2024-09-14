@@ -15,6 +15,7 @@
         'security/hn_sale_security.xml',
         'security/ir.model.access.csv',
         'views/sale_order_view.xml',
+        'views/customer_db_view.xml',
         'data/sequences.xml',
         'report/report_sale.xml',
         'report/report_invoice.xml',
