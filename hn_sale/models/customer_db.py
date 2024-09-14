@@ -25,4 +25,16 @@ class CustomerDB(models.Model):
   install_date = fields.Date('Install Date')
   tracking_number = fields.Char('Tracking Number')
 
+  @api.multi
+  def name_get(self):
+    result = []
+    for row in self:
+      components = []
+      if row.input_date:
+        components.append("%s" % row.input_date)
+      if row.partner_id:
+        components.append("(%s)" % row.partner_id.alias_name and row.partner_id.alias_name or row.partner_id.name)
+      result.append((row.id," ".join(components)))
+    return result
+
 
