@@ -45,5 +45,10 @@ class SaleOder(models.Model):
   def action_view_customer_db(self):
     xmlid = "hn_sale.action_sale_customer_db"
     action = self.env["ir.actions.act_window"]._for_xml_id(xmlid)
-    action['domain'] = [('sale_order_id','=',self.id)]
+    customer_dbs = self.env['sale.customer.db'].search([('sale_order_id','=',self.id)])
+    if len(customer_dbs) > 1:
+      action['domain'] = [('sale_order_id','=',self.id)]
+    else:
+      action["views"] = [(self.env.ref("hn_sale.sale_customer_db_view_form").id, "form")]
+      action['res_id'] = customer_dbs.id
     return action
