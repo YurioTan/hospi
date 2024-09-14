@@ -40,7 +40,7 @@ class SaleOder(models.Model):
 
   def action_create_customer_db(self):
     self.ensure_one()
-    from_cron = self.context.get('from_cron', False)
+    from_cron = self.env.context.get('from_cron', False)
     # cek sudah ada belum, kecuali dilewat
     customer_dbs = self.env['sale.customer.db'].search([('sale_order_id','=',self.id)])
     if not from_cron:
