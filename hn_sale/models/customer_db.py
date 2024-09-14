@@ -25,7 +25,6 @@ class CustomerDB(models.Model):
   install_date = fields.Date('Install Date')
   tracking_number = fields.Char('Tracking Number')
 
-  @api.multi
   def name_get(self):
     result = []
     for row in self:
