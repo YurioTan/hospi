@@ -17,6 +17,8 @@ class SaleOder(models.Model):
   ], string='Order Type', required=True, default="reguler")
   distributor_id = fields.Many2one('res.partner', 'Distributor', domain=[('customer_type','=','distributor')])
 
+  customer_db_ids = fields.One2many('sale.customer.db', 'sale_order_id', 'Customer DB')
+
   @api.model
   def create(self, vals):
     order_type = vals.get('order_type')
@@ -37,6 +39,12 @@ class SaleOder(models.Model):
 
     res = super(SaleOder, self).create(vals)
     return res
+  
+  def action_cancel(self):
+    result = super(SaleOder, self).action_cancel()
+    for row in self:
+      row.customer_db_ids.unlink()
+    return result
 
   def action_create_customer_db(self):
     self.ensure_one()
