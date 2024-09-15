@@ -2,16 +2,26 @@
 <odoo>
   <data>
 
+    <record model="ir.module.category" id="module_category_customer_db">
+      <field name="name">Customer DB</field>
+      <field name="parent_id" ref="base.module_category_sales_sales" />
+      <field name="sequence">10</field>
+    </record>
+
     <record id="group_customer_db_user" model="res.groups">
       <field name="name">Customer DB User</field>
-      <field name="category_id" ref="base.module_category_sales"/>
+      <field name="category_id" ref="module_category_customer_db"/>
     </record>
 
     <record id="group_customer_db_editor" model="res.groups">
       <field name="name">Customer DB Editor</field>
-      <field name="category_id" ref="base.module_category_sales"/>
+      <field name="category_id" ref="module_category_customer_db"/>
       <field name="implied_ids" eval="[(4, ref('hn_sale.group_customer_db_user'))]"/>
+    </record>
 
+    <record id="group_delete_customer_db" model="res.groups">
+      <field name="name">Can delete customer DB</field>
+      <field name="category_id" ref="module_category_customer_db"/>
     </record>
 
   </data>
