@@ -15,7 +15,7 @@ class SaleOder(models.Model):
     ('institusi', 'Institusi'),
     ('reguler', 'Reguler'),
   ], string='Order Type', required=True, default="reguler")
-  distributor_id = fields.Many2one('res.partner', 'Distributor', domain=[('customer_type','=','distributor')])
+  delivery_partner_id = fields.Many2one('res.partner', 'Deliver To')
 
   customer_db_ids = fields.One2many('sale.customer.db', 'sale_order_id', 'Customer DB')
 
@@ -65,7 +65,7 @@ class SaleOder(models.Model):
         'input_date': self.date_order,
         'sale_order_id': self.id,
         'partner_id': self.partner_id.id,
-        'distributor_id': self.distributor_id.id,
+        'delivery_partner_id': self.delivery_partner_id.id,
         'brand_id': line.product_id.brand_id.id,
         'product_id': line.product_id.id,
         # 'serial_number': None,

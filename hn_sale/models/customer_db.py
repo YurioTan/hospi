@@ -10,7 +10,7 @@ class CustomerDB(models.Model):
   input_date = fields.Date('Input Date', tracking=True)
   sale_order_id = fields.Many2one('sale.order', 'SO', ondelete="cascade", tracking=True)
   partner_id = fields.Many2one('res.partner', 'Contact', required=True, tracking=True)
-  distributor_id = fields.Many2one('res.partner', 'Distributor', domain=[('customer_type','=','distributor')], tracking=True)
+  delivery_partner_id = fields.Many2one('res.partner', 'Deliver To', tracking=True)
   partner_phone = fields.Char('Phone', related="partner_id.phone")
   partner_mobile = fields.Char('Mobile', related="partner_id.mobile")
   partner_email = fields.Char('Email', related="partner_id.email")
@@ -44,7 +44,7 @@ class CustomerDB(models.Model):
     if self.sale_order_id:
       self.input_date = self.sale_order_id.date_order
       self.partner_id = self.sale_order_id.partner_id.id
-      self.distributor_id = self.sale_order_id.distributor_id.id
+      self.delivery_partner_id = self.sale_order_id.delivery_partner_id.id
   
   @api.constrains('partner_id')
   def check_partner_id(self):

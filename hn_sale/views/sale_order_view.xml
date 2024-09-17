@@ -9,7 +9,7 @@
                 <field name="order_type" invisible="1" />
             </field>
             <field name="partner_id" position="after">
-                <field name="distributor_id" />
+                <field name="delivery_partner_id" />
             </field>
             <xpath expr="//button[@name='action_cancel']" position="after">
                 <button name="action_create_customer_db" type="object" string="Create Customer DB" states="sale,done" groups="hn_sale.group_customer_db_editor" />
