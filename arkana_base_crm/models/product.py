@@ -13,7 +13,7 @@ class ProductTemplate(models.Model):
         # Prefetch the fields used by the `name_get`, so `browse` doesn't fetch other fields
         self.browse(self.ids).read(['name', 'default_code', 'alias_name'])
         if self.env.context.get('product_search', False):
-            return [(template.id, '%s' % (template.alias_name))
+            return [(template.id, '%s' % (template.alias_name and template.alias_name or template.name))
                     for template in self]
         else : 
             return super(ProductTemplate, self).name_get()
@@ -23,7 +23,7 @@ class ProductProduct(models.Model):
     
     def name_get(self):
         if self.env.context.get('product_search', False):
-            return [(template.id, '%s' % (template.product_tmpl_id.alias_name))
+            return [(template.id, '%s' % (template.product_tmpl_id.alias_name and template.product_tmpl_id.alias_name or template.product_tmpl_id.name))
                     for template in self]
         else:
             return super(ProductProduct, self).name_get()
