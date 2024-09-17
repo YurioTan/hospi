@@ -21,7 +21,6 @@ class CustomerDB(models.Model):
   partner_level_id = fields.Many2one('partner.level', 'Level', related="partner_id.partner_level_id")
   brand_id = fields.Many2one('product.brand', 'Brand', tracking=True)
   product_id = fields.Many2one('product.product', 'Product', tracking=True)
-  product_alias = fields.Char('Product Alias', related='product_id.alias_name')
   serial_number = fields.Many2one('stock.production.lot', 'Serial Number', tracking=True)
   install_date = fields.Date('Install Date', tracking=True)
   tracking_number = fields.Char('Tracking Number', tracking=True)
