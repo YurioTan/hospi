@@ -70,7 +70,7 @@ class SaleOder(models.Model):
         'product_id': line.product_id.id,
         # 'serial_number': None,
         # 'install_date': None,
-        # 'tracking_number': None,
+        'tracking_number': self.client_order_ref,
       })
       if new_customer_db: create_count += 1
     if not from_cron:

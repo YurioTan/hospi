@@ -64,6 +64,7 @@ class Partner(models.Model):
         ('rumah_sakit', 'Rumah Sakit'),
         ('dinas', 'Dinas'),
         ('distributor', 'Distributor',)
+        ('personal', 'Personal'),
     ], 'Customer Type', default='rumah_sakit')
     
     def name_get(self):
