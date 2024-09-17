@@ -5,11 +5,12 @@ class CustomerDB(models.Model):
 
   _name = 'sale.customer.db'
   _description = 'Customer Database'
+  _inherit = ['mail.thread']
 
-  input_date = fields.Date('Input Date')
-  sale_order_id = fields.Many2one('sale.order', 'SO', ondelete="cascade")
-  partner_id = fields.Many2one('res.partner', 'Contact', required=True)
-  distributor_id = fields.Many2one('res.partner', 'Distributor', domain=[('customer_type','=','distributor')])
+  input_date = fields.Date('Input Date', tracking=True)
+  sale_order_id = fields.Many2one('sale.order', 'SO', ondelete="cascade", tracking=True)
+  partner_id = fields.Many2one('res.partner', 'Contact', required=True, tracking=True)
+  distributor_id = fields.Many2one('res.partner', 'Distributor', domain=[('customer_type','=','distributor')], tracking=True)
   partner_phone = fields.Char('Phone', related="partner_id.phone")
   partner_mobile = fields.Char('Mobile', related="partner_id.mobile")
   partner_email = fields.Char('Email', related="partner_id.email")
@@ -18,12 +19,12 @@ class CustomerDB(models.Model):
   partner_class_id = fields.Many2one('partner.class', 'Kelas RS', related="partner_id.partner_class_id")
   partner_area_map_id = fields.Many2one('partner.area.map', 'Peta Area', related="partner_id.partner_area_map_id")
   partner_level_id = fields.Many2one('partner.level', 'Level', related="partner_id.partner_level_id")
-  brand_id = fields.Many2one('product.brand', 'Brand')
-  product_id = fields.Many2one('product.product', 'Product')
+  brand_id = fields.Many2one('product.brand', 'Brand', tracking=True)
+  product_id = fields.Many2one('product.product', 'Product', tracking=True)
   product_alias = fields.Char('Product Alias', related='product_id.alias_name')
-  serial_number = fields.Many2one('stock.production.lot', 'Serial Number')
-  install_date = fields.Date('Install Date')
-  tracking_number = fields.Char('Tracking Number')
+  serial_number = fields.Many2one('stock.production.lot', 'Serial Number', tracking=True)
+  install_date = fields.Date('Install Date', tracking=True)
+  tracking_number = fields.Char('Tracking Number', tracking=True)
 
   def name_get(self):
     result = []
