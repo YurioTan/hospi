@@ -63,7 +63,7 @@ class Partner(models.Model):
     customer_type = fields.Selection([
         ('rumah_sakit', 'Rumah Sakit'),
         ('dinas', 'Dinas'),
-        ('distributor', 'Distributor',)
+        ('distributor', 'Distributor'),
         ('personal', 'Personal'),
     ], 'Customer Type', default='rumah_sakit')
     
