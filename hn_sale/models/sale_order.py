@@ -18,6 +18,11 @@ class SaleOder(models.Model):
   delivery_partner_id = fields.Many2one('res.partner', 'Deliver To')
 
   customer_db_ids = fields.One2many('sale.customer.db', 'sale_order_id', 'Customer DB')
+  customer_db_count = fields.Integer('Customer DB Count', compute="_compute_customer_db")
+
+  def _compute_customer_db(self):
+    for row in self:
+      row.customer_db_count = len(row.customer_db_ids)
 
   @api.model
   def create(self, vals):
