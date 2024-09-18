@@ -62,6 +62,8 @@ class SaleOder(models.Model):
     else:
       if len(customer_dbs) > 0:
         return True
+    if not self.partner_id.alias_name:
+        raise ValidationError('Please set alias name for the customer of this order.')  
     create_count = 0
     for line in self.order_line:
       product_category_name = line.product_id.categ_id.name.lower()

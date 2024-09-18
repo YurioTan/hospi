@@ -12,8 +12,8 @@
             <group string="Sale Info">
               <field name="input_date"/>
               <field name="sale_order_id"/>
-              <field name="partner_id"/>
-              <field name="delivery_partner_id"/>
+              <field name="partner_id" domain="[('alias_name','!=',False)]" />
+              <field name="delivery_partner_id" domain="[('alias_name','!=',False)]" />
               <field name="partner_phone"/>
               <field name="partner_mobile"/>
               <field name="partner_email"/>
