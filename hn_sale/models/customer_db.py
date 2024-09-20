@@ -19,6 +19,7 @@ class CustomerDB(models.Model):
   partner_class_id = fields.Many2one('partner.class', 'Kelas RS', related="partner_id.partner_class_id")
   partner_area_map_id = fields.Many2one('partner.area.map', 'Peta Area', related="partner_id.partner_area_map_id")
   partner_level_id = fields.Many2one('partner.level', 'Level', related="partner_id.partner_level_id")
+  partner_customer_type = fields.Char('Customer Type', compute="_compute_partner_customer_type", store=True)
   brand_id = fields.Many2one('product.brand', 'Brand', tracking=True)
   product_id = fields.Many2one('product.product', 'Product', tracking=True)
   serial_number = fields.Many2one('stock.production.lot', 'Serial Number', tracking=True)
@@ -38,6 +39,11 @@ class CustomerDB(models.Model):
           components.append("%s" % row.partner_id.alias_name and row.partner_id.alias_name or row.partner_id.name)
       result.append((row.id," ".join(components)))
     return result
+  
+  @api.depends('partner_id','partner_id.customer_type')
+  def _compute_partner_customer_type(self):
+    for row in self:
+      row.partner_customer_type = row.partner_id.customer_type and row.partner_id.customer_type.replace('_',' ').title() or 'N/A'
   
   @api.onchange('sale_order_id')
   def onchange_sale_order_id(self):
