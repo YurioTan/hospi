@@ -14,7 +14,7 @@
     'data': [
         'security/hn_sale_security.xml',
         'security/ir.model.access.csv',
-        'views/res_patner_view.xml',
+        'views/res_partner_view.xml',
         'views/sale_order_view.xml',
         'views/customer_db_view.xml',
         'data/sequences.xml',
