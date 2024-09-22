@@ -53,7 +53,10 @@ class SaleOder(models.Model):
   
   def action_confirm(self):
     result = super(SaleOder, self).action_confirm()
-    raise ValidationError(self.delivery_count)
+    for delivery in self.picking_ids:
+      if delivery.state in ['cancel','done']: continue
+      if self.delivery_partner_id:
+        delivery.partner_id = self.delivery_partner_id.id
     return result
 
   def action_create_customer_db(self):
