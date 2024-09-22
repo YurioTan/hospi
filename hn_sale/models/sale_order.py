@@ -50,6 +50,11 @@ class SaleOder(models.Model):
     for row in self:
       row.customer_db_ids.unlink()
     return result
+  
+  def action_confirm(self):
+    result = super(SaleOder, self).action_confirm()
+    raise ValidationError(self.delivery_count)
+    return result
 
   def action_create_customer_db(self):
     self.ensure_one()
