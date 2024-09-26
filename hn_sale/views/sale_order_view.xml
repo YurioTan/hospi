@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_form_hn_hospi" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="before">
+                <field name="order_type" invisible="1" />
+            </field>
+            <field name="partner_id" position="after">
+                <field name="delivery_partner_id" domain="[('alias_name','!=',False)]" />
+            </field>
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="action_create_customer_db" type="object" string="Create Customer DB" states="sale,done" groups="hn_sale.group_customer_db_editor" />
+            </xpath>
+            <xpath expr="//button[@name='preview_sale_order']" position="after">
+                <button name="action_view_customer_db" type="object" class="oe_stat_button" icon="fa-user-circle icon" states="sale,done" groups="hn_sale.group_customer_db_user">
+                    <field name="customer_db_count" widget="statinfo" string="Customer DB"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_co_sale" model="ir.actions.act_window">
+        <field name="name">OEM Sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('order_type','=', 'oem')]</field>
+        <field name="context">{'default_order_type': 'oem'}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
+    <record id="action_service_sale" model="ir.actions.act_window">
+        <field name="name">Service Sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('order_type','=', 'service')]</field>
+        <field name="context">{'default_order_type': 'service'}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
+    <record id="action_distributor_sale" model="ir.actions.act_window">
+        <field name="name">Distributor Sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('order_type','=', 'distributor')]</field>
+        <field name="context">{'default_order_type': 'distributor'}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
+    <record id="action_swasta_sale" model="ir.actions.act_window">
+        <field name="name">Swasta Sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('order_type','=', 'swasta')]</field>
+        <field name="context">{'default_order_type': 'swasta'}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
+    <record id="action_institusi_sale" model="ir.actions.act_window">
+        <field name="name">Institusi Sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('order_type','=', 'institusi')]</field>
+        <field name="context">{'default_order_type': 'institusi'}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
+    <record id="action_so_sale" model="ir.actions.act_window">
+        <field name="name">Reguler Sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('order_type','=', 'reguler')]</field>
+        <field name="context">{'default_order_type': 'reguler'}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_co_sale" name="OEM Sales" parent="sale.sale_order_menu"
+              action="action_co_sale" sequence="5"/>
+    <menuitem id="menu_service_sale" name="Service Sales" parent="sale.sale_order_menu"
+              action="action_service_sale" sequence="6"/>
+    <menuitem id="menu_distributor_sale" name="Distributor Sales" parent="sale.sale_order_menu"
+              action="action_distributor_sale" sequence="7"/>
+    <menuitem id="menu_swasta_sale" name="Swasta Sales" parent="sale.sale_order_menu"
+              action="action_swasta_sale" sequence="8"/>
+    <menuitem id="menu_institusi_sale" name="Institusi Sales" parent="sale.sale_order_menu"
+              action="action_institusi_sale" sequence="9"/>
+    <menuitem id="menu_so_sale" name="Reguler Sales" parent="sale.sale_order_menu"
+              action="action_so_sale" sequence="10"/>
+
+</odoo>

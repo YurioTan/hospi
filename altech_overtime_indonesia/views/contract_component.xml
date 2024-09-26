@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="inherit_overtime_form">
+            <field name="name">inherit.overtime.form</field>
+            <field name="model">hr.contract.basecomponent</field>
+            <field name="inherit_id" ref="altech_payroll_indonesia.alt_hr_contract_basecomponent_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="overtime_rate"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="inherit_overtime_tree">
+            <field name="name">inherit.overtime.tree</field>
+            <field name="model">hr.contract.basecomponent</field>
+            <field name="inherit_id" ref="altech_payroll_indonesia.alt_hr_contract_basecomponent_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="after">
+                    <field name="overtime_rate"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

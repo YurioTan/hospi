@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- Reasons -->
+
+    <record id="crm_lost_reason_1" model="crm.lost.reason">
+        <field name="name">Price</field>
+        <field name="category_reason">won</field>
+    </record>
+
+    <record id="crm_lost_reason_2" model="crm.lost.reason">
+        <field name="name">Product / Solution</field>
+        <field name="category_reason">won</field>
+    </record>
+
+    <record id="crm_lost_reason_3" model="crm.lost.reason">
+        <field name="name">Partnership</field>
+        <field name="category_reason">won</field>
+    </record>
+
+    <record id="crm_lost_reason_4" model="crm.lost.reason">
+        <field name="name">Price</field>
+        <field name="category_reason">lost</field>
+    </record>
+
+    <record id="crm_lost_reason_5" model="crm.lost.reason">
+        <field name="name">Competition</field>
+        <field name="category_reason">lost</field>
+    </record>
+
+    <record id="crm_lost_reason_6" model="crm.lost.reason">
+        <field name="name">Product / Solution</field>
+        <field name="category_reason">lost</field>
+    </record>
+
+    <record id="crm_lost_reason_7" model="crm.lost.reason">
+        <field name="name">Partnership</field>
+        <field name="category_reason">lost</field>
+    </record>
+
+    <record id="crm_lost_reason_8" model="crm.lost.reason">
+        <field name="name">Budget Cancel</field>
+        <field name="category_reason">cancel</field>
+    </record>
+
+    <record id="crm_lost_reason_9" model="crm.lost.reason">
+        <field name="name">Project Postpone</field>
+        <field name="category_reason">cancel</field>
+    </record>
+
+    <record id="crm_lost_reason_10" model="crm.lost.reason">
+        <field name="name">Budget Re-allocation</field>
+        <field name="category_reason">cancel</field>
+    </record>
+
+    <!-- Distributor -->
+
+    <record id="distributor_distributor_1" model="distributor.distributor">
+        <field name="name">IDS</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="distributor_distributor_2" model="distributor.distributor">
+        <field name="name">RNI</field>
+        <field name="active">True</field>
+    </record>
+
+    <!-- Budget Source -->
+
+    <record id="budget_source_1" model="budget.source">
+        <field name="name">DAK</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="budget_source_2" model="budget.source">
+        <field name="name">APBN</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="budget_source_3" model="budget.source">
+        <field name="name">APBD</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="budget_source_4" model="budget.source">
+        <field name="name">BLUD</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="budget_source_5" model="budget.source">
+        <field name="name">Perubahan</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="budget_source_6" model="budget.source">
+        <field name="name">Dana Cukai</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="budget_source_7" model="budget.source">
+        <field name="name">Bantuan</field>
+        <field name="active">True</field>
+    </record>
+
+    <!-- Product Brand -->
+
+    <record id="product_brand_1" model="product.brand">
+        <field name="name">OKAKU</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_2" model="product.brand">
+        <field name="name">SANVEN</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_3" model="product.brand">
+        <field name="name">RAWAT SATU</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_4" model="product.brand">
+        <field name="name">BLUECARE</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_5" model="product.brand">
+        <field name="name">ANTIKU</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_6" model="product.brand">
+        <field name="name">NEO-GEN</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_7" model="product.brand">
+        <field name="name">BEKUBOX</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_8" model="product.brand">
+        <field name="name">AIRA</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_9" model="product.brand">
+        <field name="name">SHIRNA</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_10" model="product.brand">
+        <field name="name">ENVIROS</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_11" model="product.brand">
+        <field name="name">PASTICLEAN</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_12" model="product.brand">
+        <field name="name">Armstrong Medical</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_13" model="product.brand">
+        <field name="name">Augustine Surgical Inc.</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_14" model="product.brand">
+        <field name="name">Haetmed</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_15" model="product.brand">
+        <field name="name">CardiAid</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="product_brand_16" model="product.brand">
+        <field name="name">ZISLINE</field>
+        <field name="active">True</field>
+    </record>
+
+</odoo>

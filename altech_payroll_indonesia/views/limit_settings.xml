@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="hr_limit_bpjs_ks_tree">
+            <field name="name">hr.limit.bpjs.ks.tree</field>
+            <field name="model">hr.limit.bpjs.ks</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="batas"/>
+                    <field name="aktif"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Form View -->
+        <record model="ir.ui.view" id="hr_limit_bpjs_ks_form">
+            <field name="name">hr.limit.bpjs.ks.form</field>
+            <field name="model">hr.limit.bpjs.ks</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="batas"/>
+                            </group>
+                            <group>
+                                <field name="aktif"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="hr_limit_bpjs_ks_action">
+            <field name="name">Limit Tunjangan BPJS Kesehatan</field>
+            <field name="res_model">hr.limit.bpjs.ks</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+
+        <record model="ir.ui.view" id="hr_employee_jkk_tree">
+            <field name="name">hr.employee.jkk.tree</field>
+            <field name="model">hr.jkktabel</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="persentase"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hr_employee_jkk_action">
+            <field name="name">Tingkat Resiko Keselamatan Kerja</field>
+            <field name="res_model">hr.jkktabel</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.ui.view" id="hr_limit_jp_tree">
+            <field name="name">hr.limit.jp.tree</field>
+            <field name="model">hr.limit.jp</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="batas"/>
+                    <field name="usia"/>
+                    <field name="aktif"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="hr_limit_jp_form">
+            <field name="name">hr.limit.jp.form</field>
+            <field name="model">hr.limit.jp</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="batas"/>
+                            </group>
+                            <group>
+                                <field name="usia"/>
+                                <field name="aktif"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="altech_hr_limit_jp_action">
+            <field name="name">Limit Tunjangan Pensiun</field>
+            <field name="res_model">hr.limit.jp</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="alt_hr_ptkp_form">
+            <field name="name">alt.hr.ptkp.form</field>
+            <field name="model">hr.ptkp</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="tax_reduction"/>
+                            </group>
+                            <group>
+                                <field name="sequence"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="alt_hr_ptkp_tree">
+            <field name="name">alt.hr.ptkp.tree</field>
+            <field name="model">hr.ptkp</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="tax_reduction"/>
+                    <field name="sequence"/>
+                </tree>
+            </field>
+        </record>
+       
+        <record model="ir.actions.act_window" id="hr_ptkp_action">
+            <field name="name">PTKP Code</field>
+            <field name="res_model">hr.ptkp</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_limit_bijab_tree">
+            <field name="name">hr.limit.bijab.tree</field>
+            <field name="model">hr.limit.bijab</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="batas"/>
+                    <field name="batas_tahunan"/>
+                    <field name="persen"/>
+                    <field name="aktif"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="hr_limit_bijab_form">
+            <field name="name">hr.limit.bijab.form</field>
+            <field name="model">hr.limit.bijab</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="batas"/>
+                                <field name="batas_tahunan"/>
+                            </group>
+                            <group>
+                                <field name="persen"/>
+                                <field name="aktif"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="alt_hr_limit_bijab_action">
+            <field name="name">Limit Biaya Jabatan</field>
+            <field name="res_model">hr.limit.bijab</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem 
+            id="alt_hr_payroll_other_config"
+            name="Other Configuration"
+            parent="hr_work_entry_contract.menu_hr_payroll_configuration"
+            sequence="100"
+        />
+        <menuitem 
+            id="alt_hr_payroll_cutoff_periode"
+            name="Cutoff Periode"
+            parent="altech_payroll_indonesia.alt_hr_payroll_other_config"
+            action="action_cutoff_periode_form"
+            sequence="1"
+        />
+        <menuitem 
+            id="alt_hr_payroll_limit_ptkp"
+            name="Limit PTKP"
+            parent="altech_payroll_indonesia.alt_hr_payroll_other_config"
+            action="hr_ptkp_action"
+            sequence="2"
+        />
+        <menuitem 
+            id="hr_limit_bpjs_ks_menu"
+            name="Limit Tunj. BPJS Kesehatan"
+            parent="altech_payroll_indonesia.alt_hr_payroll_other_config"
+            action="hr_limit_bpjs_ks_action"
+            sequence="3"
+        />
+        <menuitem 
+            id="alt_hr_limit_tunjangan_pensiun_menu"
+            name="Limit Tunj. Pensiun"
+            parent="altech_payroll_indonesia.alt_hr_payroll_other_config"
+            action="altech_hr_limit_jp_action"
+            sequence="4"
+        />
+        <menuitem 
+            id="hr_resiko_keselamatan_kerja_menu"
+            name="Tabel Keselamatan Kerja"
+            parent="altech_payroll_indonesia.alt_hr_payroll_other_config"
+            action="hr_employee_jkk_action"
+            sequence="5"
+        />
+        <menuitem 
+            id="hr_limit_biaya_jabatan_menu"
+            name="Limit Biaya Jabatan"
+            parent="altech_payroll_indonesia.alt_hr_payroll_other_config"
+            action="alt_hr_limit_bijab_action"
+            sequence="6"
+        />
+    </data>
+</odoo>
