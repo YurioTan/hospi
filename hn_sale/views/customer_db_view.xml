@@ -19,8 +19,6 @@
               <field name="partner_phone"/>
               <field name="partner_mobile"/>
               <field name="partner_email"/>
-              <!-- <field name="partner_location_id"/> -->
-              <!-- <field name="partner_category_id"/> -->
               <field name="partner_class_id"/>
               <field name="partner_area_map_id"/>
               <field name="partner_level_id"/>
