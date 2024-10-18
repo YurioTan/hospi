@@ -14,8 +14,9 @@ class CustomerDB(models.Model):
   partner_phone = fields.Char('Phone', related="partner_id.phone")
   partner_mobile = fields.Char('Mobile', related="partner_id.mobile")
   partner_email = fields.Char('Email', related="partner_id.email")
-  partner_location_id = fields.Many2one('partner.location', 'Pulau', related="partner_id.partner_location_id")
-  partner_category_id = fields.Many2one('partner.category', 'Wilayah', related="partner_id.partner_category_id")
+  # 20241018 minta dihapus
+  # partner_location_id = fields.Many2one('partner.location', 'Pulau', related="partner_id.partner_location_id")
+  # partner_category_id = fields.Many2one('partner.category', 'Wilayah', related="partner_id.partner_category_id")
   partner_class_id = fields.Many2one('partner.class', 'Kelas RS', related="partner_id.partner_class_id")
   partner_area_map_id = fields.Many2one('partner.area.map', 'Peta Area', related="partner_id.partner_area_map_id")
   partner_level_id = fields.Many2one('partner.level', 'Level', related="partner_id.partner_level_id")
@@ -25,6 +26,11 @@ class CustomerDB(models.Model):
   serial_number = fields.Many2one('stock.production.lot', 'Serial Number', tracking=True)
   install_date = fields.Date('Install Date', tracking=True)
   tracking_number = fields.Char('Tracking Number', tracking=True)
+  installed_by = fields.Selection((
+    ('distributor', 'Distributor'),
+    ('hospi','Hospi')
+  ))
+  guarantee_end_date = fields.Date('Guarantee End Date')
 
   def name_get(self):
     result = []

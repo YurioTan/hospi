@@ -14,12 +14,13 @@
               <field name="sale_order_id"/>
               <field name="partner_id" domain="[('alias_name','!=',False)]" />
               <field name="delivery_partner_id" domain="[('alias_name','!=',False)]" />
+              <field name="tracking_number"/>
               <field name="partner_customer_type"/>
               <field name="partner_phone"/>
               <field name="partner_mobile"/>
               <field name="partner_email"/>
-              <field name="partner_location_id"/>
-              <field name="partner_category_id"/>
+              <!-- <field name="partner_location_id"/> -->
+              <!-- <field name="partner_category_id"/> -->
               <field name="partner_class_id"/>
               <field name="partner_area_map_id"/>
               <field name="partner_level_id"/>
@@ -29,7 +30,8 @@
               <field name="product_id" domain="[('brand_id','=',brand_id)]" context="{'product_search': True}"/>
               <field name="serial_number" domain="[('product_id','=',product_id)]" />
               <field name="install_date"/>
-              <field name="tracking_number"/>
+              <field name="installed_date"/>
+              <field name="guarantee_end_date"/>
             </group>            
           </group>
         </sheet>
