@@ -26,10 +26,10 @@ class CustomerDB(models.Model):
   serial_number = fields.Many2one('stock.production.lot', 'Serial Number', tracking=True)
   install_date = fields.Date('Install Date', tracking=True)
   tracking_number = fields.Char('Tracking Number', tracking=True)
-  installed_by = fields.Selection((
+  installed_by = fields.Selection([
     ('distributor', 'Distributor'),
     ('hospi','Hospi')
-  ), 'Installed By')
+  ], 'Installed By')
   guarantee_end_date = fields.Date('Guarantee End Date')
 
   def name_get(self):
