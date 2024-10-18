@@ -29,7 +29,7 @@ class CustomerDB(models.Model):
   installed_by = fields.Selection([
     ('distributor', 'Distributor'),
     ('hospi','Hospi')
-  ], 'Installed By')
+  ], string='Installed By')
   guarantee_end_date = fields.Date('Guarantee End Date')
 
   def name_get(self):
