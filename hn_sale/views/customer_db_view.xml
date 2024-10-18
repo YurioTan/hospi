@@ -66,6 +66,7 @@
       <search string="Search Customer DB">
         <field name="sale_order_id"/>
         <field name="partner_id"/>
+        <field name="delivery_partner_id"/>
         <field name="brand_id"/>
         <field name="product_id"/>
         <field name="serial_number"/>

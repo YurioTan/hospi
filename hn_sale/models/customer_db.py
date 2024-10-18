@@ -11,15 +11,15 @@ class CustomerDB(models.Model):
   sale_order_id = fields.Many2one('sale.order', 'SO', ondelete="cascade", tracking=True)
   partner_id = fields.Many2one('res.partner', 'Customer', required=True, tracking=True)
   delivery_partner_id = fields.Many2one('res.partner', 'Deliver To', tracking=True)
-  partner_phone = fields.Char('Phone', related="partner_id.phone")
-  partner_mobile = fields.Char('Mobile', related="partner_id.mobile")
-  partner_email = fields.Char('Email', related="partner_id.email")
+  partner_phone = fields.Char('Phone', related="delivery_partner_id.phone")
+  partner_mobile = fields.Char('Mobile', related="delivery_partner_id.mobile")
+  partner_email = fields.Char('Email', related="delivery_partner_id.email")
   # 20241018 minta dihapus
   # partner_location_id = fields.Many2one('partner.location', 'Pulau', related="partner_id.partner_location_id")
   # partner_category_id = fields.Many2one('partner.category', 'Wilayah', related="partner_id.partner_category_id")
-  partner_class_id = fields.Many2one('partner.class', 'Kelas RS', related="partner_id.partner_class_id")
-  partner_area_map_id = fields.Many2one('partner.area.map', 'Peta Area', related="partner_id.partner_area_map_id")
-  partner_level_id = fields.Many2one('partner.level', 'Level', related="partner_id.partner_level_id")
+  partner_class_id = fields.Many2one('partner.class', 'Kelas RS', related="delivery_partner_id.partner_class_id")
+  partner_area_map_id = fields.Many2one('partner.area.map', 'Peta Area', related="delivery_partner_id.partner_area_map_id")
+  partner_level_id = fields.Many2one('partner.level', 'Level', related="delivery_partner_id.partner_level_id")
   partner_customer_type = fields.Char('Customer Type', compute="_compute_partner_customer_type", store=True)
   brand_id = fields.Many2one('product.brand', 'Brand', tracking=True)
   product_id = fields.Many2one('product.product', 'Product', tracking=True)
@@ -29,7 +29,7 @@ class CustomerDB(models.Model):
   installed_by = fields.Selection((
     ('distributor', 'Distributor'),
     ('hospi','Hospi')
-  ))
+  ), 'Installed By')
   guarantee_end_date = fields.Date('Guarantee End Date')
 
   def name_get(self):
