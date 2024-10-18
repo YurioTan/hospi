@@ -28,7 +28,7 @@
               <field name="product_id" domain="[('brand_id','=',brand_id)]" context="{'product_search': True}"/>
               <field name="serial_number" domain="[('product_id','=',product_id)]" />
               <field name="install_date"/>
-              <field name="installed_date"/>
+              <field name="installed_by"/>
               <field name="guarantee_end_date"/>
             </group>            
           </group>
