@@ -14,9 +14,9 @@ class ResPartner(models.Model):
   def action_view_customer_db(self):
     xmlid = "hn_sale.action_sale_customer_db"
     action = self.env["ir.actions.act_window"]._for_xml_id(xmlid)
-    customer_dbs = self.env['sale.customer.db'].search([('partner_id','=',self.id)])
+    customer_dbs = self.env['sale.customer.db'].search([('delivery_partner_id','=',self.id)])
     if len(customer_dbs) > 1:
-      action['domain'] = [('partner_id','=',self.id)]
+      action['domain'] = [('delivery_partner_id','=',self.id)]
     elif len(customer_dbs) == 1:
       action["views"] = [(self.env.ref("hn_sale.sale_customer_db_view_form").id, "form")]
       action['res_id'] = customer_dbs.id
