@@ -4,7 +4,7 @@ from odoo.exceptions import ValidationError
 class ResPartner(models.Model):
   _inherit = 'res.partner'
 
-  customer_db_ids = fields.One2many('sale.customer.db', 'partner_id', 'Customer DB')
+  customer_db_ids = fields.One2many('sale.customer.db', 'delivery_partner_id', 'Customer DB')
   customer_db_count = fields.Integer('Customer DB Count', compute="_compute_customer_db")
 
   def _compute_customer_db(self):
