@@ -8,6 +8,8 @@ class ProductTemplate(models.Model):
                             copy = False, index = True)
     brand_id = fields.Many2one('product.brand', string='Brand',
                         copy = False, index = True, tracking = True)
+    careare_name = fields.Char('Care Area', tracking = True, 
+                            copy = False, index = True)
     
     def name_get(self):
         # Prefetch the fields used by the `name_get`, so `browse` doesn't fetch other fields
