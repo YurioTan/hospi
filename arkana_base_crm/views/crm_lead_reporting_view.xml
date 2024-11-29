@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_lead_view_graph_custom" model="ir.ui.view">
+        <field name="name">crm.lead.graph.view.custom</field>
+        <field name="model">crm.lead</field>
+        <field name="arch" type="xml">
+            <graph string="Leads" type="line" sample="1">
+                <field name="create_date" interval="week" type="row"/>
+                <field name="color" invisible="1"/>
+                <field name="automated_probability" invisible="1"/>
+                <field name="message_bounce" invisible="1"/>
+                <field name="day_open" invisible="1"/>
+                <field name="day_close" invisible="1"/>
+                <field name="days_to_convert" invisible="1"/>
+                <field name="days_exceeding_closing" invisible="1"/>
+                <field name="expected_revenue" invisible="1"/>
+                <field name="prorated_revenue" invisible="1"/>
+                <field name="list_price" invisible="1"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="crm_lead_view_pivot_custom" model="ir.ui.view">
+        <field name="name">crm.lead.pivot.view.custom</field>
+        <field name="model">crm.lead</field>
+        <field name="arch" type="xml">
+            <pivot string="Leads" display_quantity="true" sample="1">
+                <field name="user_id" type="row"/>
+                <field name="automated_probability" invisible="1"/>
+                <field name="message_bounce" invisible="1"/>
+                <field name="day_open" invisible="1"/>
+                <field name="day_close" invisible="1"/>
+                <field name="days_to_convert" invisible="1"/>
+                <field name="days_exceeding_closing" invisible="1"/>
+                <field name="expected_revenue" invisible="1"/>
+                <field name="prorated_revenue" invisible="1"/>
+                <field name="list_price" invisible="1"/>
+                <field name="color" invisible="1"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="crm_lead_action_dashboard_custom" model="ir.actions.act_window">
+        <field name="name">Leads Analysis</field>
+        <field name="res_model">crm.lead</field>
+        <field name="view_mode">graph,pivot,tree</field>
+        <field name="domain">[('is_from_leads_menu', '=', True), ('active', 'in', [True, False])]</field>
+        <field name="search_view_id" ref="arkana_base_crm.crm_lead_custom_view_search"/>
+        <field name="context" eval="{
+                'default_type' : 'lead',
+                'default_is_from_leads_menu' : True,
+            }"/>
+    </record>
+
+    <record id="crm_lead_action_dashboard_custom_graph" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="arkana_base_crm.crm_lead_view_graph_custom"/>
+        <field name="act_window_id" ref="arkana_base_crm.crm_lead_action_dashboard_custom"/>
+    </record>
+
+    <record id="crm_lead_action_dashboard_custom_pivot" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="arkana_base_crm.crm_lead_view_pivot_custom"/>
+        <field name="act_window_id" ref="arkana_base_crm.crm_lead_action_dashboard_custom"/>
+    </record>
+
+    <record id="crm_lead_action_dashboard_custom_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="arkana_base_crm.crm_lead_view_tree_custom"/>
+        <field name="act_window_id" ref="arkana_base_crm.crm_lead_action_dashboard_custom"/>
+    </record>
+
+    
+
+</odoo>

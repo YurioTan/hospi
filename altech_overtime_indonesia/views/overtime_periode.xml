@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="lembur_overtime_periode_tree">
+            <field name="name">lembur.overtime.periode.tree</field>
+            <field name="model">lembur.overtime.periode</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="tanggal_awal" required="1"/>
+                    <field name="tanggal_akhir" required="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Form View -->
+        <record model="ir.ui.view" id="lembur_overtime_periode_form">
+            <field name="name">lembur.overtime.periode.form</field>
+            <field name="model">lembur.overtime.periode</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button class="btn btn-default" name="report_to_excel" string="Report Excel" type="object"></button>
+                        <button class="btn btn-default" name="confirm_all" string="Confirm All" type="object"></button>
+                        <button class="btn btn-default" name="done_all" string="Set Done All" type="object"></button>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                            </group>
+                            <group>
+                                <field name="tanggal_awal" required="1"/>
+                                <field name="tanggal_akhir" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="lembur_periode_action">
+            <field name="name">Periode Overtime</field>
+            <field name="res_model">lembur.overtime.periode</field>
+            <field name="view_mode">tree,form</field>
+        </record> 
+    </data>
+</odoo>

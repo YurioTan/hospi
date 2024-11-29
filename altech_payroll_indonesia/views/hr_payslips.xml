@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="alt_hr_payroll_hr_payslips_form">
+            <field name="name">alt.hr.payroll.hr.payslips.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='account_info']/group[1]/group[1]/field[@name='payslip_run_id']" position="after">
+                    <field name="cutoff_periode_id" readonly="1"/>
+                    <field name="is_last_slip"/>
+                </xpath>
+                <xpath expr="//page[@name='account_info']/group[1]/group[2]/field[@name='paid']" position="after">
+                    <field name="tahun_pajak" readonly="1"/>
+                    <field name="masa_pajak" readonly="1"/>
+                </xpath>        
+                <xpath expr="//field[@name='line_ids']" position="after">
+                    <group>
+                        <group>
+                            <field name="amt_income_data" string="Bruto"/>
+                            <field name="amt_deduction_data" string="Total Deduction"/>
+                        </group>
+                        <group>
+                            <field name="amt_comp_contribut" string="Company Contribution"/>
+                            <field name="amt_thp"/>
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree[1]/field[@name='name']" position="after">
+                    <field name="code_grup" invisible="1"/>
+                    <field name="report_mode" invisible="1"/>
+                    <field name="notes"/>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree[1]" position="attributes">
+                    <attribute name="decoration-bf">code == 'BRUTO' or code == 'TOTAL_DEDUCTION'</attribute>
+                    <attribute name="decoration-info">report_mode == 'income' or code == 'BRUTO'</attribute>
+                    <attribute name="decoration-danger">code == 'TOTAL_DEDUCTION' or code_grup == 'ALT_DEDUCTION' or code_grup == 'ALT_DEDUCTION_TAX'</attribute>
+                    <attribute name="limit">100</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='line_ids']/tree[1]/field[@name='quantity']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree[1]/field[@name='rate']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree[1]/field[@name='salary_rule_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/tree[1]/field[@name='amount']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="alt_hr_payroll_hr_payslips_tree">
+            <field name="name">alt.hr.payroll.hr.payslips.tree</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree[1]" position="attributes">
+                    <attribute name="create">0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='basic_wage']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='net_wage']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='net_wage']" position="after">
+                    <field name="amt_thp"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

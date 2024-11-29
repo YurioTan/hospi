@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="pph21_payslip_run_form">
+            <field name="name">pph21.payslip.run.form</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='credit_note']" position="before">
+                    <field name="cutoff_periode_id" domain="[('is_visible', '=', True)]" options="{'no_create': True}"/>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="download_report" class="oe_highlight" type="object" string="Download Report" attrs="{'invisible':[('state', '=', 'draft')]}" />
+                    <button name="recompute_batch_sheet" class="oe_highlight" type="object" string="Re Compute Batch" attrs="{'invisible':[('state', 'not in', ['draft','verify'])]}" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

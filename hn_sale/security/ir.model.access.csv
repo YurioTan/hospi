@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_db_user,sale.customer.db user,model_sale_customer_db,hn_sale.group_customer_db_user,1,0,0,0
+access_customer_db_editor,sale.customer.db editor,model_sale_customer_db,hn_sale.group_customer_db_editor,1,1,1,0
+access_delete_customer_db,sale.customer.db delete,model_sale_customer_db,hn_sale.group_delete_customer_db,1,0,0,1

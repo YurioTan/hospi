@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="lembur_overtime_calculation_tree">
+            <field name="name">lembur.overtime.calculation.tree</field>
+            <field name="model">lembur.overtime.calculation</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="overtime_group"/>
+                    <!-- <field name="line_changed" string="Re Confirm"/> -->
+                    <field name="overtime_total"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Form View -->
+        <record model="ir.ui.view" id="lembur_overtime_calculation_form">
+            <field name="name">lembur.overtime.calculation.form</field>
+            <field name="model">lembur.overtime.calculation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button states="draft" class="btn-default" string="Generate Days" type="object" name="generate_days"/>
+                        <button states="waiting" class="btn-default" string="Set To Draft" type="object" name="set_to_draft"/>
+                        <button states="confirm" class="btn-warning" string="Rollback" type="object" name="set_to_rollback"/>
+                        <button attrs="{'invisible':[('state','!=','draft')]}" class="btn-primary" string="Submit" type="object" name="submit_overtime"/>
+                        <button attrs="{'invisible':[('state','!=','waiting')]}" class="btn-primary" string="Confirm Overtime" type="object" name="confirm_overtime"/>
+                        <button attrs="{'invisible':[('state', 'not in', ['confirm','done'])]}" class="btn-default" string="Print Excel" type="object" name="print_excel"/>
+                        <button attrs="{'invisible':[('state', '!=', ['confirm'])]}" class="btn-primary" string="Set To Done" type="object" name="se_to_done"/>
+                        
+                        
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                                <field name="employee_id" required="1" attrs="{'readonly':[('state', 'not in', ['draft'])]}" domain="[('allow_overtime', '=', True)]"/>
+                                <field name="overtime_group" required="1" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                            </group>
+                            <group>
+                                <field name="overtime_total" readonly="1"/>
+                                <field name="overtime_jam" widget="float_time" force_save="1"/>
+                                <field name="estimasi_total" readonly="1"/>
+                                <field name="basis_perhitungan" invisible="1" readonly="1" force_save="1"/>
+                                <field name="overtime_granulity" invisible="1" readonly="1" force_save="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Overtime Calculation">
+                                <field name="calculation_line" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="dayname" readonly="1"/>
+                                        <field name="daystat" attrs="{'readonly': [('parent.basis_perhitungan', '!=', 'manual')]}" force_save="1"/>
+                                        <field name="ot1_in" widget="float_time"/>
+                                        <field name="ot1_out" widget="float_time"/>
+                                        <field name="ot2_in" widget="float_time"/>
+                                        <field name="ot2_out" widget="float_time"/>
+                                        <field name="ot_total" widget="float_time"/>
+                                        <field name="ot_round"/>
+                                        <field name="notes"/>
+                                        <field name="state" readonly="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Note">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Search View -->
+        <record model="ir.ui.view" id="lembur_overtime_calculation_search">
+            <field name="name">lembur.overtime.calculation.search</field>
+            <field name="model">lembur.overtime.calculation</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <group>
+                        <filter name="groupby_otgrup" string="Overtime Group" context="{'group_by':'overtime_group'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+       
+        <record model="ir.actions.act_window" id="lembur_calculation_action">
+            <field name="name">Overtime Calculation</field>
+            <field name="res_model">lembur.overtime.calculation</field>
+            <field name="context">{'search_default_groupby_otgrup': 1}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

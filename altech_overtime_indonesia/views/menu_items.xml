@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem 
+            id="main_lembur_overtime"
+            name="Overtime"
+            sequence="24"
+            web_icon="altech_overtime_indonesia,static/description/menu.png"
+        />
+        <menuitem 
+            id="lembur_overtime_calculation"
+            name="Overtime"
+            sequence = "1"
+            parent="altech_overtime_indonesia.main_lembur_overtime"
+        />
+        <menuitem 
+            id="lembur_overtime_configuration"
+            name="Configuration"
+            sequence = "4"
+            parent="altech_overtime_indonesia.main_lembur_overtime"
+        />
+        <menuitem 
+            id="lembur_overtime_calculation_menu"
+            name="Overtime Calculation"
+            sequence = "1"
+            parent="altech_overtime_indonesia.lembur_overtime_calculation"
+            action="lembur_calculation_action"
+        />
+        <menuitem 
+            id="lembur_overtime_periode_menu"
+            name="Overtime Periode"
+            sequence = "2"
+            parent="altech_overtime_indonesia.lembur_overtime_calculation"
+            action="lembur_periode_action"
+        />
+        <menuitem 
+            id="lembur_overtime_employee_menu"
+            name="Employee Overtime Data"
+            sequence = "3"
+            parent="altech_overtime_indonesia.lembur_overtime_calculation"
+            action="lembur_employee_data_action"
+        />
+       <menuitem
+            id="lembur_overtime_configuration_menu"
+            sequence = "4"
+            name="Settings"
+            parent="altech_overtime_indonesia.lembur_overtime_configuration"
+            action="action_hr_overtime_configuration"
+
+        />
+        <menuitem
+            id="lembur_overtime_koefisient_menu"
+            sequence = "5"
+            name="Overtime Coefficient"
+            parent="altech_overtime_indonesia.lembur_overtime_configuration"
+            action="lembur_overtime_koefisien_action"
+        />
+    </data>
+</odoo>

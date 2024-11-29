@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="payslip_recaptulation_body">
+            <div class="slip_border">
+                <div style="font-family: 'arial'; background-color: #660739;">
+                    <div style="color: #FFF; float: left; padding: 5px;">
+                        <div style="font-size: 23px; font-weight: bold; white-space: nowrap;">Payslip <t t-esc="o.payslip_run_id.name"/></div>
+                        <div style="font-size: 15px; padding-top: 5px;"><t t-out="company.name"/></div>
+                    </div>
+                    <!-- <div style="float: right;">
+                        <div style="padding: 3px;">
+                            <img style="height: 52px;" src="alt_payroll_medika_payroll/static/src/image/logo1.png"/>
+                        </div>
+                    </div> -->
+                    <div style="clear: both;"></div>
+                </div>
+                <div>
+                    <div style="float: left;">
+                        <table style="font-family: 'arial'; font-size: 14px;">
+                            <!-- <tr>
+                                <td>Employee ID</td>
+                                <td style="padding-left:10px; padding-right:5px;">:</td>
+                                <td>
+                                    <t t-esc="o.employee_id.nik"/>
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <td>Employee Name</td>
+                                <td style="padding-left:10px; padding-right:5px;">:</td>
+                                <td>
+                                    <t t-esc="o.employee_id.name"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="float: right;">
+                        <table style="font-family: 'arial'; font-size: 14px;">
+                            <tr>
+                                <td>Position</td>
+                                <td style="padding-left:10px; padding-right:5px;">:</td>
+                                <td>
+                                    <t t-esc="o.employee_id.job_title"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Department</td>
+                                <td style="padding-left:10px; padding-right:5px;">:</td>
+                                <td>
+                                    <t t-esc="o.employee_id.department_id.name"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="font-family: 'arial'; font-size: 13px; color: #fff; background-color: #660739; padding: 2px;">
+                    <div style="float:left">
+                        Month Period : (<t t-esc="o.date_from.strftime('%d %b %Y')"/> to <t t-esc="o.date_to.strftime('%d %b %Y')"/>)
+                    </div>
+                    <div style="float: right;">
+                        Date Printed : <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%d %B %Y')"/>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="font-family: 'arial'; font-size: 14px;">
+                    <div style="float: left; width: 34%;">
+                        <div style="padding: 5px;">
+                            <div>
+                                <table style="font-size: 14px; width: 100%; font-family: 'arial'; border-collapse: collapse;">
+                                    <thead>
+                                        <tr>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px;" colspan="5">Income</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="no_penghasilan" t-value="1"/>
+                                        <t t-set="jml_penghasilan" t-value="0"/>
+                                        <t t-foreach="o.line_ids.filtered(lambda x:x.report_mode == 'income')" t-as="penghasilan">
+                                            <tr>
+                                                <td style="width: 20px; padding: 1px;">
+                                                    <t t-esc="no_penghasilan"/>
+                                                </td>
+                                                <td style="padding: 1px;">
+                                                    <t t-esc="penghasilan.name"/>
+                                                </td>
+                                                <td style="width: 10px; padding: 1px;">
+                                                    :
+                                                </td>
+                                                <td style="width: 20px; padding: 1px;">
+                                                    Rp.
+                                                </td>
+                                                <td style="width: 100px; text-align: right; padding: 1px;">
+                                                    <t t-esc="'{0:,.0f}'.format(penghasilan.total)"/>
+                                                </td>
+                                            </tr>
+                                            <t t-set="no_penghasilan" t-value="no_penghasilan + 1"/>
+                                            <t t-set="jml_penghasilan" t-value="jml_penghasilan + penghasilan.total"/>
+                                        </t>
+                                        <tr>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px;" colspan="3">Total Income</th>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px;">Rp.</th>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px; text-align: right;">
+                                                <t t-esc="'{0:,.0f}'.format(jml_penghasilan)"/>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float: left; width: 33%;">
+                        <div style="padding: 5px 20px;">
+                            <div>
+                                <table style="font-size: 14px; width: 100%; font-family: 'arial'; border-collapse: collapse;">
+                                    <thead>
+                                        <tr>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px;" colspan="5">Deduction</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="no_deduction" t-value="1"/>
+                                        <t t-set="jml_deduction" t-value="0"/>
+                                        <t t-foreach="o.line_ids.filtered(lambda x:x.report_mode == 'deduction')" t-as="potongan">
+                                            <tr>
+                                                <td style="width: 20px; padding: 1px;">
+                                                    <t t-esc="no_deduction"/>
+                                                </td>
+                                                <td style="padding: 1px;">
+                                                    <t t-esc="potongan.name"/>
+                                                </td>
+                                                <td style="width: 10px; padding: 1px;">
+                                                    :
+                                                </td>
+                                                <td style="width: 20px; padding: 1px;">
+                                                    Rp.
+                                                </td>
+                                                <td style="width: 100px; text-align: right; padding: 1px;">
+                                                    <span t-esc="'{0:,.0f}'.format(potongan.total)"/>
+                                                </td>
+                                            </tr>
+                                            <t t-set="no_deduction" t-value="no_deduction + 1"/>
+                                            <t t-set="jml_deduction" t-value="jml_deduction + potongan.total"/>
+                                        </t>
+                                        <tr>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px;" colspan="3">Total Deduction</th>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px;">Rp.</th>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px; text-align: right;">
+                                                <span t-esc="'{0:,.0f}'.format(jml_deduction)"/>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float: left; width: 33%;">
+                        <div style="padding: 5px;">
+                            <div>
+                                <table style="font-size: 14px; width: 100%; font-family: 'arial'; border-collapse: collapse;">
+                                    <thead>
+                                        <tr>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px;" colspan="5">Company Contributions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="no_company_contrib" t-value="1"/>
+                                        <t t-set="jml_company_contrib" t-value="0"/>
+                                        <t t-foreach="o.line_ids.filtered(lambda x:x.report_mode == 'comp')" t-as="manfaat">
+                                            <tr>
+                                                <td style="width: 20px; padding: 1px;">
+                                                    <t t-esc="no_company_contrib"/>
+                                                </td>
+                                                <td style="padding: 1px;">
+                                                    <t t-esc="manfaat.name"/>
+                                                </td>
+                                                <td style="width: 10px; padding: 1px;">
+                                                    :
+                                                </td>
+                                                <td style="width: 20px; padding: 1px;">
+                                                    Rp.
+                                                </td>
+                                                <td style="width: 100px; text-align: right; padding: 1px;">
+                                                    <span t-esc="'{0:,.0f}'.format(manfaat.total)"/>
+                                                </td>
+                                            </tr>
+                                            <t t-set="no_company_contrib" t-value="no_company_contrib + 1"/>
+                                            <t t-set="jml_company_contrib" t-value="jml_company_contrib + manfaat.total"/>
+                                        </t>
+                                        <tr>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px;" colspan="3">Total Company Contribution</th>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px;">Rp.</th>
+                                            <th style="background-color: #f3f2f2; text-align: left; padding: 3px; text-align: right;">
+                                                <span t-esc="'{0:,.0f}'.format(jml_company_contrib)"/>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: left;"></div>
+                </div>
+                <div style="padding-top: 8px;">
+                    <div style="float: left; width: 34%;">
+                        <div style="padding: 5px;">
+                            <div>
+                                <table style="font-size: 14px; width: 100%; font-family: 'arial'; border-collapse: collapse;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                Total Income
+                                            </td>
+                                            <td style="width: 10px; padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                :
+                                            </td>
+                                            <td style="width: 20px; padding: 3px; background-color: #f3f2f2; font-weight: bold;">
+                                                Rp.
+                                            </td>
+                                            <td style="width: 100px; text-align: right; padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                <span t-esc="'{0:,.0f}'.format(jml_penghasilan)"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                Total Deduction
+                                            </td>
+                                            <td style="width: 10px; padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                :
+                                            </td>
+                                            <td style="width: 20px; padding: 3px; background-color: #f3f2f2; font-weight: bold;">
+                                                Rp.
+                                            </td>
+                                            <td style="width: 100px; text-align: right; padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                <span t-esc="'{0:,.0f}'.format(jml_deduction)"/>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                Total Gross Income
+                                            </td>
+                                            <td style="width: 10px; padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                :
+                                            </td>
+                                            <td style="width: 20px; padding: 3px; background-color: #f3f2f2; font-weight: bold;">
+                                                Rp.
+                                            </td>
+                                            <td style="width: 100px; text-align: right; padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                <span t-esc="'{0:,.0f}'.format(jml_penghasilan - jml_deduction)"/>
+                                            </td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td style="padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                Tax 21
+                                            </td>
+                                            <td style="width: 10px; padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                :
+                                            </td>
+                                            <td style="width: 20px; padding: 3px; background-color: #f3f2f2; font-weight: bold;">
+                                                Rp.
+                                            </td>
+                                            <td style="width: 100px; text-align: right; padding: 3px; background-color: #f3f2f2; font-weight: bold; ">
+                                                <t t-set="pph21" t-value="sum(o.line_ids.filtered(lambda x:x.code == 'PPH21_ALL').mapped('total'))"/>
+                                                <span t-esc="'{0:,.0f}'.format(pph21)"/>
+                                            </td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: left;"></div>
+                </div>
+                <div style="padding-top: 5px;">
+                    <div style="float: left; width: 34%;">
+                        <div style="padding: 5px;">
+                            <div style="background-color: #660739; padding: 10px px;">
+                                <table style="font-size: 14px; width: 100%; font-family: 'arial'; border-collapse: collapse;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding: 3px; background-color: #660739; color: #FFF; font-weight: bold; white-space: nowrap; text-align: left;">
+                                                TOTAL TAKE HOME PAY
+                                            </td>
+                                            <td style="width: 10px; padding: 3px; background-color: #660739; color: #FFF; font-weight: bold; ">
+                                                :
+                                            </td>
+                                            <td style="width: 20px; padding: 3px; background-color: #660739; color: #FFF; font-weight: bold;">
+                                                Rp.
+                                            </td>
+                                            <td style="width: 100px; text-align: right; padding: 3px; background-color: #660739; color: #FFF; font-weight: bold; ">
+                                                <span t-esc="'{0:,.0f}'.format(o.amt_thp)"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: left;"></div>
+                </div>
+                <div>
+                    <div style="float: left; width: 34%;">
+                        <div style="background-color: #b81a83; height: 5px;"></div>
+                    </div>
+                    <div style="float: left; width: 33%;">
+                        <div style="background-color: #b81a83; height: 5px;"></div>
+                    </div>
+                    <div style="float: left; width: 33%;">
+                        <div style=" background-color: #b81a83; height: 5px;"></div>
+                    </div>
+                    <div style="clear: left;"></div>
+                </div>
+                <div>
+                    <div style="font-family: 'arial'; font-size: 11px; font-style: italic; padding:8px 5px;">
+                        This Payment Slip does not require a signature and this is automatically issued by the Human Resources Information System
+                    </div>
+                </div>
+            </div>
+            <div style="z-index: 100;">
+                <img src="alt_payroll_medika_payroll/static/src/image/bg1.png" style="width: 80%; position: absolute; top: 160px; left:20px; opacity: 0.1;" />
+            </div>
+        </template>
+        <template id="recapitulation_salary_pdf">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="company" t-value="res_company"/>
+                    <t t-call="altech_payroll_indonesia.payslip_recaptulation_body"/>
+                </t>
+            </t>
+        </template>
+        <record id="paperformat_payslip_no_header" model="report.paperformat">
+            <field name="name">Paperformat Payslip New</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">7</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">7</field>
+            <field name="dpi">100</field>
+        </record>
+        <record id="action_report_recap_payslip" model="ir.actions.report">
+            <field name="name">Payslip Recapitulation</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="paperformat_id" ref="altech_payroll_indonesia.paperformat_payslip_no_header"/>
+            <field name="report_name">altech_payroll_indonesia.recapitulation_salary_pdf</field>
+            <field name="report_file">altech_payroll_indonesia.recapitulation_salary_pdf</field>
+            <field name="print_report_name">('Payslip Recapitulation - %s' % (object.payslip_run_id.name))</field>
+            <field name="binding_model_id" ref="model_hr_payslip"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

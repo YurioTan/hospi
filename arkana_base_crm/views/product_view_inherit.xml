@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_template_form_view_inherit_brand" model="ir.ui.view">
+        <field name="name">product.template.view.form.inherit.brand</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <field name="alias_name" string="Alias" />
+                <field name="brand_id" options="{'no_create' : True, 'no_open' : True}" />
+            </xpath>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_template_tree">
+        <field name="name">product.template.tree</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="alias_name" string="Alias" optional="hide" />
+                <field name="brand_id" options="{'no_create' : True, 'no_open' : True}"
+                    optional="hide" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_product_tree">
+        <field name="name">product.product.tree</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="alias_name" string="Alias" optional="hide" />
+                <field name="brand_id" options="{'no_create' : True, 'no_open' : True}"
+                    optional="hide" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="product_template_search">
+        <field name="name">product.template.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="alias_name" string="Alias" />
+                <field name="brand_id" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

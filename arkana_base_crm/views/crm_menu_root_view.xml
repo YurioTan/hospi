@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_crm_leads_custom_root"
+        name="Leads"
+        web_icon="arkana_base_crm,static/description/crm-icon.png"
+        sequence="600"
+    />
+
+    <menuitem
+        id="menu_crm_leads_custom_action"
+        name="Leads"
+        parent="menu_crm_leads_custom_root"
+        action="crm_lead_custom_action"
+        sequence="5"
+    />
+
+    <menuitem
+        id="menu_crm_opportunity_custom_action"
+        name="Opportunity"
+        parent="menu_crm_leads_custom_root"
+        action="crm_opportunity_custom_action"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_crm_leads_reporting_custom_action"
+        name="Reporting"
+        parent="menu_crm_leads_custom_root"
+        action="crm_lead_action_dashboard_custom"
+        sequence="15"
+    />
+
+    <menuitem
+        id="menu_crm_leads_custom_setup"
+        name="Settings"
+        parent="menu_crm_leads_custom_root"
+        groups="base.group_system"
+        sequence="90"
+    />
+
+        <menuitem
+        id="menu_crm_leads_crm_setup"
+        name="CRM"
+        parent="menu_crm_leads_custom_setup"
+        groups="base.group_system"
+        sequence="5"
+    />
+
+            <menuitem
+        id="menu_crm_leads_sales_team_setup"
+        name="Sales Teams"
+        parent="menu_crm_leads_crm_setup"
+        action="sales_team.sales_team_config_action"
+        groups="base.group_system"
+        sequence="1"
+    />
+
+            <menuitem
+        id="menu_crm_leads_stages_setup"
+        name="Stages"
+        parent="menu_crm_leads_crm_setup"
+        action="crm.crm_stage_action"
+        groups="base.group_system"
+        sequence="2"
+    />
+
+            <menuitem
+        id="menu_crm_leads_reasons_setup"
+        name="Reasons"
+        parent="menu_crm_leads_crm_setup"
+        action="crm_lost_reason_category_action"
+        groups="base.group_system"
+        sequence="3"
+    />
+
+            <menuitem
+        id="menu_crm_leads_distributor_setup"
+        name="Distributor"
+        parent="menu_crm_leads_crm_setup"
+        action="distributor_configuration_action"
+        groups="base.group_system"
+        sequence="4"
+    />
+
+            <menuitem
+        id="menu_crm_leads_budget_source_setup"
+        name="Budget Source"
+        parent="menu_crm_leads_crm_setup"
+        action="budget_source_configuration_action"
+        groups="base.group_system"
+        sequence="5"
+    />
+
+        <menuitem
+        id="menu_crm_leads_product_setup"
+        name="Products"
+        parent="menu_crm_leads_custom_setup"
+        groups="base.group_system"
+        sequence="10"
+    />
+
+            <menuitem
+        id="menu_product_brand_config"
+        name="Product Brand"
+        parent="menu_crm_leads_product_setup"
+        action="product_brand_configuration_action"
+        groups="base.group_system"
+        sequence="1"
+    />
+
+            <menuitem
+        id="menu_products_config"
+        name="Products"
+        parent="menu_crm_leads_product_setup"
+        action="stock.product_template_action_product"
+        groups="base.group_system"
+        sequence="2"
+    />
+
+</odoo>

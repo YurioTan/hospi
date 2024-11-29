@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="inherit_hr_salary_rule_komponengaji_form">
+            <field name="name">inherit.hr.salary.rule.komponengaji.form</field>
+            <field name="model">hr.salary.rule</field>
+            <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='active']" position="after">
+                    <field name="report_mode"/>
+                    <field name="show_in_excel_list"/>
+                </xpath>
+                <xpath expr="//field[@name='appears_on_payslip']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='description']" position="after">
+                    <page name="reporting" string="Reporting">
+                        <group>
+                            <group string="BPJS Kesehatan">
+                                <field name="bpjs_report_type"/>
+                            </group>
+                            <group string="BPJS Tenaker">
+                                <field name="bpjstk_report_type"/>
+                            </group>
+                            <group string="pph1721 Report">
+                                <field name="pph1721_report"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

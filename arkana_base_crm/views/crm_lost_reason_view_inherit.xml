@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_lost_reason_view_search_inherit_category_reason" model="ir.ui.view">
+        <field name="name">crm.lost.reason.view.search.inherit.category.reason</field>
+        <field name="model">crm.lost.reason</field>
+        <field name="inherit_id" ref="crm.crm_lost_reason_view_search"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//filter[@name='inactive']" position="after">
+                <separator/>
+                <group expand="1" string="Group By">
+                    <filter
+                        name="group_by_category_reason"
+                        string="Category"
+                        domain="[]"
+                        context="{'group_by': 'category_reason'}"
+                    />
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="crm_lost_reason_view_tree_inherit_category_reason" model="ir.ui.view">
+        <field name="name">crm.lost.reason.view.list.inherit</field>
+        <field name="model">crm.lost.reason</field>
+        <field name="inherit_id" ref="crm.crm_lost_reason_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="category_reason" required="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_lost_reason_category_action" model="ir.actions.act_window">
+        <field name="name">Reason</field>
+        <field name="res_model">crm.lost.reason</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="crm_lost_reason_view_search_inherit_category_reason" />
+        <field name="view_id" ref="crm_lost_reason_view_tree_inherit_category_reason" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a New Reason
+            </p>
+        </field>
+    </record>
+
+    <record id="crm_lead_won_reason_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.won.reason.form</field>
+        <field name="model">crm.lead.lost</field>
+        <field name="arch" type="xml">
+            <form string="Won Reason">
+                <group class="oe_title">
+                    <field name="category_reason" invisible="1"/>
+                    <field name="lost_reason_id" string="Won Reason" 
+                    domain="[('category_reason', '=', category_reason)]" options="{'no_create' : True, 'no_open' : True}" />
+                </group>
+                <footer>
+                    <button name="action_lost_reason_apply" string="Submit" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="crm_lead_won_reason_action" model="ir.actions.act_window">
+        <field name="name">Won Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crm.lead.lost</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="crm_lead_won_reason_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <record id="crm_lead_cancel_reason_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.cancel.reason.form</field>
+        <field name="model">crm.lead.lost</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Reason">
+                <group class="oe_title">
+                    <field name="category_reason" invisible="1"/>
+                    <field name="lost_reason_id" string="Cancel Reason" 
+                    domain="[('category_reason', '=', category_reason)]" options="{'no_create' : True, 'no_open' : True}" />
+                </group>
+                <footer>
+                    <button name="action_lost_reason_apply" string="Submit" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="crm_lead_cancel_reason_action" model="ir.actions.act_window">
+        <field name="name">Cancel Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crm.lead.lost</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="crm_lead_cancel_reason_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <record id="crm_lead_lost_view_form_inherit_category_reason" model="ir.ui.view">
+        <field name="name">crm.lead.lost.view.form.inherit.category.reason</field>
+        <field name="model">crm.lead.lost</field>
+        <field name="inherit_id" ref="crm.crm_lead_lost_view_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='lost_reason_id']" position="before">
+                <field name="category_reason" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='lost_reason_id']" position="attributes">
+                <attribute name="domain">[('category_reason', '=', category_reason)]</attribute>
+                <attribute name="options">{'no_create' : True, 'no_open' : True}</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

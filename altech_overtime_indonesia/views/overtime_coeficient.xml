@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record model="ir.ui.view" id="overtime_lembur_koefisien_tree">
+            <field name="name">overtime.lembur.koefisien.tree</field>
+            <field name="model">overtime.lembur.koefisien</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="jam1"/>
+                    <field name="jam2"/>
+                    <field name="jam3"/>
+                    <field name="jam4"/>
+                    <field name="jam5"/>
+                    <field name="jam6"/>
+                    <field name="jam7"/>
+                    <field name="jam8"/>
+                    <field name="jam9"/>
+                    <field name="jam10"/>
+                    <field name="jam11"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="lembur_overtime_koefisien_action">
+            <field name="name">Overtime Coefficient</field>
+            <field name="res_model">overtime.lembur.koefisien</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
